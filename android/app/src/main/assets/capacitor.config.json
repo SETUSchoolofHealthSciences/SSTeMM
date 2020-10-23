@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "sstemm_app",
+  "appId": "sstemm.eu",
+  "appName": "SSTeMM",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
