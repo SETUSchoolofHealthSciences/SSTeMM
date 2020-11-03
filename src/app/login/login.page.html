@@ -1,9 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="logoLogin">
+    <div class="center">
+      <ion-img src="assets/sstemm-login.png" class="ion-align-self-end"></ion-img>
+    </div>   
+  </div>
+  
+  <ion-input class="input" placeholder="Email Address" type="text"></ion-input>
 
-<ion-content>
-<p>I have loaded</p>
+  <ion-input class="input" placeholder="Password" type="password"></ion-input>
+
+  <div class="forgotPassword">
+    <ion-router-link href="#">Forgot Password</ion-router-link>
+  </div>
+
+  <div class="loginButton">
+    <ion-button class="buttonDetails" expand="block">Login</ion-button>
+  </div>
+  
+  <div class="registration">
+    <ion-router-link href="#">No account yet? Create one</ion-router-link>
+  </div>
 </ion-content>
