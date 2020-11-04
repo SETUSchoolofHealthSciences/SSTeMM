@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="logoHeader">
+      <img src="assets/sstemm-header.png" width="250px" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="regTitle">Registration</h1>
+
+  <ion-input class="input" placeholder="First Name" type="text"></ion-input>
+  <ion-input class="input" placeholder="Last Name" type="text"></ion-input>
+  <ion-input class="input" placeholder="College" type="text"></ion-input>
+  <ion-input class="input" placeholder="College Year" type="text"></ion-input>
+  <ion-input class="input" placeholder="Hospital" type="text"></ion-input>
+  <ion-input class="input" placeholder="Email Address" type="text"></ion-input>
+
+  <ion-input class="input" placeholder="Password" type="password"></ion-input>
+  <ion-input class="input" placeholder="Password Again" type="password"></ion-input>
+
+  <ion-item class="container" lines="none">
+    <ion-checkbox class="tickBox" color="primary"></ion-checkbox>
+    <ion-label class="ion-text-wrap">By clicking here I accept the terms & conditions for using this service</ion-label>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+        <ion-col size-sm="6" size="6" class="ion-text-center">
+            <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="register()">Cancel</ion-button>
+        </ion-col>
+
+        <ion-col size-sm="6" size="6" class="ion-text-center">
+            <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="register()">Register</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+</ion-content>
