@@ -9,4 +9,7 @@ export class HomePage {
 
   constructor() {}
 
+  add(){
+    console.log('I have been clicked');
+  }
 }
