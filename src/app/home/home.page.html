@@ -7,9 +7,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <h1 class="header">Dashboard</h1>
+  <h1 class="header">Most Recent Entries</h1>
+  <app-record overallScore=85 title="This is the title"
+  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
+  </app-record>
+  <app-record overallScore=85 title="This is another title"
+  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
+  </app-record>
+  <app-record overallScore=85 title="This is the title"
+  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
+  </app-record>
+  <app-record overallScore=85 title="This is another title"
+  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
+  </app-record>
+  <app-record overallScore=85 title="This is the title"
+  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
+  </app-record>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button  class="add-button" color=primary style="margin: 30px; width: 100px; height: 100px;" (click)="add()">
+    <ion-icon name="add-sharp" style="color: white; width: 50px; height: 50px;"></ion-icon>
+    </ion-fab-button> 
+    </ion-fab>
 </ion-content>
