@@ -10,6 +10,6 @@ export class HomePage {
   constructor(private go: Router) {}
 
   add(){
-    this.go.navigate(['/stress-questions']);
+    this.go.navigate(['/stress-signature']);
   }
 }

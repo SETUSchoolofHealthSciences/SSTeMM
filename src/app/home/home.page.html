@@ -7,8 +7,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1 class="header">Dashboard</h1>
   <h1 class="header">Most Recent Entries</h1>
+  <div class=records>
   <app-record overallScore=85 title="This is the title"
   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
   </app-record>
@@ -24,6 +24,7 @@
   <app-record overallScore=85 title="This is the title"
   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
   </app-record>
+  </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button  class="add-button" color=primary style="margin: 30px; width: 75px; height: 75px;" (click)="add()">
     <ion-icon name="add-sharp" style="color: white; width: 50px; height: 50px;"></ion-icon>

@@ -7,5 +7,32 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1 class="header">Create Stress Signature Record</h1>
+  <div class="header">
+    <h1>Create Stress Signature Record</h1>
+  </div>
+  <div class="domain" [hidden]=isDomainHidden>
+    <ion-button class="buttonDetails" expand="block" (click)="pickDomain()">Pick Domain</ion-button>
+  </div>
+  <div class="choice" [hidden]=isChoiceHidden>
+    <h2>Pick a Domain</h2>
+    <ion-button class="buttonDetails" expand="block" (click)="thoughts()">Thoughts</ion-button>
+    <ion-button class="buttonDetails" expand="block" (click)="feelings()">Feelings</ion-button>
+    <ion-button class="buttonDetails" expand="block" (click)="behaviours()">Behaviours</ion-button>
+  </div>
+  <hr> 
+  <div class="reflection">
+    <ion-label position="floating">Personal Reflection</ion-label>
+    <ion-textarea placeholder="Enter your personal reflection here...."></ion-textarea>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="6" size="6" class="ion-text-center">
+        <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="cancel()">Cancel</ion-button>
+      </ion-col>
+
+      <ion-col size-sm="6" size="6" class="ion-text-center">
+        <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="save()">Save</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   </ion-content>
