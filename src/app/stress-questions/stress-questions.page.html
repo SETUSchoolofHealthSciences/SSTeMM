@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="logoHeader">
+      <img src="assets/sstemm-header.png" width="250px" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1 class="header">Chosen Domain</h1>
+  <div class="question">
+    <p >Question 1</p>
+    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
+      <h3 slot="start" size="large">0</h3>
+      <h3 slot="end" size="large" >10</h3>
+    </ion-range>
+  </div>
+  <div class="question">
+    <p>Question 2</p>
+    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
+      <h3 slot="start" size="large" >0</h3>
+      <h3 slot="end" size="large" >10</h3>
+    </ion-range>
+  </div>
+  <div class="question">
+    <p >Question 3</p>
+    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
+      <h3 slot="start" size="large" >0</h3>
+      <h3 slot="end" size="large">10</h3>
+    </ion-range>
+  </div>
+  <div class="question">
+    <p>Question 4</p>
+    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
+      <h3 slot="start" size="large">0</h3>
+      <h3 slot="end" size="large">10</h3>
+    </ion-range>
+  </div>
+  <div class="question">
+    <p>Question 5 this is a very long question to see
+      if it wraps</p>
+    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
+      <h3 slot="start" size="large" >0</h3>
+      <h3 slot="end" size="large">10</h3>
+    </ion-range>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="6" size="6" class="ion-text-center">
+        <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="goBack()">Go Back</ion-button>
+      </ion-col>
+
+      <ion-col size-sm="6" size="6" class="ion-text-center">
+        <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="save()">Save</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
