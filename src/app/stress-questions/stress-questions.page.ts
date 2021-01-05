@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-stress-questions',
   templateUrl: './stress-questions.page.html',
@@ -7,11 +7,11 @@ import { Router } from '@angular/router'
 })
 export class StressQuestionsPage implements OnInit {
 
-  constructor(private go:Router) { }
+  constructor(private go: Router) { }
 
   ngOnInit() {
   }
-  
+
   goBack(){
     this.go.navigate(['/stress-signature']);
   }
