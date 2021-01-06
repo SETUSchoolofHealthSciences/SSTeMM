@@ -1,12 +1,28 @@
-.record-content {
-    border: 2px;
-    border-style: solid;
-    border-color: #5ACAF9;
-    width: 90%;
-    align-items: center;
-    margin: 20px;
-    height: 100px;
+.record-card {
+    margin: 10px
 }
-.add-button {
-    width: 200px;
+.score{
+    text-align: center;
+    width:50px;
+    height: 50px;
+    background-color: #5ACAF9;
+    color: #ffffff;
+    border-radius: 50px;
+    position: absolute;
+    right: 25px;
+}
+.record-content {
+    
+    margin: 10px;
+    min-height: 100px;
+    box-shadow: 0 3px 4px rgba(0,0,0,0.6);
+    border-radius: 3px;
+    border: thin solid #ededed;
+    padding: 1em;
+    display:flex;
+    flex-flow: row wrap;
+    h3{
+        flex-basis: 100%;
+        color: #08415C;
+    }
 }

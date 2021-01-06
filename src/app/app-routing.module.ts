@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'registration',
     loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
   },
+  {
+    path: 'stress-signature',
+    loadChildren: () => import('./stress-signature/stress-signature.module').then( m => m.StressSignaturePageModule)
+  },
+  {
+    path: 'stress-questions',
+    loadChildren: () => import('./stress-questions/stress-questions.module').then( m => m.StressQuestionsPageModule)
+  },
 ];
 
 @NgModule({
