@@ -1,4 +1,12 @@
+.dark-gb{
+  --ion-background-color: #08415C !important;
+}
+ion-toolbar{
+  padding: 1em;
+  --background: #08415C;
+}
 .logoHeader {
+    background: #08415C;
     position: absolute;
     width: 100%;
     left: 0;
@@ -6,7 +14,7 @@
     text-align:center;
   }
   .header{
-    color:  #5ACAF9;
+    color:  #08415C;
     text-align: center;
   
   }

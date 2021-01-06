@@ -1,3 +1,6 @@
+.dark-gb{
+    --ion-background-color: #08415C !important;
+}
 .input{
     border: solid 1px #5ACAF9;
     margin-top: 10px;
@@ -6,7 +9,7 @@
     margin-right: 30px;
     width: auto;
     border-radius: 5px;
-    --placeholder-color: #838383;
+    --placeholder-color: #5ACAF9;
 }
 
 .logoLogin{
@@ -21,8 +24,7 @@
 }
 
 .forgotPassword{
-    font-size: large;
-    font-weight: bold;
+    font-style: italic;
     text-align: right;
     margin-right: 30px;
     margin-bottom: 20px;
@@ -39,7 +41,7 @@
 .buttonDetails{
     font-weight: bold;
     font-size: large;
-    color: white;
+    color: #08415C;
     width: 250px;
     text-transform: none;
 }

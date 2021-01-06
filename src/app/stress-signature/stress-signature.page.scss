@@ -1,4 +1,12 @@
+dark-gb{
+  --ion-background-color: #08415C !important;
+}
+ion-toolbar{
+  padding: 1em;
+  --background: #08415C;
+}
 .logoHeader {
+  background: #08415C;
     position: absolute;
     width: 100%;
     left: 0;
@@ -10,9 +18,9 @@
     align-items: center;
     justify-content: center;  
     flex-flow: wrap;
-    h1{
-      color: #5ACAF9;
-      width: 50%;
+    h2{
+      color: #08415C;
+      width: 90%;
       text-align: center;
     }
   }
@@ -44,14 +52,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     width: auto;
 }
 .choice{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   width: auto;
   flex-flow: wrap;
   h2{
@@ -62,6 +70,7 @@
 }
 
 .buttonDetails{
+    --background:#08415C;
     font-weight: bold;
     font-size: large;
     color: white;
@@ -70,7 +79,7 @@
 }
 hr {
   border: none;
-  height: 6px;
+  height: 3px;
   width: 70%;
   /* Set the hr color */
   color: #5ACAF9; /* old IE */

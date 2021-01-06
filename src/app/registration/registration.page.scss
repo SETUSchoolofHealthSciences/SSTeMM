@@ -1,4 +1,11 @@
+.dark-gb{
+  --ion-background-color: #08415C !important;
+}
+ion-toolbar{
+  --background: #08415C;
+}
 .logoHeader {
+    background-color: #08415C;
     position: absolute;
     width: 100%;
     left: 0;
@@ -13,12 +20,12 @@
     margin-right: 30px;
     width: auto;
     border-radius: 5px;
-    --placeholder-color: #838383;
+    --placeholder-color: #ffffff;
 }
 .bttn{
     font-weight: bold;
     font-size: large;
-    color: white;
+    color: #08415C;
     text-transform: none;
 }
 .regTitle{
@@ -35,4 +42,9 @@
   
   ion-label {
     padding-left: 7px;
+    color: #ffffff !important;
+  }
+
+  ion-checkbox {
+    --border-color: white !important;
   }
