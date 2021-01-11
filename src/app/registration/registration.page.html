@@ -9,15 +9,15 @@
 <ion-content class="dark-gb">
   <h1 class="regTitle">Registration</h1>
 
-  <ion-input class="input" placeholder="First Name" type="text"></ion-input>
-  <ion-input class="input" placeholder="Last Name" type="text"></ion-input>
-  <ion-input class="input" placeholder="College" type="text"></ion-input>
-  <ion-input class="input" placeholder="College Year" type="text"></ion-input>
-  <ion-input class="input" placeholder="Hospital" type="text"></ion-input>
-  <ion-input class="input" placeholder="Email Address" type="email"></ion-input>
+  <ion-input class="input" placeholder="First Name" [(ngModel)]="firstName" type="text"></ion-input>
+  <ion-input class="input" placeholder="Last Name" [(ngModel)]="lastName"type="text"></ion-input>
+  <ion-input class="input" placeholder="College" [(ngModel)]="college" type="text"></ion-input>
+  <ion-input class="input" placeholder="College Year" [(ngModel)]="collegeYear"type="number"></ion-input>
+  <ion-input class="input" placeholder="Hospital" [(ngModel)]="hospital"type="text"></ion-input>
+  <ion-input class="input" placeholder="Email Address" [(ngModel)]="email"type="email"></ion-input>
 
-  <ion-input class="input" placeholder="Password" type="password"></ion-input>
-  <ion-input class="input" placeholder="Password Again" type="password"></ion-input>
+  <ion-input class="input" placeholder="Password" [(ngModel)]="password" type="password"></ion-input>
+  <ion-input class="input" placeholder="Password Again" [(ngModel)]="passwordAgain"type="password"></ion-input>
 
   <ion-item class="container" lines="none">
     <ion-checkbox color="primary"></ion-checkbox>

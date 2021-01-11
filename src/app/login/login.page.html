@@ -5,9 +5,9 @@
     </div>   
   </div>
   
-  <ion-input class="input" placeholder="Email Address" type="text"></ion-input>
+  <ion-input class="input" name="email" [(ngModel)]="email" placeholder="Email Address" type="text"></ion-input>
 
-  <ion-input class="input" placeholder="Password" type="password"></ion-input>
+  <ion-input class="input" name="password" [(ngModel)]="password" placeholder="Password" type="password"></ion-input>
 
   <div class="forgotPassword">
     <a  class="text" routerLink="/registration">Forgot Password</a>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service'
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private go: Router) {}
+  constructor(private go: Router, private auth: AuthenticationService) {}
 
   add(){
     this.go.navigate(['/stress-signature']);
+  }
+
+  logout(){
+    this.auth.signOut();
   }
 }

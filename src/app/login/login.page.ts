@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { AuthenticationService } from '../services/authentication.service'
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  constructor(private go: Router) { }
+  email: string ='';
+  password: string = '';
+  constructor(private auth: AuthenticationService) { }
 
   ngOnInit() {
   }
 
-  login(){
-    this.go.navigate(['/home']);
+  async login(){
+    this.auth.signIn(this.email, this.password);
   }
 }
