@@ -14,7 +14,7 @@ export class AuthenticationService {
       console.log('Authentication performed for user=' + username + 'password=' + password + ' login result==' + user);
       const tokens = user.signInUserSession;
       if (tokens != null){
-        console.log('User authenticated');
+        console.log('User authenticated ', tokens);
         this.go.navigate(['home']);
         alert('You are logged in successfully !');
       }
@@ -58,7 +58,9 @@ export class AuthenticationService {
 
   async signOut() {
     try {
-      await Auth.signOut({ global: true });
+      const response = await Auth.signOut();
+      console.log('response ', response);
+      this.go.navigate(["login"]);
     } catch (error) {
       console.log("error signing out: ", error);
     }
