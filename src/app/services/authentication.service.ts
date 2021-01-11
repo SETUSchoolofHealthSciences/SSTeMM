@@ -56,6 +56,15 @@ export class AuthenticationService {
     }
   }
 
+   // can use code for verification
+   async confirmSignUpWithCode(username: string, code:string) {
+    try {
+      await Auth.confirmSignUp(username, code);
+    } catch (error) {
+        console.log('error confirming sign up', error);
+    }
+  }
+
   async signOut() {
     try {
       const response = await Auth.signOut();
