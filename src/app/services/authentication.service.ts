@@ -51,7 +51,7 @@ export class AuthenticationService {
       console.log('Login Error ', error);
       this.authenticationState.next(false);
       const toast = this.toaster.create({
-        message: 'Authentenication Eror, please try again!',
+        message: error.message,
         duration: 3000,
         position: 'bottom'
       });
