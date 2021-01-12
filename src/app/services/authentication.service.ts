@@ -63,7 +63,7 @@ export class AuthenticationService {
   register(email: string, password: string, firstName: string,
            lastName: string, hospital?: string, college?: string, collegeYear?: number) {
     try {
-      const user = Auth.signUp({
+      Auth.signUp({
         username: email,
         password,
         attributes: {
@@ -74,16 +74,25 @@ export class AuthenticationService {
           'custom:college': college,
           'custom:collegeyear': collegeYear.toString(),
         },
+        validationData: []
+      }).then(data => {
+         const toast = this.toaster.create({
+          message: 'Check emails, to verify account!',
+          duration: 3000,
+          position: 'bottom'
+        });
+        // tslint:disable-next-line: no-shadowed-variable
+         toast.then(toast => toast.present());
+         this.go.navigate(['/login']);
+      }).catch(error => {
+        const toast = this.toaster.create({
+          message: error.message,
+          duration: 3000,
+          position: 'bottom'
+        });
+        // tslint:disable-next-line: no-shadowed-variable
+        toast.then(toast => toast.present());
       });
-      console.log({ user });
-      const toast = this.toaster.create({
-        message: 'Check emails, to verify account!',
-        duration: 3000,
-        position: 'bottom'
-      });
-      // tslint:disable-next-line: no-shadowed-variable
-      toast.then(toast => toast.present());
-      this.go.navigate(['/login']);
     } catch (error) {
       console.log('error signing up ', error);
     }

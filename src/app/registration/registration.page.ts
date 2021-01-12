@@ -1,26 +1,80 @@
-import { Component, OnInit } from "@angular/core";
-import { AuthenticationService } from '../services/authentication.service'
-import { FormsModule } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  Validators,
+} from '@angular/forms';
+import { Location } from '@angular/common';
+import { CustomvalidationService } from '../services/customvalidation.service';
 @Component({
-  selector: "app-registration",
-  templateUrl: "./registration.page.html",
-  styleUrls: ["./registration.page.scss"],
+  selector: 'app-registration',
+  templateUrl: './registration.page.html',
+  styleUrls: ['./registration.page.scss'],
 })
 export class RegistrationPage implements OnInit {
-  firstName: string = "";
-  lastName: string = "";
-  college: string = "";
-  collegeYear: number = 1;
-  hospital: string = "";
-  email: string = "";
-  password: string = "";
-  passwordAgain: string = "";
-  constructor(private auth: AuthenticationService) {}
+  formGroup: FormGroup;
+  submitted = false;
+  constructor(
+    public fb: FormBuilder,
+    private location: Location,
+    private auth: AuthenticationService,
+    private customValidator: CustomvalidationService
+  ) {
+    this.formGroup = fb.group(
+      {
+        firstNameControl: ['', Validators.compose([Validators.required])],
+        lastNameControl: ['', Validators.compose([Validators.required])],
+        collegeControl: [''],
+        collegeYearControl: [
+          '',
+          [Validators.maxLength(1), Validators.min(1), Validators.max(5)],
+        ],
+        hospitalControl: [''],
+        emailControl: ['', [Validators.required, Validators.email]],
+        passwordControl: [
+          '',
+          Validators.compose([
+            Validators.required,
+            this.customValidator.patternValidator(),
+          ]),
+        ],
+        passwordAgainControl: ['', Validators.compose([Validators.required])],
+        checkBoxControl: [false, Validators.requiredTrue],
+      },
+      {
+        validator: this.customValidator.matchPassword(
+          'passwordControl',
+          'passwordAgainControl'
+        ),
+      }
+    );
+  }
 
   ngOnInit() {}
 
+  get RegistrationFormControl() {
+    return this.formGroup.controls;
+  }
+
   register() {
-    this.auth.register(this.email, 
-      this.password, this.firstName, this.lastName,  this.hospital, this.college, this.collegeYear)
+    this.submitted = true;
+    if (this.formGroup.valid) {
+      console.log(this.formGroup.value);
+      this.auth.register(
+        this.formGroup.value.emailControl,
+        this.formGroup.value.passwordControl,
+        this.formGroup.value.firstNameControl,
+        this.formGroup.value.lastNameControl,
+        this.formGroup.value.hospitalControl,
+        this.formGroup.value.collegeControl,
+        this.formGroup.value.collegeYearControl
+      );
+    }
+  }
+
+  cancel() {
+    this.location.back();
   }
 }

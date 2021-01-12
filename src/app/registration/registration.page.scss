@@ -14,13 +14,14 @@ ion-toolbar{
   }
 .input{
     border: solid 1px #5ACAF9;
+    color: white;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 30px;
     margin-right: 30px;
     width: auto;
     border-radius: 5px;
-    --placeholder-color: #ffffff;
+    --placeholder-color: #5ACAF9;
 }
 .bttn{
     font-weight: bold;
@@ -48,3 +49,15 @@ ion-toolbar{
   ion-checkbox {
     --border-color: white !important;
   }
+
+  .text-danger{
+    color: red;
+    padding: 8px;
+    background-color: #cbebfa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 5px;
+}

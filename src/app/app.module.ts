@@ -9,6 +9,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PasswordMatchDirective } from './directives/password-match.directive';
+import { PasswordPatternDirective } from './directives/password-pattern.directive';
 
 Amplify.configure({
   Auth: {
@@ -20,7 +22,7 @@ Amplify.configure({
   }
 });
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PasswordMatchDirective, PasswordPatternDirective],
   entryComponents: [],
   imports: [BrowserModule,
     IonicModule.forRoot(),

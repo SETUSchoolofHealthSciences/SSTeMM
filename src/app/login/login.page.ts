@@ -32,6 +32,7 @@ export class LoginPage implements OnInit {
   get loginFormControl() {
     return this.formGroup.controls;
   }
+
   async login() {
     this.submitted = true;
     if (this.formGroup.valid) {
