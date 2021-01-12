@@ -39,7 +39,7 @@ export class AuthenticationService {
         this.setLogin(tokens.idToken.jwtToken);
         console.log('User authenticated ', tokens.idToken.jwtToken);
         const toast = this.toaster.create({
-          message: 'You are logged in successfully !',
+          message: 'You are logged in successfully!',
           duration: 3000,
           position: 'bottom'
         });
@@ -117,7 +117,7 @@ export class AuthenticationService {
     try {
       await Auth.confirmSignUp(username, code);
       const toast = this.toaster.create({
-        message: 'Your account is now verified',
+        message: 'Your account is now verified.',
         duration: 3000,
         position: 'bottom'
       });
@@ -141,7 +141,7 @@ export class AuthenticationService {
         console.log('Response ', response);
       });
       const toast = this.toaster.create({
-        message: 'You are signed out successfully !',
+        message: 'You are signed out successfully!',
         duration: 3000,
         position: 'bottom'
       });
