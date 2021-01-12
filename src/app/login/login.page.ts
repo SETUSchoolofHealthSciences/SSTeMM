@@ -7,8 +7,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  email: string ='';
-  password: string = '';
+  email ='';
+  password = '';
   constructor(private auth: AuthenticationService) { }
 
   ngOnInit() {
