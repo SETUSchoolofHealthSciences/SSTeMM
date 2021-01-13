@@ -1,23 +1,63 @@
 <ion-content class="dark-gb" [fullscreen]="true">
   <div class="logoLogin">
     <div class="center">
-      <ion-img src="assets/sstemm-login.png" class="ion-align-self-end"></ion-img>
-    </div>   
+      <ion-img
+        src="assets/sstemm-login.png"
+        class="ion-align-self-end"
+      ></ion-img>
+    </div>
   </div>
-  
-  <ion-input class="input" name="email" [(ngModel)]="email" placeholder="Email Address" type="text"></ion-input>
+  <form [formGroup]="formGroup" (ngSubmit)="login()">
+    <div>
+      <ion-input
+        class="input"
+        formControlName="emailControl"
+        required="true"
+        type="email"
+        placeholder="Email address"
+      >
+      </ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(loginFormControl.emailControl.touched || submitted) && loginFormControl.emailControl.errors?.required"
+      >
+        Email address is required
+      </span>
+      <span
+        class="text-danger"
+        *ngIf="loginFormControl.emailControl.touched && loginFormControl.emailControl.errors?.email"
+      >
+        Enter a valid email address
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        formControlName="passwordControl"
+        required="true"
+        type="password"
+        placeholder="Password"
+      >
+      </ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(loginFormControl.passwordControl.touched || submitted) && loginFormControl.passwordControl.errors?.required"
+      >
+        Password is required
+      </span>
+    </div>
 
-  <ion-input class="input" name="password" [(ngModel)]="password" placeholder="Password" type="password"></ion-input>
+    <div class="forgotPassword">
+      <a class="text" routerLink="/registration">Forgot Password</a>
+    </div>
 
-  <div class="forgotPassword">
-    <a  class="text" routerLink="/registration">Forgot Password</a>
-  </div>
-
-  <div class="loginButton">
-    <ion-button class="buttonDetails" expand="block" (click)="login()">Login</ion-button>
-  </div>
-  
+    <div class="loginButton">
+      <ion-button class="buttonDetails" expand="block" type="submit"
+        >Login</ion-button
+      >
+    </div>
+  </form>
   <div class="registration">
-    <a  class="text" routerLink="/registration">No account yet? Create one</a>
+    <a class="text" routerLink="/registration">No account yet? Create one</a>
   </div>
 </ion-content>

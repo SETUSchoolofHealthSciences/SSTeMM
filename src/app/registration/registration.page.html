@@ -8,31 +8,164 @@
 
 <ion-content class="dark-gb">
   <h1 class="regTitle">Registration</h1>
-
-  <ion-input class="input" placeholder="First Name" [(ngModel)]="firstName" type="text"></ion-input>
-  <ion-input class="input" placeholder="Last Name" [(ngModel)]="lastName"type="text"></ion-input>
-  <ion-input class="input" placeholder="College" [(ngModel)]="college" type="text"></ion-input>
-  <ion-input class="input" placeholder="College Year" [(ngModel)]="collegeYear"type="number"></ion-input>
-  <ion-input class="input" placeholder="Hospital" [(ngModel)]="hospital"type="text"></ion-input>
-  <ion-input class="input" placeholder="Email Address" [(ngModel)]="email"type="email"></ion-input>
-
-  <ion-input class="input" placeholder="Password" [(ngModel)]="password" type="password"></ion-input>
-  <ion-input class="input" placeholder="Password Again" [(ngModel)]="passwordAgain"type="password"></ion-input>
-
-  <ion-item class="container" lines="none">
-    <ion-checkbox color="primary"></ion-checkbox>
-    <ion-label class="ion-text-wrap">By clicking here I accept the terms & conditions for using this service</ion-label>
-  </ion-item>
-
-  <ion-grid>
-    <ion-row>
+  <form [formGroup]="formGroup" (ngSubmit)="register()">
+    <div>
+      <ion-input
+        class="input"
+        placeholder="First Name"
+        formControlName="firstNameControl"
+        type="text"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.firstNameControl.touched || submitted) && RegistrationFormControl.firstNameControl.errors?.required"
+      >
+        First Name is required
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="Last Name"
+        formControlName="lastNameControl"
+        type="text"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.lastNameControl.touched || submitted) && RegistrationFormControl.lastNameControl.errors?.required"
+      >
+        Last Name is required
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="College"
+        formControlName="collegeControl"
+        type="text"
+      ></ion-input>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="College Year"
+        formControlName="collegeYearControl"
+        type="number"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.collegeYearControl.touched || submitted) && (RegistrationFormControl.collegeYearControl.errors?.max || RegistrationFormControl.collegeYearControl.errors?.min)"
+      >
+        College Year is between 1-5
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="Hospital"
+        formControlName="hospitalControl"
+        type="text"
+      ></ion-input>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="Email Address"
+        formControlName="emailControl"
+        type="email"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.emailControl.touched || submitted) && RegistrationFormControl.emailControl.errors?.required"
+      >
+        Email address is required
+      </span>
+      <span
+        class="text-danger"
+        *ngIf="RegistrationFormControl.emailControl.touched && RegistrationFormControl.emailControl.errors?.email"
+      >
+        Enter a valid email address
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="Password"
+        formControlName="passwordControl"
+        type="password"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.passwordControl.touched || submitted) && RegistrationFormControl.passwordControl.errors?.required"
+      >
+        Password is required
+      </span>
+      <span
+        class="text-danger"
+        *ngIf="RegistrationFormControl.passwordControl.touched && RegistrationFormControl.passwordControl.errors?.invalidPassword"
+      >
+        Password should have minimum 8 characters, at least 1 uppercase letter,
+        1 lowercase letter and 1 number
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="Confirm Password"
+        formControlName="passwordAgainControl"
+        type="password"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.passwordAgainControl.touched || submitted)&& RegistrationFormControl.passwordAgainControl.errors?.required"
+      >
+        Confirm Password is required
+      </span>
+      <span
+        class="text-danger"
+        *ngIf="RegistrationFormControl.passwordAgainControl.touched && RegistrationFormControl.passwordAgainControl.errors?.passwordMismatch"
+      >
+        Passwords does not match
+      </span>
+    </div>
+    <div>
+      <ion-item class="container" lines="none">
+        <ion-checkbox
+          color="primary"
+          formControlName="checkBoxControl"
+        ></ion-checkbox>
+        <ion-label class="ion-text-wrap" for="checkBoxControl"
+          >By clicking here I accept the terms & conditions for using this
+          service</ion-label
+        >
+      </ion-item>
+      <span
+        class="text-danger"
+        *ngIf="submitted && RegistrationFormControl.checkBoxControl.errors"
+      >
+        Please accept the terms & conditions
+      </span>
+    </div>
+    <ion-grid>
+      <ion-row>
         <ion-col size-sm="6" size="6" class="ion-text-center">
-            <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="register()">Cancel</ion-button>
+          <ion-button
+            expand="block"
+            class="ion-text-wrap min-max-width bttn"
+            (click)="cancel()"
+            >Cancel</ion-button
+          >
         </ion-col>
 
         <ion-col size-sm="6" size="6" class="ion-text-center">
-            <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="register()">Register</ion-button>
+          <ion-button
+            expand="block"
+            class="ion-text-wrap min-max-width bttn"
+            type="submit"
+            >Register</ion-button
+          >
         </ion-col>
-    </ion-row>
-</ion-grid>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

@@ -27,6 +27,7 @@
 .forgotPassword{
     font-style: italic;
     text-align: right;
+    margin-top: 10px;
     margin-right: 30px;
     margin-bottom: 20px;
 }
@@ -55,4 +56,16 @@
 
 .text{
     text-decoration: none;
+}
+
+.text-danger{
+    color: red;
+    padding: 8px;
+    background-color: #cbebfa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 5px;
 }
