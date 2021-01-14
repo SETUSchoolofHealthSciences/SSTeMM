@@ -14,20 +14,8 @@
 <ion-content [fullscreen]="true">
   <h1 class="header">Most Recent Entries</h1>
   <div class=records>
-  <app-record overallScore=85 title="This is the title"
-  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
-  </app-record>
-  <app-record overallScore=85 title="This is another title"
-  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
-  </app-record>
-  <app-record overallScore=85 title="This is the title"
-  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
-  </app-record>
-  <app-record overallScore=85 title="This is another title"
-  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
-  </app-record>
-  <app-record overallScore=85 title="This is the title"
-  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ">
+  <app-record *ngFor="let entry of signatures" overallScore={{entry.score}} title={{entry.date}}
+  description={{entry.domain}}>
   </app-record>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
