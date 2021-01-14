@@ -2,7 +2,6 @@ dark-gb{
   --ion-background-color: #08415C !important;
 }
 ion-toolbar{
-  padding: 1em;
   --background: #08415C;
 }
 .logoHeader {
@@ -12,6 +11,7 @@ ion-toolbar{
     left: 0;
     bottom: 0;
     text-align:center;
+    padding-bottom: 10px;
   }
   .header{
     display: flex;
