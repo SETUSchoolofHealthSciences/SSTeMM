@@ -1,0 +1,29 @@
+{
+	"entries":[
+		{
+			"date": "01/01/2021",
+			"domain": ["thoughts", "feelings"],
+			"score": 45
+		},
+		{
+			"date": "02/01/2021",
+			"domain": ["feelings"],
+			"score": 25
+		},
+		{
+			"date": "03/01/2021",
+			"domain": ["thoughts"],
+			"score": 35
+		},
+		{
+			"date": "04/01/2021",
+			"domain": ["thoughts"],
+			"score": 30
+		},
+		{
+			"date": "05/01/2021",
+			"domain": ["thoughts", "feelings", "behaviours"],
+			"score": 90
+		}
+	]
+}
