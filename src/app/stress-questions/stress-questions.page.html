@@ -7,42 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1 class="header">Chosen Domain</h1>
-  <div class="question">
-    <p >Question 1</p>
-    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
-      <h3 slot="start" size="large">0</h3>
-      <h3 slot="end" size="large" >10</h3>
-    </ion-range>
-  </div>
-  <div class="question">
-    <p>Question 2</p>
-    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
-      <h3 slot="start" size="large" >0</h3>
-      <h3 slot="end" size="large" >10</h3>
-    </ion-range>
-  </div>
-  <div class="question">
-    <p >Question 3</p>
-    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
-      <h3 slot="start" size="large" >0</h3>
-      <h3 slot="end" size="large">10</h3>
-    </ion-range>
-  </div>
-  <div class="question">
-    <p>Question 4</p>
-    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
-      <h3 slot="start" size="large">0</h3>
-      <h3 slot="end" size="large">10</h3>
-    </ion-range>
-  </div>
-  <div class="question">
-    <p>Question 5 this is a very long question to see
-      if it wraps</p>
-    <ion-range min="0" max="10" step="1" value="0" snaps color="primary">
-      <h3 slot="start" size="large" >0</h3>
-      <h3 slot="end" size="large">10</h3>
-    </ion-range>
+  <h1 class="header">{{title}}</h1>
+  <div class="questions">
+  <app-question *ngFor="let quest of questions" question={{quest}}>
+  </app-question>
   </div>
   <ion-grid>
     <ion-row>

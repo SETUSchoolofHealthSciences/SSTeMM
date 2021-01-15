@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { StressQuestionsPageRoutingModule } from './stress-questions-routing.module';
-
 import { StressQuestionsPage } from './stress-questions.page';
-
+import { QuestionComponent } from '../component/question/question.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +12,6 @@ import { StressQuestionsPage } from './stress-questions.page';
     IonicModule,
     StressQuestionsPageRoutingModule
   ],
-  declarations: [StressQuestionsPage]
+  declarations: [StressQuestionsPage, QuestionComponent]
 })
 export class StressQuestionsPageModule {}

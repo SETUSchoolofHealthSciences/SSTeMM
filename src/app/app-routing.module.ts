@@ -22,7 +22,7 @@ const routes: Routes = [
     loadChildren: () => import('./stress-signature/stress-signature.module').then( m => m.StressSignaturePageModule)
   },
   {
-    path: 'stress-questions',
+    path: 'stress-questions/:id',
     canActivate: [AuthGuard],
     loadChildren: () => import('./stress-questions/stress-questions.module').then( m => m.StressQuestionsPageModule)
   },

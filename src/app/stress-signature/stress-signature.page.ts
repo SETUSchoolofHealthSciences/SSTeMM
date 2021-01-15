@@ -22,19 +22,19 @@ export class StressSignaturePage implements OnInit {
   }
 
   thoughts(){
-    this.go.navigate(['/stress-questions']);
+    this.go.navigate(['/stress-questions/think']);
     this.isDomainHidden = false;
     this.isChoiceHidden = true;
   }
 
   feelings(){
-    this.go.navigate(['/stress-questions']);
+    this.go.navigate(['/stress-questions/feel']);
     this.isDomainHidden = false;
     this.isChoiceHidden = true;
   }
 
   behaviours(){
-    this.go.navigate(['/stress-questions']);
+    this.go.navigate(['/stress-questions/do']);
     this.isDomainHidden = false;
     this.isChoiceHidden = true;
   }
