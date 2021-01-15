@@ -1,25 +1,37 @@
 {
-	"questions": {
-		"thoughts": [
-			"I am not capable and confident in my clinical work",
-			"I think about upsetting things that have happened at clinical work",
-			"I constantly think about college work",
-			"I think I am not good enough to do the clinical work properly",
-			"I think that I am not able to handle the demands of my college work"
-		],
-		"feelings": [
-			"Whenever I have to do something new I always get ‘butterflies’ in my stomach/ feel fearful",
-			"I feel my classmates find the clinical work easier than I do",
-			"I worry that I might make mistakes and people will suffer as a result",
-			"I am nervous that the qualified staff may find out that I’m not as capable as they think I am",
-			"I worry about assessments/supervision and have a dread of others evaluating me"
-		],
-		"behaviours": [
-			"I don’t voice my opinion I’m afraid of arguments with my co-workers in the clinical area",
-			"I never get enough sleep",
-			"I often ask for advice from several different people before I am happy with what I am doing",
-			"I play things over and over again in my mind to reassure myself",
-			"I put off doing tasks/course work which I find difficult"
-		]
-	}
+	"domains": [
+		{
+			"domain": "Thoughts",
+			"id": "think",
+			"questions": [
+				"I am not capable and confident in my clinical work",
+				"I think about upsetting things that have happened at clinical work",
+				"I constantly think about college work",
+				"I think I am not good enough to do the clinical work properly",
+				"I think that I am not able to handle the demands of my college work"
+			]
+		},
+		{
+			"domain": "Feelings",
+			"id": "feel",
+			"questions": [
+				"Whenever I have to do something new I always get ‘butterflies’ in my stomach/ feel fearful",
+				"I feel my classmates find the clinical work easier than I do",
+				"I worry that I might make mistakes and people will suffer as a result",
+				"I am nervous that the qualified staff may find out that I’m not as capable as they think I am",
+				"I worry about assessments/supervision and have a dread of others evaluating me"
+			]
+		},
+		{
+			"domain": "Behaviours",
+			"id": "do",
+			"questions": [
+				"I don’t voice my opinion I’m afraid of arguments with my co-workers in the clinical area",
+				"I never get enough sleep",
+				"I often ask for advice from several different people before I am happy with what I am doing",
+				"I play things over and over again in my mind to reassure myself",
+				"I put off doing tasks/course work which I find difficult"
+			]
+		}
+	]
 }

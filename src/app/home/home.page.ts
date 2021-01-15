@@ -24,7 +24,7 @@ export class HomePage {
   readData() {
     fetch('./assets/data/stresssignatures.json').then(res => res.json())
       .then(json => {
-        console.log('data ', json)
+        console.log('data ', json);
         for (const con of json.entries) {
           this.signatures.push(con);
         }
