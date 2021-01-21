@@ -10,4 +10,20 @@
   padding: 1em;
   color: #08415C;
   text-align: center;
+  ion-badge{
+    padding: 7px !important;
+    color: white;
+    font-size: large;
+  }
+  ion-range{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+}
+
+.questions {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin-top: 0% !important;
+  margin-bottom: 0% !important;
 }

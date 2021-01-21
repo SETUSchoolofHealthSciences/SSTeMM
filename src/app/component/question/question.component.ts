@@ -7,8 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
   @Input() question: string;
+  value: number;
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.value = 0;
+  }
 
 }

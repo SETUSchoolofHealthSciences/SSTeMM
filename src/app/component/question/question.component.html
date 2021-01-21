@@ -1,17 +1,17 @@
 <div class="question-card">
   <div class="question-content">
-    <p>{{ question }}</p>
+    <p class="questions">{{ question }}</p>
     <ion-range
       id="slider"
       min="0"
       max="10"
       step="1"
-      value="0"
-      snaps
       color="primary"
+      [(ngModel)]="value"
     >
       <h3 slot="start" size="large">0</h3>
       <h3 slot="end" size="large">10</h3>
     </ion-range>
+    <ion-badge class="badge">Your score: {{value}}</ion-badge>
   </div>
 </div>
