@@ -11,8 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
-
-Amplify.configure({
+import aws_exports from '../aws-exports';
+Amplify.configure(aws_exports);
+/* Amplify.configure({
   Auth: {
     mandatorySignIn: true,
     region: 'eu-west-1',
@@ -20,7 +21,7 @@ Amplify.configure({
     userPoolWebClientId: '2hss4se424llruhcc82hg1rpd3',
     authenticationFlowType: 'USER_PASSWORD_AUTH'
   }
-});
+}); */
 @NgModule({
   declarations: [AppComponent, PasswordMatchDirective, PasswordPatternDirective],
   entryComponents: [],
