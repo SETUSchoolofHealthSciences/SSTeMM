@@ -4,7 +4,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { Auth } from 'aws-amplify';
 import { listSstemms } from '../../graphql/queries';
 import { AppsyncService } from '../services/appsync.service';
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 import { observable } from 'rxjs';
 @Component({
   selector: 'app-home',
@@ -33,16 +33,21 @@ export class HomePage implements OnInit {
   }
 
   fetchData(){
-    this.appsync.initializeClient().then(async client => {
+    this.appsync.initializeClient().then(client => {
       console.log('CLIENT ', client);
       // tslint:disable-next-line: no-shadowed-variable
+      const query = listSstemms;
       const observable = client.query({
-        query: listSstemms,
+        query,
+        variables: {
+          filter: {cognitoId: {eq: '08ea6725-6c74-4390-8cd5-bcf28ff806a9'}}
+        }
       });
-      console.log('OBSERVE ', observable)
+      console.log('OBSERVE ', observable);
 
     });
   }
+
   readData() {
     fetch('./assets/data/stresssignatures.json').then(res => res.json())
       .then(json => {

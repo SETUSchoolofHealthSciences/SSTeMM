@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
+import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 import aws_exports from '../aws-exports';
 Amplify.configure(aws_exports);
 /* Amplify.configure({
@@ -30,13 +31,16 @@ Amplify.configure(aws_exports);
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    AmplifyAngularModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy
-    }
+    },
+    AmplifyService
   ],
   bootstrap: [AppComponent]
 })
