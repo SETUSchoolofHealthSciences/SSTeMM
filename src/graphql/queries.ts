@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
-
+import gql from 'graphql-tag'
 export const getSstemm = /* GraphQL */ `
   query GetSstemm($id: ID!) {
     getSstemm(id: $id) {
@@ -14,22 +14,17 @@ export const getSstemm = /* GraphQL */ `
     }
   }
 `;
-export const listSstemms = /* GraphQL */ `
-  query ListSstemms(
-    $filter: TableSstemmFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listSstemms(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        cognitoId
-        timestamp
-        domain
-        score
-        reflection
-      }
-      nextToken
+export const listSstemms = /* GraphQL */ gql`
+uery listSstemms {
+  listSstemms(filter: {cognitoId: {eq: "08ea6725-6c74-4390-8cd5-bcf28ff806a9"}}) {
+    items {
+      id
+      cognitoId
+      timestamp
+      domain
+      score
+      reflection
     }
   }
+}
 `;
