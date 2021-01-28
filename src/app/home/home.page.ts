@@ -6,22 +6,25 @@ import { listSstemms } from '../../graphql/queries';
 import { AppsyncService } from '../services/appsync.service';
 import gql from 'graphql-tag';
 import { observable } from 'rxjs';
+import { StorageService } from '../services/storage.service';
+import jwt_decode, { JwtPayload } from 'jwt-decode';
+import { decode } from 'punycode';
+
+const TOKEN_KEY = 'auth-token';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
   signatures = [] as any[];
 
-  constructor(private go: Router, private auth: AuthenticationService, private appsync: AppsyncService) {
-    this.readData();
-    this.fetchData();
-  }
-  ngOnInit(): void {
-    Auth.currentSession().then(session => {
-      this.logInfoToConsole(session);
-    });
+  constructor(private go: Router,
+              private auth: AuthenticationService,
+              private appsync: AppsyncService,
+              private storageService: StorageService) {
+                // this.readData();
+                this.fetchData();
   }
 
   add(){
@@ -33,25 +36,28 @@ export class HomePage implements OnInit {
   }
 
   fetchData(){
-    this.appsync.initializeClient().then(client => {
-      console.log('CLIENT ', client);
-      // tslint:disable-next-line: no-shadowed-variable
-      const query = listSstemms;
-      const observable = client.query({
-        query,
-        variables: {
-          filter: {cognitoId: {eq: '08ea6725-6c74-4390-8cd5-bcf28ff806a9'}}
-        }
-      });
-      console.log('OBSERVE ', observable);
-
-    });
+    this.storageService.getLocalData(TOKEN_KEY).then((res) => {
+      if (res !== null) {
+        const decoded = jwt_decode<JwtPayload>(res);
+        this.appsync.initializeClient().then(async client => {
+          const query = listSstemms;
+          const observables = await client.query({
+            query,
+            variables: {
+              filter: {cognitoId: {eq: decoded.sub}}
+            }
+          });
+          for (const con of  observables.data.listSstemms.items) {
+            this.signatures.push(con);
+          }
+        });
+    }});
   }
 
+  // read local file
   readData() {
     fetch('./assets/data/stresssignatures.json').then(res => res.json())
       .then(json => {
-        console.log('data ', json);
         for (const con of json.entries) {
           this.signatures.push(con);
         }
@@ -60,19 +66,6 @@ export class HomePage implements OnInit {
             this.signatures.push(con);
           }
         }
-        // this.notifications = json.features;
-        console.log(this.signatures);
       });
   }
-
-  logInfoToConsole(session) {
-    console.log(session);
-    console.log(`ID Token: <${session.idToken.jwtToken}>`);
-    console.log(`Access Token: <${session.accessToken.jwtToken}>`);
-    console.log('Decoded ID Token:');
-    console.log(JSON.stringify(session.idToken.payload, null, 2));
-    console.log('Decoded Acess Token:');
-    console.log(JSON.stringify(session.accessToken.payload, null, 2));
-  }
-
 }
