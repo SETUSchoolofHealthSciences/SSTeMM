@@ -1,8 +1,9 @@
 /* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
+import gql from 'graphql-tag'
 
-export const createSstemm = /* GraphQL */ `
+export const createSstemm = /* GraphQL */ gql`
   mutation CreateSstemm($input: CreateSstemmInput!) {
     createSstemm(input: $input) {
       id

@@ -28,3 +28,18 @@ query listSstemms ($filter: TableSstemmFilterInput!) {
   }
 }
 `;
+
+export const allItems = gql`
+  query allItems {
+    allItems {
+      items {
+        id
+        cognitoId
+        timestamp
+        domain
+        score
+        reflection
+      }
+    }
+  }
+`;
