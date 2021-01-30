@@ -46,8 +46,7 @@ export class HomePage {
               filter: {cognitoId: {contains: decoded.sub}},
             }
           });
-          console.log('RETURN ', observables.data.listSstemms);
-          for (const con of  observables.data.listSstemms.items) {
+          for (const con of  observables.data.listSstemms.items){
             this.signatures.push(con);
           }
           if (this.signatures.length === 0) {
