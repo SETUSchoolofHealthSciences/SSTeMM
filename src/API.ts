@@ -214,3 +214,12 @@ export type OnDeleteSstemmSubscription = {
     reflection: string | null,
   } | null,
 };
+
+export type StressSignatue = {
+  id: string;
+  cognitoId: string;
+  timestamp: string;
+  domain: string | null;
+  score: number | null;
+  reflection: string | null;
+};

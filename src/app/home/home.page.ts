@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { listSstemms, allItems } from '../../graphql/queries';
 import { AppsyncService } from '../services/appsync.service';
 import { StorageService } from '../services/storage.service';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
+import { StressSignatue } from '../../API';
 import gql from 'graphql-tag';
+import { timeStamp } from 'console';
 
 
 const TOKEN_KEY = 'auth-token';
@@ -14,15 +16,23 @@ const TOKEN_KEY = 'auth-token';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-  signatures = [] as any[];
+export class HomePage implements OnInit {
+  signatures = [] as StressSignatue[];
 
   constructor(private go: Router,
               private auth: AuthenticationService,
               private appsync: AppsyncService,
               private storageService: StorageService) {
                 // this.readData();
-                this.fetchData();
+              }
+
+  ngOnInit(): void {
+    
+  }
+
+  ionViewDidEnter(){
+    this.signatures = [] as StressSignatue[];
+    this.fetchData();
   }
 
   add(){
@@ -39,10 +49,13 @@ export class HomePage {
         const decoded = jwt_decode<JwtPayload>(res);
         this.appsync.initializeClient().then(async client => {
           const query = listSstemms;
-
+          // based on investigations, limit of 6 will return 5 items, limit of 5 will return 4 items.
+          const limit = 6;
           const observables = await client.query({
             query,
+            fetchPolicy: 'network-only',
             variables: {
+              limit,
               filter: {cognitoId: {contains: decoded.sub}},
             }
           });
@@ -55,6 +68,7 @@ export class HomePage {
             }
           }
         });
+        console.log(this.signatures);
       }
     });
   }
