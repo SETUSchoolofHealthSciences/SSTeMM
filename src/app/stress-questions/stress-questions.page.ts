@@ -24,7 +24,7 @@ export class StressQuestionsPage implements OnInit {
           if (questionId === con.id) {
             this.title = con.domain;
             for (const q of con.questions) {
-            this.questions.push(q.question);
+            this.questions.push(q);
             }
           }
         }
@@ -39,7 +39,7 @@ export class StressQuestionsPage implements OnInit {
     this.go.navigate(['/stress-signature']);
   }
 
-  totalScore(event: any){
-    console.log(event);
+  sliderValueChanged($event): void {
+    console.log(`Input changed with rowId ${$event.rowId}. The new value is: ${$event.value}`);
   }
 }

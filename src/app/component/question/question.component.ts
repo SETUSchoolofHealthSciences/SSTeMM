@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -7,7 +7,9 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
   @Input() question: string;
-  @Output() value: number;
+  @Input() rowId: number;
+  @Input() value: number;
+  @Output() sliderValueChanged = new EventEmitter<{ rowId: number, value: number }>();
   constructor() { }
 
   ngOnInit() {
@@ -15,6 +17,6 @@ export class QuestionComponent implements OnInit {
   }
 
   sliderValueChange($event): void {
-    console.log('event ', $event.target.value);
+    this.sliderValueChanged.emit({ rowId: this.rowId, value: $event.detail.value });
   }
 }
