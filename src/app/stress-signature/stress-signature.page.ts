@@ -14,7 +14,7 @@ const TOKEN_KEY = 'auth-token';
   styleUrls: ['./stress-signature.page.scss'],
 })
 export class StressSignaturePage implements OnInit {
-
+  stressSignature = {} as CreateSstemmInput;
   public isDomainHidden = false;
   public isChoiceHidden = true;
 
@@ -54,17 +54,15 @@ export class StressSignaturePage implements OnInit {
 
   save(){
     this.storageService.getLocalData(TOKEN_KEY).then((res) => {
-      console.log('RESULT ', res)
       if (res !== null) {
         const decoded = jwt_decode<JwtPayload>(res);
-        console.log('DECODED ', decoded)
         this.appsync.initializeClient().then(async client => {
-          console.log('CLIENT ', client);
           const data: CreateSstemmInput = {
             cognitoId: decoded.sub,
             domain: JSON.stringify(['thoughts', 'feelings']),
             timestamp: new Date().toISOString(),
-            score: 65
+            score: 65,
+            reflection: this.stressSignature.reflection
           };
           const mut = createSstemm;
           const mutation = client.mutate({

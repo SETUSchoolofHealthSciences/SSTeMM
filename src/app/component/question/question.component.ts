@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -7,11 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
   @Input() question: string;
-  value: number;
+  @Output() value: number;
   constructor() { }
 
   ngOnInit() {
     this.value = 0;
   }
 
+  sliderValueChange($event): void {
+    console.log('event ', $event.target.value);
+  }
 }

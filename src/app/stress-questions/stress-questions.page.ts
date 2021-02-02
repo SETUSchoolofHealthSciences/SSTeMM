@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-stress-questions',
@@ -6,8 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./stress-questions.page.scss'],
 })
 export class StressQuestionsPage implements OnInit {
+  // @Output() totalScore: number;
   questions = [] as any[];
-  title: string;
+  @Output() title: string;
   constructor(private go: Router, private route: ActivatedRoute, ) {
     this.readData();
    }
@@ -36,5 +37,9 @@ export class StressQuestionsPage implements OnInit {
 
   save(){
     this.go.navigate(['/stress-signature']);
+  }
+
+  totalScore(event: any){
+    console.log(event);
   }
 }
