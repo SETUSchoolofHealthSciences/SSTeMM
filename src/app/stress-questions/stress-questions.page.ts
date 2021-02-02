@@ -24,7 +24,7 @@ export class StressQuestionsPage implements OnInit {
           if (questionId === con.id) {
             this.title = con.domain;
             for (const q of con.questions) {
-            this.questions.push(q);
+            this.questions.push(q.question);
             }
           }
         }
