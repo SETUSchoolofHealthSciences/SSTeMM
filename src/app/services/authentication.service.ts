@@ -37,7 +37,6 @@ export class AuthenticationService {
       const tokens = user.signInUserSession;
       if (tokens != null){
         this.setLogin(tokens.idToken.jwtToken);
-        console.log('User authenticated ', tokens.idToken.jwtToken);
         const toast = this.toaster.create({
           message: 'You are logged in successfully!',
           duration: 3000,
@@ -178,7 +177,6 @@ export class AuthenticationService {
 
   private validateToken(token: any) {
     const decoded = jwt_decode<JwtPayload>(token);
-    console.log('Token ', decoded);
     if (Date.now() < decoded.exp * 1000) {
       this.authenticationState.next(true);
     } else {

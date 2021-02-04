@@ -9,7 +9,8 @@
 <ion-content [fullscreen]="true">
   <h1 class="header">{{title}}</h1>
   <div class="questions">
-  <app-question *ngFor="let quest of questions" question={{quest}}>
+  <app-question *ngFor="let question of questions" (sliderValueChanged)="sliderValueChanged($event)"
+    [question]="question.question" [rowId]="question.id" [value]="">
   </app-question>
   </div>
   <ion-grid>

@@ -1,19 +1,73 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import jwt_decode, { JwtPayload } from 'jwt-decode';
+import { CreateSstemmInput } from '../../API';
+import { AppsyncService } from '../services/appsync.service';
+import { StorageService } from '../services/storage.service';
+import { createSstemm } from '../../graphql/mutations';
+import { StressSignature } from '../model/StressSignature';
+import { TotalScore } from '../interface/stress-signature';
 
+const TOKEN_KEY_ONE = 'auth-token';
+const TOKEN_KEY_TWO = 'domain-quest';
 @Component({
   selector: 'app-stress-signature',
   templateUrl: './stress-signature.page.html',
   styleUrls: ['./stress-signature.page.scss'],
 })
 export class StressSignaturePage implements OnInit {
+  stressSignature = {} as StressSignature;
+  totalScores = [] as TotalScore[];
 
+  thoughtDomain = false;
+  feelingDomain = false;
+  behaviourDomain = false;
+  totalScore = 0;
+  domains = [] as string[];
   public isDomainHidden = false;
   public isChoiceHidden = true;
 
-  constructor(private go: Router) { }
+  constructor(private go: Router,
+              private appsync: AppsyncService,
+              private storageService: StorageService) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter(){
+    this.storageService.getLocalData(TOKEN_KEY_TWO).then((res) => {
+      if (res === null) {
+        return;
+      }
+      this.totalScores.push(res);
+      this.totalScore = this.totalScore + res.totalScore;
+      this.domains.push(res.domain);
+      for (const domain of this.totalScores) {
+        switch (domain.domain ) {
+          case 'Thoughts': {
+            this.thoughtDomain = true;
+            break;
+          }
+
+          case 'Feelings': {
+            this.feelingDomain = true;
+            break;
+          }
+
+          case 'Behaviours': {
+            this.behaviourDomain = true;
+            break;
+          }
+
+          default: {
+            break;
+          }
+        }
+      }
+      console.log('REturn value ', res);
+      console.log(this.totalScore);
+      console.log(this.domains);
+    });
   }
 
   pickDomain(){
@@ -44,6 +98,30 @@ export class StressSignaturePage implements OnInit {
   }
 
   save(){
+    this.storageService.getLocalData(TOKEN_KEY_ONE).then((res) => {
+      if (res !== null) {
+        const decoded = jwt_decode<JwtPayload>(res);
+        this.appsync.initializeClient().then(async client => {
+          const data: StressSignature = {
+            cognitoId: decoded.sub,
+            domain: JSON.stringify(this.domains),
+            timestamp: new Date().toISOString(),
+            score: this.totalScore,
+            reflection: this.stressSignature.reflection
+          };
+          const mut = createSstemm;
+          const mutation = client.mutate({
+            mutation: mut,
+            variables: {
+              input: data
+            }
+          });
+          this.storageService.removeLocalData(TOKEN_KEY_TWO);
+          this.totalScore = 0;
+          this.domains = [];
+          console.log('DATA ', mutation);
+        });
+    }});
     this.go.navigate(['/home']);
   }
 }
