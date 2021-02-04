@@ -71,7 +71,7 @@ export class StressQuestionsPage implements OnInit {
   }
 
   sliderValueChanged($event): void {
-    switch($event.rowId) {
+    switch ($event.rowId) {
       case 1: {
         this.questionOne.push($event.value);
         break;
@@ -98,7 +98,7 @@ export class StressQuestionsPage implements OnInit {
       }
 
       default: {
-        console.log('outside of scope')
+        console.log('outside of scope');
         break;
       }
     }

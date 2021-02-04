@@ -17,7 +17,13 @@ const TOKEN_KEY_TWO = 'domain-quest';
 })
 export class StressSignaturePage implements OnInit {
   stressSignature = {} as StressSignature;
-  testInterface = [] as TotalScore[];
+  totalScores = [] as TotalScore[];
+
+  thoughtDomain = false;
+  feelingDomain = false;
+  behaviourDomain = false;
+  totalScore = 0;
+  domains = [] as string[];
   public isDomainHidden = false;
   public isChoiceHidden = true;
 
@@ -30,8 +36,37 @@ export class StressSignaturePage implements OnInit {
 
   ionViewDidEnter(){
     this.storageService.getLocalData(TOKEN_KEY_TWO).then((res) => {
-      this.testInterface.push(res);
+      if (res === null) {
+        return;
+      }
+      this.totalScores.push(res);
+      this.totalScore = this.totalScore + res.totalScore;
+      this.domains.push(res.domain);
+      for (const domain of this.totalScores) {
+        switch (domain.domain ) {
+          case 'Thoughts': {
+            this.thoughtDomain = true;
+            break;
+          }
+
+          case 'Feelings': {
+            this.feelingDomain = true;
+            break;
+          }
+
+          case 'Behaviours': {
+            this.behaviourDomain = true;
+            break;
+          }
+
+          default: {
+            break;
+          }
+        }
+      }
       console.log('REturn value ', res);
+      console.log(this.totalScore);
+      console.log(this.domains);
     });
   }
 
@@ -59,8 +94,7 @@ export class StressSignaturePage implements OnInit {
   }
 
   cancel(){
-    // this.go.navigate(['/home']);
-    console.log(this.testInterface)
+    this.go.navigate(['/home']);
   }
 
   save(){
@@ -70,9 +104,9 @@ export class StressSignaturePage implements OnInit {
         this.appsync.initializeClient().then(async client => {
           const data: StressSignature = {
             cognitoId: decoded.sub,
-            domain: JSON.stringify(['thoughts', 'feelings']),
+            domain: JSON.stringify(this.domains),
             timestamp: new Date().toISOString(),
-            score: 65,
+            score: this.totalScore,
             reflection: this.stressSignature.reflection
           };
           const mut = createSstemm;
@@ -82,6 +116,9 @@ export class StressSignaturePage implements OnInit {
               input: data
             }
           });
+          this.storageService.removeLocalData(TOKEN_KEY_TWO);
+          this.totalScore = 0;
+          this.domains = [];
           console.log('DATA ', mutation);
         });
     }});
