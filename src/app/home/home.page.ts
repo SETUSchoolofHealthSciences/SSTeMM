@@ -49,14 +49,11 @@ export class HomePage implements OnInit {
         const decoded = jwt_decode<JwtPayload>(res);
         this.appsync.initializeClient().then(async client => {
           const query = listSstemms;
-          // based on investigations, limit of 6 will return 5 items, limit of 5 will return 4 items.
-          const limit = 6;
           const observables = await client.query({
             query,
             fetchPolicy: 'network-only',
             variables: {
-              limit,
-              filter: {cognitoId: {contains: decoded.sub}},
+              filter: {cognitoId: {eq: decoded.sub}},
             }
           });
           for (const con of  observables.data.listSstemms.items){

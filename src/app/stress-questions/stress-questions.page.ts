@@ -1,5 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ScoreCard, TotalScore } from '../interface/stress-signature';
+import { StorageService } from '../services/storage.service';
+
+
+const TOKEN_KEY = 'domain-quest';
 @Component({
   selector: 'app-stress-questions',
   templateUrl: './stress-questions.page.html',
@@ -17,7 +22,9 @@ export class StressQuestionsPage implements OnInit {
   private questionFive = [];
   private scoreCard = [] as ScoreCard[];
   totalScoreCard = {} as TotalScore;
-  constructor(private go: Router, private route: ActivatedRoute, ) {
+  constructor(private go: Router,
+              private route: ActivatedRoute,
+              private storageService: StorageService ) {
     this.readData();
    }
 
@@ -40,7 +47,10 @@ export class StressQuestionsPage implements OnInit {
   }
 
   goBack(){
-    // this.go.navigate(['/stress-signature']);
+    this.go.navigate(['/stress-signature']);
+  }
+
+  save(){
     this.scoreCard.push({questionId: 1, questionValue: this.questionOne[this.questionOne.length - 1]});
     this.scoreCard.push({questionId: 2, questionValue: this.questionTwo[this.questionTwo.length - 1]});
     this.scoreCard.push({questionId: 3, questionValue: this.questionThree[this.questionThree.length - 1]});
@@ -54,36 +64,43 @@ export class StressQuestionsPage implements OnInit {
       scoreCard: this.scoreCard,
       totalScore
     };
-  }
-
-  save(){
+    this.storageService.setLocalData(TOKEN_KEY, this.totalScoreCard).then(() => {
+      console.log('I have been caled');
+    });
     this.go.navigate(['/stress-signature']);
   }
 
   sliderValueChanged($event): void {
-    if ($event.rowId === 1){
-      this.questionOne.push($event.value);
-    } else if ($event.rowId === 2){
-      this.questionTwo.push($event.value);
-    } else if ($event.rowId === 3){
-      this.questionThree.push($event.value);
-    } else if ($event.rowId === 4){
-      this.questionFour.push($event.value);
-    } else if ($event.rowId === 5){
-      this.questionFive.push($event.value);
-    } else {
-      console.log('outside the scope');
+    switch($event.rowId) {
+      case 1: {
+        this.questionOne.push($event.value);
+        break;
+      }
+
+      case 2: {
+        this.questionTwo.push($event.value);
+        break;
+      }
+
+      case 3: {
+        this.questionThree.push($event.value);
+        break;
+      }
+
+      case 4: {
+        this.questionFour.push($event.value);
+        break;
+      }
+
+      case 5: {
+        this.questionFive.push($event.value);
+        break;
+      }
+
+      default: {
+        console.log('outside of scope')
+        break;
+      }
     }
   }
-}
-
-interface ScoreCard {
-  questionId: number;
-  questionValue: number;
-}
-
-interface TotalScore {
-  domain: string;
-  scoreCard: ScoreCard[];
-  totalScore: number;
 }

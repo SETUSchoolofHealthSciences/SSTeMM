@@ -5,16 +5,19 @@ import { CreateSstemmInput } from '../../API';
 import { AppsyncService } from '../services/appsync.service';
 import { StorageService } from '../services/storage.service';
 import { createSstemm } from '../../graphql/mutations';
+import { StressSignature } from '../model/StressSignature';
+import { TotalScore } from '../interface/stress-signature';
 
-const TOKEN_KEY = 'auth-token';
-
+const TOKEN_KEY_ONE = 'auth-token';
+const TOKEN_KEY_TWO = 'domain-quest';
 @Component({
   selector: 'app-stress-signature',
   templateUrl: './stress-signature.page.html',
   styleUrls: ['./stress-signature.page.scss'],
 })
 export class StressSignaturePage implements OnInit {
-  stressSignature = {} as CreateSstemmInput;
+  stressSignature = {} as StressSignature;
+  testInterface = [] as TotalScore[];
   public isDomainHidden = false;
   public isChoiceHidden = true;
 
@@ -23,6 +26,13 @@ export class StressSignaturePage implements OnInit {
               private storageService: StorageService) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter(){
+    this.storageService.getLocalData(TOKEN_KEY_TWO).then((res) => {
+      this.testInterface.push(res);
+      console.log('REturn value ', res);
+    });
   }
 
   pickDomain(){
@@ -49,15 +59,16 @@ export class StressSignaturePage implements OnInit {
   }
 
   cancel(){
-    this.go.navigate(['/home']);
+    // this.go.navigate(['/home']);
+    console.log(this.testInterface)
   }
 
   save(){
-    this.storageService.getLocalData(TOKEN_KEY).then((res) => {
+    this.storageService.getLocalData(TOKEN_KEY_ONE).then((res) => {
       if (res !== null) {
         const decoded = jwt_decode<JwtPayload>(res);
         this.appsync.initializeClient().then(async client => {
-          const data: CreateSstemmInput = {
+          const data: StressSignature = {
             cognitoId: decoded.sub,
             domain: JSON.stringify(['thoughts', 'feelings']),
             timestamp: new Date().toISOString(),

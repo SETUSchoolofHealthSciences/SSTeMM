@@ -15,8 +15,8 @@ export const getSstemm = /* GraphQL */ `
   }
 `;
 export const listSstemms = /* GraphQL */ gql`
-query listSstemms ($limit: Int, $filter: TableSstemmFilterInput!) {
-  listSstemms(limit: $limit, filter: $filter) {
+query listSstemms ($filter: TableSstemmFilterInput!) {
+  listSstemms(filter: $filter) {
     items {
       id
       cognitoId
