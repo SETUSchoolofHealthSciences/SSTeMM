@@ -188,6 +188,11 @@ export class AuthenticationService {
     return this.storageService.setLocalData(TOKEN_KEY, token).then(() => {
       this.validateToken(token);
     });
+  }
 
+  forgotPassword() {
+    Auth.forgotPassword('scanlop@gmail.com')
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
   }
 }

@@ -26,6 +26,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./stress-questions/stress-questions.module').then( m => m.StressQuestionsPageModule)
   },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
 ];
 
 @NgModule({
