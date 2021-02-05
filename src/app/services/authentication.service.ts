@@ -190,9 +190,7 @@ export class AuthenticationService {
     });
   }
 
-  forgotPassword() {
-    Auth.forgotPassword('scanlop@gmail.com')
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+  forgotPassword(email: string) {
+    return Auth.forgotPassword(email);
   }
 }
