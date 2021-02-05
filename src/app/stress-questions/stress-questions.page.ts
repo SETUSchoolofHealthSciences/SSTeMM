@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ScoreCard, TotalScore } from '../interface/stress-signature';
 import { StorageService } from '../services/storage.service';
-
+import { AlertController } from '@ionic/angular';
 
 const TOKEN_KEY = 'domain-quest';
 @Component({
@@ -11,7 +11,6 @@ const TOKEN_KEY = 'domain-quest';
   styleUrls: ['./stress-questions.page.scss'],
 })
 export class StressQuestionsPage implements OnInit {
-  // @Output() totalScore: number;
   title: string;
   questions = [] as any[];
 
@@ -24,7 +23,8 @@ export class StressQuestionsPage implements OnInit {
   totalScoreCard = {} as TotalScore;
   constructor(private go: Router,
               private route: ActivatedRoute,
-              private storageService: StorageService ) {
+              private storageService: StorageService,
+              private alertController: AlertController ) {
     this.readData();
    }
 
@@ -46,11 +46,29 @@ export class StressQuestionsPage implements OnInit {
       });
   }
 
-  goBack(){
-    this.go.navigate(['/stress-signature']);
+  async goBack(){
+    const alert = await this.alertController.create({
+      header: 'Leave this page?',
+      message: 'Are you sure you want to leave this page? Your current score will not be saved.',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.go.navigate(['/stress-signature']);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
-  save(){
+  async save(){
     this.scoreCard.push({questionId: 1, questionValue: this.questionOne[this.questionOne.length - 1]});
     this.scoreCard.push({questionId: 2, questionValue: this.questionTwo[this.questionTwo.length - 1]});
     this.scoreCard.push({questionId: 3, questionValue: this.questionThree[this.questionThree.length - 1]});
@@ -64,10 +82,9 @@ export class StressQuestionsPage implements OnInit {
       scoreCard: this.scoreCard,
       totalScore
     };
-    this.storageService.setLocalData(TOKEN_KEY, this.totalScoreCard).then(() => {
-      console.log('I have been caled');
+    await this.storageService.setLocalData(TOKEN_KEY, this.totalScoreCard).then(() => {
+      this.go.navigate(['/stress-signature']);
     });
-    this.go.navigate(['/stress-signature']);
   }
 
   sliderValueChanged($event): void {

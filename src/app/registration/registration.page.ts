@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import {
   FormBuilder,
   FormGroup,
-  FormsModule,
   Validators,
 } from '@angular/forms';
 import { Location } from '@angular/common';
@@ -20,7 +20,8 @@ export class RegistrationPage implements OnInit {
     public fb: FormBuilder,
     private location: Location,
     private auth: AuthenticationService,
-    private customValidator: CustomvalidationService
+    private customValidator: CustomvalidationService,
+    private alertController: AlertController
   ) {
     this.formGroup = fb.group(
       {
@@ -74,7 +75,25 @@ export class RegistrationPage implements OnInit {
     }
   }
 
-  cancel() {
-    this.location.back();
+  async cancel() {
+    const alert = await this.alertController.create({
+      header: 'Leave this page?',
+      message: 'Are you sure you want to leave this page? Your registration will not be saved.',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.location.back();
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }
