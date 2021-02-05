@@ -28,11 +28,11 @@ const routes: Routes = [
   },
   {
     path: 'forgot-password',
-    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+    loadChildren: () => import('./password/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
   {
     path: 'forgot-password-code',
-    loadChildren: () => import('./forgot-password-code/forgot-password-code.module').then( m => m.ForgotPasswordCodePageModule)
+    loadChildren: () => import('./password/forgot-password-code/forgot-password-code.module').then( m => m.ForgotPasswordCodePageModule)
   },
 ];
 

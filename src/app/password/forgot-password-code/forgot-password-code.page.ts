@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { AuthenticationService } from '../services/authentication.service';
-import { CustomvalidationService } from '../services/customvalidation.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { CustomvalidationService } from '../../services/customvalidation.service';
 
 @Component({
   selector: 'app-forgot-password-code',

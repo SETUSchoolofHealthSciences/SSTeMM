@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ForgotPasswordCodePageRoutingModule } from './forgot-password-code-routing.module';
 
 import { ForgotPasswordCodePage } from './forgot-password-code.page';
-import { PasswordMatchDirective } from '../directives/password-match.directive';
-import { PasswordPatternDirective } from '../directives/password-pattern.directive';
+import { PasswordMatchDirective } from '../../directives/password-match.directive';
+import { PasswordPatternDirective } from '../../directives/password-pattern.directive';
 
 @NgModule({
   imports: [

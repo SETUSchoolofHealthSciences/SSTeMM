@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service';
-import { CustomvalidationService } from '../services/customvalidation.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { CustomvalidationService } from '../../services/customvalidation.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
@@ -52,7 +51,7 @@ export class ForgotPasswordPage implements OnInit {
               text: 'Ok',
               role: 'button',
               handler: () => {
-                this.router.navigate(['/forgot-password-code'])
+                this.router.navigate(['/forgot-password-code']);
               },
             },
           ],
