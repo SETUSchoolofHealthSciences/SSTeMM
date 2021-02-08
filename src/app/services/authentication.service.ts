@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Platform, ToastController } from '@ionic/angular';
+import { AlertController, Platform, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
 import { BehaviorSubject } from 'rxjs';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
@@ -11,11 +11,13 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root',
 })
 export class AuthenticationService {
+  emailAddress: '';
   authenticationState = new BehaviorSubject(false);
   constructor(private go: Router,
               private plt: Platform,
               private storageService: StorageService,
-              private toaster: ToastController) {
+              private toaster: ToastController,
+              private alertController: AlertController) {
     this.plt.ready().then(() => {
       this.checkToken();
     });
@@ -47,15 +49,19 @@ export class AuthenticationService {
         this.go.navigate(['home']);
       }
     } catch (error) {
-      console.log('Login Error ', error);
-      this.authenticationState.next(false);
-      const toast = this.toaster.create({
+      const alert = await this.alertController.create({
+        header: 'Authenication Error',
         message: error.message,
-        duration: 3000,
-        position: 'bottom'
+        buttons: [
+          {
+            text: 'Ok',
+            handler: () => {
+              console.log('pressed');
+            }
+          }
+        ]
       });
-      // tslint:disable-next-line: no-shadowed-variable
-      toast.then(toast => toast.present());
+      await alert.present();
     }
   }
 
@@ -192,5 +198,9 @@ export class AuthenticationService {
 
   forgotPassword(email: string) {
     return Auth.forgotPassword(email);
+  }
+
+  submitCode(email: string, code: string, password: string) {
+    return Auth.forgotPasswordSubmit(email, code, password);
   }
 }

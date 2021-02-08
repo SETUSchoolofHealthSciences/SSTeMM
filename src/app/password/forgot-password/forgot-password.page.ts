@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
-import { CustomvalidationService } from '../../services/customvalidation.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
@@ -11,12 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
+
   formGroupEmail: FormGroup;
-  formGroupCode: FormGroup;
   submitted = false;
   constructor(public fb: FormBuilder,
               private auth: AuthenticationService,
-              private customValidator: CustomvalidationService,
               private router: Router,
               private alertController: AlertController) {
     this.formGroupEmail = fb.group(
@@ -42,6 +40,7 @@ export class ForgotPasswordPage implements OnInit {
     this.submitted = true;
     if (this.formGroupEmail.valid) {
       this.auth.forgotPassword(this.formGroupEmail.value.emailControl).then(async response => {
+        this.auth.emailAddress = this.formGroupEmail.value.emailControl;
         const alert = await this.alertController.create({
           header: 'Verification Code',
           message:
@@ -74,6 +73,7 @@ export class ForgotPasswordPage implements OnInit {
          await alert.present();
       });
     }
+    console.log('scanlop ', this.auth.emailAddress);
   }
 
   cancel() {

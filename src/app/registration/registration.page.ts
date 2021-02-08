@@ -62,7 +62,6 @@ export class RegistrationPage implements OnInit {
   register() {
     this.submitted = true;
     if (this.formGroup.valid) {
-      console.log(this.formGroup.value);
       this.auth.register(
         this.formGroup.value.emailControl,
         this.formGroup.value.passwordControl,
