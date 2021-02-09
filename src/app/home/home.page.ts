@@ -65,7 +65,6 @@ export class HomePage implements OnInit {
             }
           }
         });
-        console.log(this.signatures);
       }
     });
   }

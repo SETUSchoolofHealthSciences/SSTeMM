@@ -65,9 +65,6 @@ export class StressSignaturePage implements OnInit {
           }
         }
       }
-      console.log('REturn value ', res);
-      console.log(this.totalScore);
-      console.log(this.domains);
     });
   }
 

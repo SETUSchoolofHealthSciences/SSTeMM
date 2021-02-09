@@ -36,7 +36,6 @@ export class LoginPage implements OnInit {
   async login() {
     this.submitted = true;
     if (this.formGroup.valid) {
-      console.log(this.formGroup.value);
       this.auth.signIn(this.formGroup.value.emailControl, this.formGroup.value.passwordControl);
     }
   }

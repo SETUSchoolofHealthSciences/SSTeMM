@@ -42,7 +42,7 @@ export class AuthenticationService {
         const toast = this.toaster.create({
           message: 'You are logged in successfully!',
           duration: 3000,
-          position: 'bottom'
+          position: 'top'
         });
         // tslint:disable-next-line: no-shadowed-variable
         toast.then(toast => toast.present());
@@ -80,23 +80,35 @@ export class AuthenticationService {
           'custom:collegeyear': collegeYear.toString(),
         },
         validationData: []
-      }).then(data => {
-         const toast = this.toaster.create({
-          message: 'Check emails, to verify account!',
-          duration: 3000,
-          position: 'bottom'
+      }).then(async data => {
+        const alert = await this.alertController.create({
+          header: 'Email Verification',
+          message: 'Please check your emails to verify your account.',
+          buttons: [
+            {
+              text: 'Ok',
+              handler: () => {
+                this.go.navigate(['/login']);
+              }
+            }
+          ]
         });
-        // tslint:disable-next-line: no-shadowed-variable
-         toast.then(toast => toast.present());
-         this.go.navigate(['/login']);
-      }).catch(error => {
-        const toast = this.toaster.create({
+        await alert.present();
+
+      }).catch(async error => {
+        const alert = await this.alertController.create({
+          header: 'Authenication Error',
           message: error.message,
-          duration: 3000,
-          position: 'bottom'
+          buttons: [
+            {
+              text: 'Ok',
+              handler: () => {
+                console.log('pressed');
+              }
+            }
+          ]
         });
-        // tslint:disable-next-line: no-shadowed-variable
-        toast.then(toast => toast.present());
+        await alert.present();
       });
     } catch (error) {
       console.log('error signing up ', error);
@@ -106,23 +118,33 @@ export class AuthenticationService {
   async resendConfirmationCode(username: string) {
     try {
       await Auth.resendSignUp(username);
-      console.log('code resent successfully');
-      const toast = this.toaster.create({
+      const alert = await this.alertController.create({
+        header: 'Email Verification',
         message: 'Please check emails for new code.',
-        duration: 3000,
-        position: 'bottom'
+        buttons: [
+          {
+            text: 'Ok',
+            handler: () => {
+              console.log('pressed');
+            }
+          }
+        ]
       });
-      // tslint:disable-next-line: no-shadowed-variable
-      toast.then(toast => toast.present());
+      await alert.present();
     } catch (err) {
-      console.log('error resending code: ', err);
-      const toast = this.toaster.create({
-        message: 'No account found with ' + username,
-        duration: 3000,
-        position: 'bottom'
+      const alert = await this.alertController.create({
+        header: 'Authenication Error',
+        message: err.message,
+        buttons: [
+          {
+            text: 'Ok',
+            handler: () => {
+              console.log('pressed');
+            }
+          }
+        ]
       });
-      // tslint:disable-next-line: no-shadowed-variable
-      toast.then(toast => toast.present());
+      await alert.present();
     }
   }
 
@@ -138,41 +160,50 @@ export class AuthenticationService {
       // tslint:disable-next-line: no-shadowed-variable
       toast.then(toast => toast.present());
     } catch (error) {
-        console.log('error confirming sign up', error);
-        const toast = this.toaster.create({
-          message: 'Your details did not match, try again',
-          duration: 3000,
-          position: 'bottom'
-        });
-        // tslint:disable-next-line: no-shadowed-variable
-        toast.then(toast => toast.present());
+      const alert = await this.alertController.create({
+        header: 'Authenication Error',
+        message: error.message,
+        buttons: [
+          {
+            text: 'Ok',
+            handler: () => {
+              console.log('pressed');
+            }
+          }
+        ]
+      });
+      await alert.present();
     }
   }
 
   async signOut() {
     try {
       await Auth.signOut().then((response) => {
-        console.log('Response ', response);
+        const toast = this.toaster.create({
+          message: 'You are signed out successfully!',
+          duration: 3000,
+          position: 'top'
+        });
+        // tslint:disable-next-line: no-shadowed-variable
+        toast.then(toast => toast.present());
+        this.go.navigate(['login']);
+        this.storageService.removeLocalData(TOKEN_KEY);
+        this.authenticationState.next(false);
       });
-      const toast = this.toaster.create({
-        message: 'You are signed out successfully!',
-        duration: 3000,
-        position: 'bottom'
-      });
-      // tslint:disable-next-line: no-shadowed-variable
-      toast.then(toast => toast.present());
-      this.go.navigate(['login']);
-      this.storageService.removeLocalData(TOKEN_KEY);
-      this.authenticationState.next(false);
     } catch (error) {
-      const toast = this.toaster.create({
-        message: 'Please try again to sign out!',
-        duration: 3000,
-        position: 'bottom'
+      const alert = await this.alertController.create({
+        header: 'Authenication Error',
+        message: error.message,
+        buttons: [
+          {
+            text: 'Ok',
+            handler: () => {
+              console.log('pressed');
+            }
+          }
+        ]
       });
-      // tslint:disable-next-line: no-shadowed-variable
-      toast.then(toast => toast.present());
-      console.log('error signing out: ', error);
+      await alert.present();
       this.authenticationState.next(true);
     }
   }
