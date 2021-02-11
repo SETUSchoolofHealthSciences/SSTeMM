@@ -2,74 +2,77 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateSstemm = /* GraphQL */ `
-  subscription OnCreateSstemm(
+export const onCreateSsTeMm = /* GraphQL */ `
+  subscription OnCreateSsTeMm(
     $id: ID
     $cognitoId: ID
-    $timestamp: AWSDateTime
-    $domain: AWSJSON
-    $score: Int
+    $timeStamp: AWSTimestamp
+    $domain: [String]
+    $scoreCard: AWSJSON
   ) {
-    onCreateSstemm(
+    onCreateSSTeMM(
       id: $id
       cognitoId: $cognitoId
-      timestamp: $timestamp
+      timeStamp: $timeStamp
       domain: $domain
-      score: $score
+      scoreCard: $scoreCard
     ) {
       id
       cognitoId
-      timestamp
+      timeStamp
       domain
-      score
+      scoreCard
+      totalScore
       reflection
     }
   }
 `;
-export const onUpdateSstemm = /* GraphQL */ `
-  subscription OnUpdateSstemm(
+export const onUpdateSsTeMm = /* GraphQL */ `
+  subscription OnUpdateSsTeMm(
     $id: ID
     $cognitoId: ID
-    $timestamp: AWSDateTime
-    $domain: AWSJSON
-    $score: Int
+    $timeStamp: AWSTimestamp
+    $domain: [String]
+    $scoreCard: AWSJSON
   ) {
-    onUpdateSstemm(
+    onUpdateSSTeMM(
       id: $id
       cognitoId: $cognitoId
-      timestamp: $timestamp
+      timeStamp: $timeStamp
       domain: $domain
-      score: $score
+      scoreCard: $scoreCard
     ) {
       id
       cognitoId
-      timestamp
+      timeStamp
       domain
-      score
+      scoreCard
+      totalScore
       reflection
     }
   }
 `;
-export const onDeleteSstemm = /* GraphQL */ `
-  subscription OnDeleteSstemm(
+export const onDeleteSsTeMm = /* GraphQL */ `
+  subscription OnDeleteSsTeMm(
     $id: ID
     $cognitoId: ID
-    $timestamp: AWSDateTime
-    $domain: AWSJSON
-    $score: Int
+    $timeStamp: AWSTimestamp
+    $domain: [String]
+    $scoreCard: AWSJSON
   ) {
-    onDeleteSstemm(
+    onDeleteSSTeMM(
       id: $id
       cognitoId: $cognitoId
-      timestamp: $timestamp
+      timeStamp: $timeStamp
       domain: $domain
-      score: $score
+      scoreCard: $scoreCard
     ) {
       id
       cognitoId
-      timestamp
+      timeStamp
       domain
-      score
+      scoreCard
+      totalScore
       reflection
     }
   }

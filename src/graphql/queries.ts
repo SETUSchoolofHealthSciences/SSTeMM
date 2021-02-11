@@ -2,44 +2,37 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 import gql from 'graphql-tag'
-export const getSstemm = /* GraphQL */ `
-  query GetSstemm($id: ID!) {
-    getSstemm(id: $id) {
-      id
-      cognitoId
-      timestamp
-      domain
-      score
-      reflection
-    }
-  }
-`;
-export const listSstemms = /* GraphQL */ gql`
-query listSstemms ($filter: TableSstemmFilterInput!) {
-  listSstemms(filter: $filter) {
-    items {
-      id
-      cognitoId
-      timestamp
-      domain
-      score
-      reflection
-    }
-  }
-}
-`;
 
-export const allItems = gql`
-  query allItems {
-    allItems {
+export const getSsTeMm = /* GraphQL */ gql`
+  query GetSsTeMm($id: ID!, $timeStamp: AWSTimestamp!) {
+    getSSTeMM(id: $id, timeStamp: $timeStamp) {
+      id
+      cognitoId
+      timeStamp
+      domain
+      scoreCard
+      totalScore
+      reflection
+    }
+  }
+`;
+export const listSsTeMms = /* GraphQL */ gql`
+  query ListSsTeMms(
+    $filter: TableSSTeMMFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSSTeMMS(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         cognitoId
-        timestamp
+        timeStamp
         domain
-        score
+        scoreCard
+        totalScore
         reflection
       }
+      nextToken
     }
   }
 `;
