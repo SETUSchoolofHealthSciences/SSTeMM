@@ -69,3 +69,28 @@
     margin-right: 30px;
     border-radius: 5px;
 }
+
+.bottom{
+    position: absolute;
+    bottom: 0;
+}
+
+.eu{
+    display: flex;
+    padding: 10px;
+    p{
+        flex: 1;
+        color: white;
+        font-size:  0.8em;
+        text-align: right;
+        padding-left: 60px;
+        }
+    .flag{
+        padding-top: 5px;
+        padding-right: 60px;
+        flex: 1;
+        ion-img{
+            height: 60px !important;
+        }
+    }
+}
