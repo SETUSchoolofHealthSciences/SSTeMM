@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
-import { CreateSstemmInput } from '../../API';
+import { CreateSSTeMMInput } from '../../API';
 import { AppsyncService } from '../services/appsync.service';
 import { StorageService } from '../services/storage.service';
-import { createSstemm } from '../../graphql/mutations';
+import { createSsTeMm } from '../../graphql/mutations';
 import { TotalScore } from '../interface/stress-signature';
 
 const TOKEN_KEY_ONE = 'auth-token';
@@ -16,7 +16,7 @@ const TOKEN_KEY_TWO = 'domain-quest';
   styleUrls: ['./stress-signature.page.scss'],
 })
 export class StressSignaturePage implements OnInit {
-  stressSignature = {} as CreateSstemmInput;
+  stressSignature = {} as CreateSSTeMMInput;
   totalScores = [] as TotalScore[];
 
   thoughtDomain = false;
@@ -117,7 +117,7 @@ export class StressSignaturePage implements OnInit {
   }
 
   async save(){
-    if (this.domains.length === 0 || this.stressSignature.reflection === null){
+    if (this.domains.length === 0 && this.stressSignature.reflection === null){
       const alert = await this.alertController.create({
         header: 'No data to be saved',
         message: 'There is no data to be saved to this entry',
@@ -135,18 +135,20 @@ export class StressSignaturePage implements OnInit {
       });
       await alert.present();
     } else {
+      const date = (+new Date());
       this.storageService.getLocalData(TOKEN_KEY_ONE).then((res) => {
         if (res !== null) {
           const decoded = jwt_decode<JwtPayload>(res);
           this.appsync.initializeClient().then(async client => {
-            const data: CreateSstemmInput = {
+            const data: CreateSSTeMMInput = {
               cognitoId: decoded.sub,
-              domain: JSON.stringify(this.domains),
-              timestamp: new Date().toISOString(),
-              score: this.totalScore,
+              domain: this.domains,
+              timeStamp: date,
+              scoreCard: JSON.stringify(this.totalScores),
+              totalScore: this.totalScore,
               reflection: this.stressSignature.reflection
             };
-            const mut = createSstemm;
+            const mut = createSsTeMm;
             const mutation = client.mutate({
               mutation: mut,
               variables: {

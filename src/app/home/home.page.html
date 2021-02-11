@@ -14,7 +14,7 @@
 <ion-content [fullscreen]="true">
   <h1 class="header">Most Recent Entries</h1>
   <div class=records>
-  <app-record *ngFor="let entry of signatures" overallScore={{entry.score}} title={{entry.timestamp}}
+  <app-record *ngFor="let entry of signatures" overallScore={{entry.totalScore}} title={{entry.timeStamp}}
   description={{entry.domain}}>
   </app-record>
   </div>

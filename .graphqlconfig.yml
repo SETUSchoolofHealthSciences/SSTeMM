@@ -1,5 +1,5 @@
 projects:
-  sstemm_api:
+  SSTeMM_Mobile_App:
     schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.ts
@@ -11,5 +11,8 @@ projects:
         generatedFileName: src/API.ts
         docsFilePath: src/graphql
         region: eu-west-1
-        apiId: pv4gnlpmi5c7jajokcvpw4g6fm
+        apiId: 6323hynkvvaj7ajlhdr32m3yhy
         maxDepth: 2
+extensions:
+  amplify:
+    version: 3

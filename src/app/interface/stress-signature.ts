@@ -8,3 +8,14 @@ export interface TotalScore {
     scoreCard: ScoreCard[];
     totalScore: number;
   }
+
+
+export interface StressSignatue {
+    id: string;
+    cognitoId: string;
+    timeStamp: number;
+    domain: string[] | null;
+    ScoreCard: string;
+    totalScore: number | null;
+    reflection: string | null;
+  }

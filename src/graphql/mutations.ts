@@ -3,38 +3,41 @@
 // this is an auto generated file. This will be overwritten
 import gql from 'graphql-tag'
 
-export const createSstemm = /* GraphQL */ gql`
-  mutation CreateSstemm($input: CreateSstemmInput!) {
-    createSstemm(input: $input) {
+export const createSsTeMm = /* GraphQL */ gql`
+  mutation CreateSsTeMm($input: CreateSSTeMMInput!) {
+    createSSTeMM(input: $input) {
       id
       cognitoId
-      timestamp
+      timeStamp
       domain
-      score
+      scoreCard
+      totalScore
       reflection
     }
   }
 `;
-export const updateSstemm = /* GraphQL */ `
-  mutation UpdateSstemm($input: UpdateSstemmInput!) {
-    updateSstemm(input: $input) {
+export const updateSsTeMm = /* GraphQL */ `
+  mutation UpdateSsTeMm($input: UpdateSSTeMMInput!) {
+    updateSSTeMM(input: $input) {
       id
       cognitoId
-      timestamp
+      timeStamp
       domain
-      score
+      scoreCard
+      totalScore
       reflection
     }
   }
 `;
-export const deleteSstemm = /* GraphQL */ `
-  mutation DeleteSstemm($input: DeleteSstemmInput!) {
-    deleteSstemm(input: $input) {
+export const deleteSsTeMm = /* GraphQL */ `
+  mutation DeleteSsTeMm($input: DeleteSSTeMMInput!) {
+    deleteSSTeMM(input: $input) {
       id
       cognitoId
-      timestamp
+      timeStamp
       domain
-      score
+      scoreCard
+      totalScore
       reflection
     }
   }

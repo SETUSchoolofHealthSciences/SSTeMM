@@ -1,14 +1,11 @@
 import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-import { listSstemms, allItems } from '../../graphql/queries';
+import { listSsTeMms } from '../../graphql/queries';
 import { AppsyncService } from '../services/appsync.service';
 import { StorageService } from '../services/storage.service';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
-import { StressSignatue } from '../../API';
-import gql from 'graphql-tag';
-import { timeStamp } from 'console';
-
+import { StressSignatue } from '../interface/stress-signature';
 
 const TOKEN_KEY = 'auth-token';
 @Component({
@@ -27,7 +24,7 @@ export class HomePage implements OnInit {
               }
 
   ngOnInit(): void {
-    
+
   }
 
   ionViewDidEnter(){
@@ -48,7 +45,7 @@ export class HomePage implements OnInit {
       if (res !== null) {
         const decoded = jwt_decode<JwtPayload>(res);
         this.appsync.initializeClient().then(async client => {
-          const query = listSstemms;
+          const query = listSsTeMms;
           const observables = await client.query({
             query,
             fetchPolicy: 'network-only',
@@ -56,11 +53,13 @@ export class HomePage implements OnInit {
               filter: {cognitoId: {eq: decoded.sub}},
             }
           });
-          for (const con of  observables.data.listSstemms.items){
+          observables.data.listSSTeMMS.items.splice(5);
+          observables.data.listSSTeMMS.items.sort((a: StressSignatue, b: StressSignatue) => a.timeStamp < b.timeStamp ? 1 : -1);
+          for (const con of  observables.data.listSSTeMMS.items){
             this.signatures.push(con);
           }
           if (this.signatures.length === 0) {
-            for (const con of  observables.data.listSstemms.items) {
+            for (const con of  observables.data.listSSTeMMS.items) {
               this.signatures.push(con);
             }
           }

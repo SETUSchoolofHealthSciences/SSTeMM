@@ -2,49 +2,40 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateSstemmInput = {
+export type CreateSSTeMMInput = {
   cognitoId: string,
-  timestamp: string,
-  domain?: string | null,
-  score?: number | null,
+  timeStamp: number,
+  domain?: Array< string | null > | null,
+  scoreCard?: string | null,
+  totalScore?: number | null,
   reflection?: string | null,
 };
 
-export type UpdateSstemmInput = {
+export type UpdateSSTeMMInput = {
   id: string,
   cognitoId?: string | null,
-  timestamp?: string | null,
-  domain?: string | null,
-  score?: number | null,
+  timeStamp: number,
+  domain?: Array< string | null > | null,
+  scoreCard?: string | null,
+  totalScore?: number | null,
   reflection?: string | null,
 };
 
-export type DeleteSstemmInput = {
+export type DeleteSSTeMMInput = {
   id: string,
+  timeStamp: number,
 };
 
-export type TableSstemmFilterInput = {
+export type TableSSTeMMFilterInput = {
   id?: TableIDFilterInput | null,
   cognitoId?: TableIDFilterInput | null,
-  timestamp?: TableStringFilterInput | null,
-  score?: TableIntFilterInput | null,
+  timeStamp?: TableIntFilterInput | null,
+  domain?: TableStringFilterInput | null,
+  totalScore?: TableIntFilterInput | null,
   reflection?: TableStringFilterInput | null,
 };
 
 export type TableIDFilterInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-};
-
-export type TableStringFilterInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -69,157 +60,170 @@ export type TableIntFilterInput = {
   between?: Array< number | null > | null,
 };
 
-export type CreateSstemmMutationVariables = {
-  input: CreateSstemmInput,
+export type TableStringFilterInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
 };
 
-export type CreateSstemmMutation = {
-  createSstemm:  {
-    __typename: "sstemm",
+export type CreateSsTeMmMutationVariables = {
+  input: CreateSSTeMMInput,
+};
+
+export type CreateSsTeMmMutation = {
+  createSSTeMM:  {
+    __typename: "SSTeMM",
     id: string,
     cognitoId: string,
-    timestamp: string,
-    domain: string | null,
-    score: number | null,
+    timeStamp: number,
+    domain: Array< string | null > | null,
+    scoreCard: string | null,
+    totalScore: number | null,
     reflection: string | null,
   } | null,
 };
 
-export type UpdateSstemmMutationVariables = {
-  input: UpdateSstemmInput,
+export type UpdateSsTeMmMutationVariables = {
+  input: UpdateSSTeMMInput,
 };
 
-export type UpdateSstemmMutation = {
-  updateSstemm:  {
-    __typename: "sstemm",
+export type UpdateSsTeMmMutation = {
+  updateSSTeMM:  {
+    __typename: "SSTeMM",
     id: string,
     cognitoId: string,
-    timestamp: string,
-    domain: string | null,
-    score: number | null,
+    timeStamp: number,
+    domain: Array< string | null > | null,
+    scoreCard: string | null,
+    totalScore: number | null,
     reflection: string | null,
   } | null,
 };
 
-export type DeleteSstemmMutationVariables = {
-  input: DeleteSstemmInput,
+export type DeleteSsTeMmMutationVariables = {
+  input: DeleteSSTeMMInput,
 };
 
-export type DeleteSstemmMutation = {
-  deleteSstemm:  {
-    __typename: "sstemm",
+export type DeleteSsTeMmMutation = {
+  deleteSSTeMM:  {
+    __typename: "SSTeMM",
     id: string,
     cognitoId: string,
-    timestamp: string,
-    domain: string | null,
-    score: number | null,
+    timeStamp: number,
+    domain: Array< string | null > | null,
+    scoreCard: string | null,
+    totalScore: number | null,
     reflection: string | null,
   } | null,
 };
 
-export type GetSstemmQueryVariables = {
+export type GetSsTeMmQueryVariables = {
   id: string,
+  timeStamp: number,
 };
 
-export type GetSstemmQuery = {
-  getSstemm:  {
-    __typename: "sstemm",
+export type GetSsTeMmQuery = {
+  getSSTeMM:  {
+    __typename: "SSTeMM",
     id: string,
     cognitoId: string,
-    timestamp: string,
-    domain: string | null,
-    score: number | null,
+    timeStamp: number,
+    domain: Array< string | null > | null,
+    scoreCard: string | null,
+    totalScore: number | null,
     reflection: string | null,
   } | null,
 };
 
-export type ListSstemmsQueryVariables = {
-  filter?: TableSstemmFilterInput | null,
+export type ListSsTeMmsQueryVariables = {
+  filter?: TableSSTeMMFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListSstemmsQuery = {
-  listSstemms:  {
-    __typename: "sstemmConnection",
+export type ListSsTeMmsQuery = {
+  listSSTeMMS:  {
+    __typename: "SSTeMMConnection",
     items:  Array< {
-      __typename: "sstemm",
+      __typename: "SSTeMM",
       id: string,
       cognitoId: string,
-      timestamp: string,
-      domain: string | null,
-      score: number | null,
+      timeStamp: number,
+      domain: Array< string | null > | null,
+      scoreCard: string | null,
+      totalScore: number | null,
       reflection: string | null,
     } | null > | null,
     nextToken: string | null,
   } | null,
 };
 
-export type OnCreateSstemmSubscriptionVariables = {
+export type OnCreateSsTeMmSubscriptionVariables = {
   id?: string | null,
   cognitoId?: string | null,
-  timestamp?: string | null,
-  domain?: string | null,
-  score?: number | null,
+  timeStamp?: number | null,
+  domain?: Array< string | null > | null,
+  scoreCard?: string | null,
 };
 
-export type OnCreateSstemmSubscription = {
-  onCreateSstemm:  {
-    __typename: "sstemm",
+export type OnCreateSsTeMmSubscription = {
+  onCreateSSTeMM:  {
+    __typename: "SSTeMM",
     id: string,
     cognitoId: string,
-    timestamp: string,
-    domain: string | null,
-    score: number | null,
+    timeStamp: number,
+    domain: Array< string | null > | null,
+    scoreCard: string | null,
+    totalScore: number | null,
     reflection: string | null,
   } | null,
 };
 
-export type OnUpdateSstemmSubscriptionVariables = {
+export type OnUpdateSsTeMmSubscriptionVariables = {
   id?: string | null,
   cognitoId?: string | null,
-  timestamp?: string | null,
-  domain?: string | null,
-  score?: number | null,
+  timeStamp?: number | null,
+  domain?: Array< string | null > | null,
+  scoreCard?: string | null,
 };
 
-export type OnUpdateSstemmSubscription = {
-  onUpdateSstemm:  {
-    __typename: "sstemm",
+export type OnUpdateSsTeMmSubscription = {
+  onUpdateSSTeMM:  {
+    __typename: "SSTeMM",
     id: string,
     cognitoId: string,
-    timestamp: string,
-    domain: string | null,
-    score: number | null,
+    timeStamp: number,
+    domain: Array< string | null > | null,
+    scoreCard: string | null,
+    totalScore: number | null,
     reflection: string | null,
   } | null,
 };
 
-export type OnDeleteSstemmSubscriptionVariables = {
+export type OnDeleteSsTeMmSubscriptionVariables = {
   id?: string | null,
   cognitoId?: string | null,
-  timestamp?: string | null,
-  domain?: string | null,
-  score?: number | null,
+  timeStamp?: number | null,
+  domain?: Array< string | null > | null,
+  scoreCard?: string | null,
 };
 
-export type OnDeleteSstemmSubscription = {
-  onDeleteSstemm:  {
-    __typename: "sstemm",
+export type OnDeleteSsTeMmSubscription = {
+  onDeleteSSTeMM:  {
+    __typename: "SSTeMM",
     id: string,
     cognitoId: string,
-    timestamp: string,
-    domain: string | null,
-    score: number | null,
+    timeStamp: number,
+    domain: Array< string | null > | null,
+    scoreCard: string | null,
+    totalScore: number | null,
     reflection: string | null,
   } | null,
-};
-
-export type StressSignatue = {
-  id: string;
-  cognitoId: string;
-  timestamp: string;
-  domain: string | null;
-  score: number | null;
-  reflection: string | null;
 };
