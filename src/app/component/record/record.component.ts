@@ -6,11 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./record.component.scss'],
 })
 export class RecordComponent implements OnInit {
-  @Input() title: string;
+  @Input() timestamp: string;
   @Input() overallScore: number;
-  @Input() description: string;
+  @Input() domain: string[];
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

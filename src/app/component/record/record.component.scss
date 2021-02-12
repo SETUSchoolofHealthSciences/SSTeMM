@@ -9,12 +9,13 @@
     color: #ffffff;
     border-radius: 50px;
     position: absolute;
-    right: 25px;
+    right: 50px;
+    margin-top: 7px
 }
 .record-content {
     
     margin: 10px;
-    min-height: 100px;
+    height: 100px;
     box-shadow: 0 3px 4px rgba(0,0,0,0.6);
     border-radius: 3px;
     border: thin solid #ededed;
@@ -25,4 +26,10 @@
         flex-basis: 100%;
         color: #08415C;
     }
+}
+
+.domain{
+    color: #ffffff;
+    font-size: medium;
+    margin-right: 10px;
 }
