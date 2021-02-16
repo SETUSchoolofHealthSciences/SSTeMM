@@ -1,0 +1,8 @@
+{
+  "appId": "sstemm.eu",
+  "appName": "SSTeMM",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
