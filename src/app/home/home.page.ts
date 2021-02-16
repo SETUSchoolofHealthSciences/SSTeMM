@@ -53,8 +53,8 @@ export class HomePage implements OnInit {
               filter: {cognitoId: {eq: decoded.sub}},
             }
           });
-          observables.data.listSSTeMMS.items.splice(5);
           observables.data.listSSTeMMS.items.sort((a: StressSignatue, b: StressSignatue) => a.timeStamp < b.timeStamp ? 1 : -1);
+          observables.data.listSSTeMMS.items.splice(5);
           for (const con of  observables.data.listSSTeMMS.items){
             this.signatures.push(con);
           }
