@@ -13,6 +13,7 @@
 
 <ion-content [fullscreen]="true">
   <h1 class="header">Most Recent Entries</h1>
+  <h3 class="noentries" *ngIf="displayNoEntries">There is no recent entries</h3>
   <div class=records>
   <app-record *ngFor="let entry of signatures" overallScore={{entry.totalScore}} timestamp={{entry.timeStamp}}
   [domain]="entry.domain">

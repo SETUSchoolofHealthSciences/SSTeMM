@@ -15,7 +15,7 @@ const TOKEN_KEY = 'auth-token';
 })
 export class HomePage implements OnInit {
   signatures = [] as StressSignatue[];
-
+  displayNoEntries = false;
   constructor(private go: Router,
               private auth: AuthenticationService,
               private appsync: AppsyncService,
@@ -24,10 +24,10 @@ export class HomePage implements OnInit {
               }
 
   ngOnInit(): void {
-
   }
 
   ionViewDidEnter(){
+    this.displayNoEntries = false;
     this.signatures = [] as StressSignatue[];
     this.fetchData();
   }
@@ -53,15 +53,13 @@ export class HomePage implements OnInit {
               filter: {cognitoId: {eq: decoded.sub}},
             }
           });
-          observables.data.listSSTeMMS.items.splice(5);
           observables.data.listSSTeMMS.items.sort((a: StressSignatue, b: StressSignatue) => a.timeStamp < b.timeStamp ? 1 : -1);
+          observables.data.listSSTeMMS.items.splice(5);
           for (const con of  observables.data.listSSTeMMS.items){
             this.signatures.push(con);
           }
           if (this.signatures.length === 0) {
-            for (const con of  observables.data.listSSTeMMS.items) {
-              this.signatures.push(con);
-            }
+            this.displayNoEntries = true;
           }
         });
       }
