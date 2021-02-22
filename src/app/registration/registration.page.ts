@@ -6,8 +6,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Location } from '@angular/common';
 import { CustomvalidationService } from '../services/customvalidation.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.page.html',
@@ -18,7 +18,7 @@ export class RegistrationPage implements OnInit {
   submitted = false;
   constructor(
     public fb: FormBuilder,
-    private location: Location,
+    private go: Router,
     private auth: AuthenticationService,
     private customValidator: CustomvalidationService,
     private alertController: AlertController
@@ -88,7 +88,7 @@ export class RegistrationPage implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.location.back();
+            this.go.navigate(['login']);
           }
         }
       ]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-terms',
   templateUrl: './terms.page.html',
@@ -7,12 +7,12 @@ import {Location} from '@angular/common'
 })
 export class TermsPage implements OnInit {
 
-  constructor(private loc: Location) { }
+  constructor(private go: Router) { }
 
   ngOnInit() {
   }
 
   goBack(){
-    this.loc.back();
+    this.go.navigate(['registration']);
   }
 }
