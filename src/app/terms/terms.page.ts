@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Location} from '@angular/common'
 @Component({
   selector: 'app-terms',
   templateUrl: './terms.page.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TermsPage implements OnInit {
 
-  constructor() { }
+  constructor(private loc: Location) { }
 
   ngOnInit() {
   }
 
+  goBack(){
+    this.loc.back();
+  }
 }
