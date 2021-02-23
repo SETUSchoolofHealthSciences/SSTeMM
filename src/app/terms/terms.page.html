@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/registration" style="color: white;"></ion-back-button>
+      <ion-back-button (click)="goBack()" style="color: white;"></ion-back-button>
     </ion-buttons>
     <div class="logoHeader">
       <img src="assets/sstemm-header.png" width="150px" />
@@ -288,7 +288,7 @@
      Protection Commission (<a href="https://www.dataprotection.ie">www.dataprotection.ie</a>).
   </p>
   <div class="termButton">
-    <ion-button class="buttonDetails" expand="block"  defaultHref="/registration"
+    <ion-button class="buttonDetails" expand="block"  (click)="goBack()"
       >Go Back</ion-button
     >
   </div>
