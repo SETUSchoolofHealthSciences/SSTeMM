@@ -80,7 +80,7 @@
   },
   "toasts": {
     "successLogin": "You are logged in successfully!",
-    "verifySuccess": "Your account is now verified",
+    "verifySuccess": "Your account is now verified!",
     "logoutSuccess": "You are signed out successfully!",
     "passwordChangeSuccess": "Your password was changed successfully!"
   }
