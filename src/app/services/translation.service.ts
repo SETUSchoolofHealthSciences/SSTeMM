@@ -8,7 +8,8 @@ export class TranslationService {
   toastMessage: string;
   alertHeader: string;
   alertMessage: string;
-  alertButton: string;
+  alertButtonOne: string;
+  alertButtonTwo: string;
   alertErrorHeader: string;
 
   constructor(private translate: TranslateService) { }
@@ -31,7 +32,7 @@ export class TranslationService {
     );
     this.translate.get('alerts.buttonOk').subscribe(
       value => {
-        this.alertButton = value;
+        this.alertButtonOne = value;
       }
     );
   }
@@ -49,7 +50,7 @@ export class TranslationService {
     );
     this.translate.get('alerts.buttonOk').subscribe(
       value => {
-        this.alertButton = value;
+        this.alertButtonOne = value;
       }
     );
   }
@@ -67,7 +68,7 @@ export class TranslationService {
     );
     this.translate.get('alerts.buttonOk').subscribe(
       value => {
-        this.alertButton = value;
+        this.alertButtonOne = value;
       }
     );
   }
@@ -90,7 +91,7 @@ export class TranslationService {
     );
     this.translate.get('alerts.buttonOk').subscribe(
       value => {
-        this.alertButton = value;
+        this.alertButtonOne = value;
       }
     );
   }
@@ -108,7 +109,76 @@ export class TranslationService {
     );
     this.translate.get('alerts.buttonOk').subscribe(
       value => {
-        this.alertButton = value;
+        this.alertButtonOne = value;
+      }
+    );
+  }
+
+  public regLeavePageTranslations(){
+    this.translate.get('alerts.regLeavePageHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.regLeavePageMessage').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.buttonYes').subscribe(
+      value => {
+        this.alertButtonOne = value;
+      }
+    );
+    this.translate.get('alerts.buttonNo').subscribe(
+      value => {
+        this.alertButtonTwo = value;
+      }
+    );
+  }
+
+  public forgotPasswordTranslation(){
+    this.translate.get('alerts.forgotPasswordHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.forgotPasswordMessage').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButtonOne = value;
+      }
+    );
+    this.translate.get('alerts.buttonTry').subscribe(
+      value => {
+        this.alertButtonTwo = value;
+      }
+    );
+    this.translate.get('alerts.forgotPassworderrorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+  }
+
+  public forgotPasswordCodeTranslation(){
+    this.translate.get('toasts.passwordChangeSuccess').subscribe(
+      value => {
+        this.toastMessage = value;
+      }
+    );
+    this.translate.get('alerts.errorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButtonOne = value;
       }
     );
   }

@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { CustomvalidationService } from '../services/customvalidation.service';
 import { Router } from '@angular/router';
+import { TranslationService } from '../services/translation.service';
+import { threadId } from 'worker_threads';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.page.html',
@@ -21,7 +23,8 @@ export class RegistrationPage implements OnInit {
     private go: Router,
     private auth: AuthenticationService,
     private customValidator: CustomvalidationService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private translate: TranslationService
   ) {
     this.formGroup = fb.group(
       {
@@ -75,18 +78,19 @@ export class RegistrationPage implements OnInit {
   }
 
   async cancel() {
+    this.translate.regLeavePageTranslations();
     const alert = await this.alertController.create({
-      header: 'Leave this page?',
-      message: 'Are you sure you want to leave this page? Your registration will not be saved.',
+      header: this.translate.alertHeader,
+      message: this.translate.alertMessage,
       buttons: [
         {
-          text: 'No',
+          text: this.translate.alertButtonTwo,
           handler: () => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Yes',
+          text: this.translate.alertButtonOne,
           handler: () => {
             this.go.navigate(['login']);
           }

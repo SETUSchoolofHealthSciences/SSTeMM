@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { TranslationService } from 'src/app/services/translation.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -16,7 +17,8 @@ export class ForgotPasswordPage implements OnInit {
   constructor(public fb: FormBuilder,
               private auth: AuthenticationService,
               private router: Router,
-              private alertController: AlertController) {
+              private alertController: AlertController,
+              private translate: TranslationService) {
     this.formGroupEmail = fb.group(
       {
         emailControl: [
@@ -37,17 +39,18 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   async submit() {
+    this.translate.forgotPasswordTranslation();
     this.submitted = true;
     if (this.formGroupEmail.valid) {
       this.auth.forgotPassword(this.formGroupEmail.value.emailControl).then(async response => {
         this.auth.emailAddress = this.formGroupEmail.value.emailControl;
         const alert = await this.alertController.create({
-          header: 'Verification Code',
+          header: this.translate.alertHeader,
           message:
-            'A verification code has been sent to ' + response.CodeDeliveryDetails.Destination ,
+          this.translate.alertMessage + response.CodeDeliveryDetails.Destination ,
           buttons: [
             {
-              text: 'Ok',
+              text: this.translate.alertButtonOne,
               role: 'button',
               handler: () => {
                 this.router.navigate(['/forgot-password-code']);
@@ -58,12 +61,12 @@ export class ForgotPasswordPage implements OnInit {
         await alert.present();
       }).catch(async error => {
          const alert = await this.alertController.create({
-           header: 'User Not Found',
+           header: this.translate.alertErrorHeader,
            message:
              error.message,
            buttons: [
              {
-               text: 'Try Again',
+               text: this.translate.alertButtonTwo,
                handler: () => {
                  console.log('...');
                },
@@ -73,7 +76,6 @@ export class ForgotPasswordPage implements OnInit {
          await alert.present();
       });
     }
-    console.log('scanlop ', this.auth.emailAddress);
   }
 
   cancel() {

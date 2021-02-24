@@ -62,14 +62,22 @@
   "alerts": {
     "errorHeader": "Authenication Error",
     "buttonOk": "Ok",
+    "buttonNo": "No",
+    "buttonYes": "Yes",
+    "buttonTry": "Try Again",
+    "regLeavePageHeader": "Leave this page?",
+    "regLeavePageMessage": "Are you sure you want to leave this page? Your registration will not be saved.",
     "emailVerHeader": "Email Verification",
     "emailVerMessage": "Please check your emails to verify your account.",
-    "emailCode": "Please check emails for new code."
-
+    "emailCode": "Please check emails for new code.",
+    "forgotPasswordHeader": "Verification Code",
+    "forgotPasswordMessage": "A verification code has been sent to ",
+    "forgotPassworderrorHeader": "User Not Found"
   },
   "toasts": {
     "successLogin": "You are logged in successfully!",
     "verifySuccess": "Your account is now verified",
-    "logoutSuccess": "You are signed out successfully!"
+    "logoutSuccess": "You are signed out successfully!",
+    "passwordChangeSuccess": "Your password was changed successfully!"
   }
 }

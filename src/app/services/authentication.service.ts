@@ -57,7 +57,7 @@ export class AuthenticationService {
         message: error.message,
         buttons: [
           {
-            text: this.translate.alertButton,
+            text: this.translate.alertButtonOne,
             handler: () => {
               console.log('pressed');
             }
@@ -90,7 +90,7 @@ export class AuthenticationService {
           message: this.translate.alertMessage,
           buttons: [
             {
-              text: this.translate.alertButton,
+              text: this.translate.alertButtonOne,
               handler: () => {
                 this.go.navigate(['/login']);
               }
@@ -105,7 +105,7 @@ export class AuthenticationService {
           message: error.message,
           buttons: [
             {
-              text: this.translate.alertButton,
+              text: this.translate.alertButtonOne,
               handler: () => {
                 console.log('pressed');
               }
@@ -128,7 +128,7 @@ export class AuthenticationService {
         message: this.translate.alertMessage,
         buttons: [
           {
-            text: this.translate.alertButton,
+            text: this.translate.alertButtonOne,
             handler: () => {
               console.log('pressed');
             }
@@ -142,7 +142,7 @@ export class AuthenticationService {
         message: err.message,
         buttons: [
           {
-            text: this.translate.alertButton,
+            text: this.translate.alertButtonOne,
             handler: () => {
               console.log('pressed');
             }
@@ -171,7 +171,7 @@ export class AuthenticationService {
         message: error.message,
         buttons: [
           {
-            text: this.translate.alertButton,
+            text: this.translate.alertButtonOne,
             handler: () => {
               console.log('pressed');
             }
@@ -203,7 +203,7 @@ export class AuthenticationService {
         message: error.message,
         buttons: [
           {
-            text: this.translate.alertButton,
+            text: this.translate.alertButtonOne,
             handler: () => {
               console.log('pressed');
             }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
+import { TranslationService } from 'src/app/services/translation.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CustomvalidationService } from '../../services/customvalidation.service';
 
@@ -19,7 +20,8 @@ export class ForgotPasswordCodePage implements OnInit {
     private customValidator: CustomvalidationService,
     private toaster: ToastController,
     private alertController: AlertController,
-    private router: Router
+    private router: Router,
+    private translate: TranslationService
   ) {
     this.formGroupCode = fb.group(
       {
@@ -59,6 +61,7 @@ export class ForgotPasswordCodePage implements OnInit {
 
   submitCode() {
     this.submitted = true;
+    this.translate.forgotPasswordCodeTranslation();
     if (this.formGroupCode.valid) {
       this.auth
         .submitCode(
@@ -68,7 +71,7 @@ export class ForgotPasswordCodePage implements OnInit {
         )
         .then((response) => {
           const toast = this.toaster.create({
-            message: 'Your password was changed successfully!',
+            message: this.translate.toastMessage,
             duration: 3000,
             position: 'top'
           });
@@ -79,11 +82,11 @@ export class ForgotPasswordCodePage implements OnInit {
         .catch(async (error) => {
           console.log('Error ', error);
           const alert = await this.alertController.create({
-            header: 'Authenication Error',
+            header: this.translate.alertErrorHeader,
             message: error.message,
             buttons: [
               {
-                text: 'Ok',
+                text: this.translate.alertButtonOne,
                 handler: () => {
                   console.log('pressed');
                 }
