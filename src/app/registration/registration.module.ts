@@ -8,6 +8,9 @@ import { RegistrationPageRoutingModule } from './registration-routing.module';
 import { PasswordPatternDirective } from '../directives/password-pattern.directive';
 import { PasswordMatchDirective } from '../directives/password-match.directive';
 import { RegistrationPage } from './registration.page';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { httpLoaderFactory } from '../app.module';
 
 @NgModule({
   imports: [
@@ -15,7 +18,14 @@ import { RegistrationPage } from './registration.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    RegistrationPageRoutingModule
+    RegistrationPageRoutingModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   declarations: [RegistrationPage, PasswordPatternDirective, PasswordMatchDirective]
 })

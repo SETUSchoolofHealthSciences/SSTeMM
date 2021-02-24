@@ -8,6 +8,9 @@ import { ForgotPasswordPageRoutingModule } from './forgot-password-routing.modul
 import { ForgotPasswordPage } from './forgot-password.page';
 import { PasswordPatternDirective } from '../../directives/password-pattern.directive';
 import { PasswordMatchDirective } from '../../directives/password-match.directive';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { httpLoaderFactory } from 'src/app/app.module';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -15,7 +18,14 @@ import { PasswordMatchDirective } from '../../directives/password-match.directiv
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    ForgotPasswordPageRoutingModule
+    ForgotPasswordPageRoutingModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   declarations: [ForgotPasswordPage, PasswordPatternDirective, PasswordMatchDirective]
 })

@@ -8,30 +8,30 @@
 
 <ion-content [fullscreen]="true">
   <div class="header">
-    <h2>Create Stress Signature Record</h2>
+    <h2>{{ 'stressRecord.title' | translate }}</h2>
   </div>
   <div class="domain" [hidden]=isDomainHidden>
     <ion-button class="buttonDetails" expand="block" (click)="pickDomain()">Pick Domain</ion-button>
   </div>
   <div class="choice" [hidden]=isChoiceHidden>
-    <h2>Pick a Domain</h2>
-    <ion-button class="buttonDetails" expand="block" (click)="thoughts()" [disabled]="thoughtDomain">Thoughts</ion-button>
-    <ion-button class="buttonDetails" expand="block" (click)="feelings()" [disabled]="feelingDomain">Feelings</ion-button>
-    <ion-button class="buttonDetails" expand="block" (click)="behaviours()"[disabled]="behaviourDomain">Behaviours</ion-button>
+    <h2>{{ 'button.pickDomain' | translate }}</h2>
+    <ion-button class="buttonDetails" expand="block" (click)="thoughts()" [disabled]="thoughtDomain">{{ 'button.thoughts' | translate }}</ion-button>
+    <ion-button class="buttonDetails" expand="block" (click)="feelings()" [disabled]="feelingDomain">{{ 'button.feelings' | translate }}</ion-button>
+    <ion-button class="buttonDetails" expand="block" (click)="behaviours()"[disabled]="behaviourDomain">{{ 'button.behaviours' | translate }}</ion-button>
   </div>
   <hr> 
   <div class="reflection">
-    <ion-label position="floating">Personal Reflection</ion-label>
+    <ion-label position="floating">{{ 'stressRecord.reflection' | translate }}</ion-label>
     <ion-textarea [(ngModel)]="stressSignature.reflection" placeholder="Enter your personal reflection here...."></ion-textarea>
   </div>
   <ion-grid>
     <ion-row>
       <ion-col size-sm="6" size="6" class="ion-text-center">
-        <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="cancel()">Cancel</ion-button>
+        <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="cancel()">{{ 'button.cancel' | translate }}</ion-button>
       </ion-col>
 
       <ion-col size-sm="6" size="6" class="ion-text-center">
-        <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="save()">Save</ion-button>
+        <ion-button expand="block" class="ion-text-wrap min-max-width bttn" (click)="save()">{{ 'button.save' | translate }}</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -12,7 +12,7 @@
     <div>
       <ion-input
         class="input"
-        placeholder="First Name"
+        placeholder="{{ 'input.firstName' | translate }}"
         formControlName="firstNameControl"
         type="text"
       ></ion-input>
@@ -20,13 +20,13 @@
         class="text-danger"
         *ngIf="(RegistrationFormControl.firstNameControl.touched || submitted) && RegistrationFormControl.firstNameControl.errors?.required"
       >
-        First Name is required
+      {{ 'validation.firstRequired' | translate }}
       </span>
     </div>
     <div>
       <ion-input
         class="input"
-        placeholder="Last Name"
+        placeholder="{{ 'input.lastName' | translate }}"
         formControlName="lastNameControl"
         type="text"
       ></ion-input>
@@ -34,13 +34,13 @@
         class="text-danger"
         *ngIf="(RegistrationFormControl.lastNameControl.touched || submitted) && RegistrationFormControl.lastNameControl.errors?.required"
       >
-        Last Name is required
+      {{ 'validation.lastRequired' | translate }}
       </span>
     </div>
     <div>
       <ion-input
         class="input"
-        placeholder="College"
+        placeholder="{{ 'input.college' | translate }}"
         formControlName="collegeControl"
         type="text"
       ></ion-input>
@@ -48,7 +48,7 @@
     <div>
       <ion-input
         class="input"
-        placeholder="College Year"
+        placeholder="{{ 'input.collegeYear' | translate }}"
         formControlName="collegeYearControl"
         type="number"
       ></ion-input>
@@ -56,13 +56,13 @@
         class="text-danger"
         *ngIf="(RegistrationFormControl.collegeYearControl.touched || submitted) && (RegistrationFormControl.collegeYearControl.errors?.max || RegistrationFormControl.collegeYearControl.errors?.min)"
       >
-        College Year is between 1-5
+      {{ 'validation.collegeYear' | translate }}
       </span>
     </div>
     <div>
       <ion-input
         class="input"
-        placeholder="Hospital"
+        placeholder="{{ 'input.hospital' | translate }}"
         formControlName="hospitalControl"
         type="text"
       ></ion-input>
@@ -70,7 +70,7 @@
     <div>
       <ion-input
         class="input"
-        placeholder="Email Address"
+        placeholder="{{ 'input.email' | translate }}"
         formControlName="emailControl"
         type="email"
       ></ion-input>
@@ -78,19 +78,19 @@
         class="text-danger"
         *ngIf="(RegistrationFormControl.emailControl.touched || submitted) && RegistrationFormControl.emailControl.errors?.required"
       >
-        Email address is required
+      {{ 'validation.emailRequired' | translate }}
       </span>
       <span
         class="text-danger"
         *ngIf="RegistrationFormControl.emailControl.touched && RegistrationFormControl.emailControl.errors?.email"
       >
-        Enter a valid email address
+      {{ 'validation.emailValid' | translate }}
       </span>
     </div>
     <div>
       <ion-input
         class="input"
-        placeholder="Password"
+        placeholder="{{ 'input.password' | translate }}"
         formControlName="passwordControl"
         type="password"
       ></ion-input>
@@ -98,20 +98,19 @@
         class="text-danger"
         *ngIf="(RegistrationFormControl.passwordControl.touched || submitted) && RegistrationFormControl.passwordControl.errors?.required"
       >
-        Password is required
+      {{ 'validation.passwordRequired' | translate }}
       </span>
       <span
         class="text-danger"
         *ngIf="RegistrationFormControl.passwordControl.touched && RegistrationFormControl.passwordControl.errors?.invalidPassword"
       >
-        Password should have minimum 8 characters, at least 1 uppercase letter,
-        1 lowercase letter and 1 number
+      {{ 'validation.passwordRequirements' | translate }}
       </span>
     </div>
     <div>
       <ion-input
         class="input"
-        placeholder="Confirm Password"
+        placeholder="{{ 'input.confirmPassword' | translate }}"
         formControlName="passwordAgainControl"
         type="password"
       ></ion-input>
@@ -119,13 +118,13 @@
         class="text-danger"
         *ngIf="(RegistrationFormControl.passwordAgainControl.touched || submitted)&& RegistrationFormControl.passwordAgainControl.errors?.required"
       >
-        Confirm Password is required
+      {{ 'validation.confirmPassword' | translate }}
       </span>
       <span
         class="text-danger"
         *ngIf="RegistrationFormControl.passwordAgainControl.touched && RegistrationFormControl.passwordAgainControl.errors?.passwordMismatch"
       >
-        Passwords does not match
+      {{ 'validation.matchPasswords' | translate }}
       </span>
     </div>
     <div>
@@ -135,16 +134,14 @@
           formControlName="checkBoxControl"
         ></ion-checkbox>
         <ion-label class="ion-text-wrap" for="checkBoxControl"
-          >By clicking here I accept the <a routerLink="/terms">Terms &
-            Conditions</a> for using this
-          service</ion-label
+          >{{ 'input.termsStart' | translate }}<a routerLink="/terms">{{ 'input.termsLink' | translate }}</a> {{ 'input.termsEnd' | translate }}</ion-label
         >
       </ion-item>
       <span
         class="text-danger"
         *ngIf="submitted && RegistrationFormControl.checkBoxControl.errors"
       >
-        Please accept the terms & conditions
+      {{ 'validation.terms' | translate }}
       </span>
     </div>
     <ion-grid>
@@ -154,7 +151,7 @@
             expand="block"
             class="ion-text-wrap min-max-width bttn"
             (click)="cancel()"
-            >Cancel</ion-button
+            >{{ 'button.cancel' | translate }}</ion-button
           >
         </ion-col>
 
@@ -163,7 +160,7 @@
             expand="block"
             class="ion-text-wrap min-max-width bttn"
             type="submit"
-            >Register</ion-button
+            >{{ 'button.register' | translate }}</ion-button
           >
         </ion-col>
       </ion-row>
