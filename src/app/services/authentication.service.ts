@@ -5,19 +5,26 @@ import { Auth } from 'aws-amplify';
 import { BehaviorSubject } from 'rxjs';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { StorageService } from './storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 const TOKEN_KEY = 'auth-token';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
+  private toastMessage: string;
+  private alertHeader: string;
+  private alertMessage: string;
+  private alertButton: string;
+  private alertErrorHeader: string;
   emailAddress: '';
   authenticationState = new BehaviorSubject(false);
   constructor(private go: Router,
               private plt: Platform,
               private storageService: StorageService,
               private toaster: ToastController,
-              private alertController: AlertController) {
+              private alertController: AlertController,
+              private translate: TranslateService) {
     this.plt.ready().then(() => {
       this.checkToken();
     });
@@ -33,14 +40,33 @@ export class AuthenticationService {
     });
   }
 
+  private signTranslations(){
+    this.translate.get('toasts.successLogin').subscribe(
+      value => {
+        this.toastMessage = value;
+      }
+    );
+    this.translate.get('alerts.authErrorHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
+  }
+
   async signIn(username: string, password: string) {
+    this.signTranslations();
     try {
       const user = await Auth.signIn(username.toString(), password.toString());
       const tokens = user.signInUserSession;
       if (tokens != null){
         this.setLogin(tokens.idToken.jwtToken);
         const toast = this.toaster.create({
-          message: 'You are logged in successfully!',
+          message: this.toastMessage,
           duration: 3000,
           position: 'top'
         });
@@ -50,11 +76,11 @@ export class AuthenticationService {
       }
     } catch (error) {
       const alert = await this.alertController.create({
-        header: 'Authenication Error',
+        header: this.alertHeader,
         message: error.message,
         buttons: [
           {
-            text: 'Ok',
+            text: this.alertButton,
             handler: () => {
               console.log('pressed');
             }
@@ -65,8 +91,31 @@ export class AuthenticationService {
     }
   }
 
+  private RegisterTranslations(){
+    this.translate.get('alerts.emailVerHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.email.VerMessage').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.errorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
+  }
   register(email: string, password: string, firstName: string,
            lastName: string, hospital?: string, college?: string, collegeYear?: number) {
+    this.RegisterTranslations();
     try {
       Auth.signUp({
         username: email,
@@ -82,11 +131,11 @@ export class AuthenticationService {
         validationData: []
       }).then(async data => {
         const alert = await this.alertController.create({
-          header: 'Email Verification',
-          message: 'Please check your emails to verify your account.',
+          header: this.alertHeader,
+          message: this.alertMessage,
           buttons: [
             {
-              text: 'Ok',
+              text: this.alertButton,
               handler: () => {
                 this.go.navigate(['/login']);
               }
@@ -97,11 +146,11 @@ export class AuthenticationService {
 
       }).catch(async error => {
         const alert = await this.alertController.create({
-          header: 'Authenication Error',
+          header: this.alertErrorHeader,
           message: error.message,
           buttons: [
             {
-              text: 'Ok',
+              text: this.alertButton,
               handler: () => {
                 console.log('pressed');
               }
@@ -115,15 +164,38 @@ export class AuthenticationService {
     }
   }
 
+  private resendTranslations() {
+    this.translate.get('alerts.emailVerHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.emailCode').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.errorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
+  }
   async resendConfirmationCode(username: string) {
+    this.resendTranslations();
     try {
       await Auth.resendSignUp(username);
       const alert = await this.alertController.create({
-        header: 'Email Verification',
-        message: 'Please check emails for new code.',
+        header: this.alertHeader,
+        message: this.alertMessage,
         buttons: [
           {
-            text: 'Ok',
+            text: this.alertButton,
             handler: () => {
               console.log('pressed');
             }
@@ -133,11 +205,11 @@ export class AuthenticationService {
       await alert.present();
     } catch (err) {
       const alert = await this.alertController.create({
-        header: 'Authenication Error',
+        header: this.alertErrorHeader,
         message: err.message,
         buttons: [
           {
-            text: 'Ok',
+            text: this.alertButton,
             handler: () => {
               console.log('pressed');
             }
@@ -148,12 +220,30 @@ export class AuthenticationService {
     }
   }
 
+  private confirmSignUpWithCodeTranslation() {
+    this.translate.get('toasts.verifySuccess').subscribe(
+      value => {
+        this.toastMessage = value;
+      }
+    );
+    this.translate.get('alerts.errorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
+  }
    // can use code for verification
    async confirmSignUpWithCode(username: string, code: string) {
-    try {
+     this.confirmSignUpWithCodeTranslation();
+     try {
       await Auth.confirmSignUp(username, code);
       const toast = this.toaster.create({
-        message: 'Your account is now verified.',
+        message: this.toastMessage,
         duration: 3000,
         position: 'bottom'
       });
@@ -161,11 +251,11 @@ export class AuthenticationService {
       toast.then(toast => toast.present());
     } catch (error) {
       const alert = await this.alertController.create({
-        header: 'Authenication Error',
+        header: this.alertErrorHeader,
         message: error.message,
         buttons: [
           {
-            text: 'Ok',
+            text: this.alertButton,
             handler: () => {
               console.log('pressed');
             }
@@ -176,11 +266,29 @@ export class AuthenticationService {
     }
   }
 
+  private signoutTranslation() {
+    this.translate.get('toasts.logoutSuccess').subscribe(
+      value => {
+        this.toastMessage = value;
+      }
+    );
+    this.translate.get('alerts.errorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
+  }
   async signOut() {
+    this.signoutTranslation();
     try {
       await Auth.signOut().then((response) => {
         const toast = this.toaster.create({
-          message: 'You are signed out successfully!',
+          message: this.toastMessage,
           duration: 3000,
           position: 'top'
         });
@@ -192,11 +300,11 @@ export class AuthenticationService {
       });
     } catch (error) {
       const alert = await this.alertController.create({
-        header: 'Authenication Error',
+        header: this.alertErrorHeader,
         message: error.message,
         buttons: [
           {
-            text: 'Ok',
+            text: this.alertButton,
             handler: () => {
               console.log('pressed');
             }

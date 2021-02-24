@@ -58,5 +58,18 @@
   "stressRecord": {
     "title": "Create Stress Signature Record",
     "reflection": "Personal Reflection"
+  },
+  "alerts": {
+    "errorHeader": "Authenication Error",
+    "buttonOk": "Ok",
+    "emailVerHeader": "Email Verification",
+    "emailVerMessage": "Please check your emails to verify your account.",
+    "emailCode": "Please check emails for new code."
+
+  },
+  "toasts": {
+    "successLogin": "You are logged in successfully!",
+    "verifySuccess": "Your account is now verified",
+    "logoutSuccess": "You are signed out successfully!"
   }
 }
