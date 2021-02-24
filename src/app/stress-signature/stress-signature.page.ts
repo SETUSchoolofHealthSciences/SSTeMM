@@ -7,6 +7,7 @@ import { AppsyncService } from '../services/appsync.service';
 import { StorageService } from '../services/storage.service';
 import { createSsTeMm } from '../../graphql/mutations';
 import { TotalScore } from '../interface/stress-signature';
+import { TranslationService } from '../services/translation.service';
 
 const TOKEN_KEY_ONE = 'auth-token';
 const TOKEN_KEY_TWO = 'domain-quest';
@@ -30,7 +31,8 @@ export class StressSignaturePage implements OnInit {
   constructor(private go: Router,
               private appsync: AppsyncService,
               private storageService: StorageService,
-              private alertController: AlertController) { }
+              private alertController: AlertController,
+              private translate: TranslationService) { }
 
   ngOnInit() {
   }
@@ -92,18 +94,19 @@ export class StressSignaturePage implements OnInit {
   }
 
   async cancel(){
+    this.translate.stressSignatureCancel();
     const alert = await this.alertController.create({
-      header: 'Leave this page?',
-      message: 'Are you sure you want to leave this page? Stress Signature entry will not be saved.',
+      header: this.translate.alertHeader,
+      message: this.translate.alertMessage,
       buttons: [
         {
-          text: 'No',
+          text: this.translate.alertButtonTwo,
           handler: () => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Yes',
+          text: this.translate.alertButtonOne,
           handler: () => {
             this.storageService.removeLocalData(TOKEN_KEY_TWO);
             this.totalScore = 0;
@@ -117,13 +120,14 @@ export class StressSignaturePage implements OnInit {
   }
 
   async save(){
-    if (this.domains.length === 0 && this.stressSignature.reflection === null){
+    this.translate.stressSignatureSave();
+    if (this.domains.length === 0 && !this.stressSignature.reflection){
       const alert = await this.alertController.create({
-        header: 'No data to be saved',
-        message: 'There is no data to be saved to this entry',
+        header: this.translate.alertHeader,
+        message: this.translate.alertMessage,
         buttons: [
           {
-            text: 'Okay',
+            text: this.translate.alertButtonOne,
             handler: () => {
               this.storageService.removeLocalData(TOKEN_KEY_TWO);
               this.totalScore = 0;

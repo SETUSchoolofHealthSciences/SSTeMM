@@ -65,14 +65,18 @@
     "buttonNo": "No",
     "buttonYes": "Yes",
     "buttonTry": "Try Again",
-    "regLeavePageHeader": "Leave this page?",
+    "leavePageHeader": "Leave this page?",
     "regLeavePageMessage": "Are you sure you want to leave this page? Your registration will not be saved.",
     "emailVerHeader": "Email Verification",
     "emailVerMessage": "Please check your emails to verify your account.",
     "emailCode": "Please check emails for new code.",
     "forgotPasswordHeader": "Verification Code",
     "forgotPasswordMessage": "A verification code has been sent to ",
-    "forgotPassworderrorHeader": "User Not Found"
+    "forgotPassworderrorHeader": "User Not Found",
+    "stressLeaveMessage": "Are you sure you want to leave this page? Stress Signature entry will not be saved.",
+    "stressSaveHeader": "No data to be saved",
+    "stressSaveMessage": "There is no data to be saved to this entry.",
+    "stressQuestionsMessage":"Are you sure you want to leave this page? Your current score will not be saved."
   },
   "toasts": {
     "successLogin": "You are logged in successfully!",

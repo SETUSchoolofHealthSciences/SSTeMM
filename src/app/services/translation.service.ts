@@ -73,7 +73,7 @@ export class TranslationService {
     );
   }
 
-  public RegisterTranslations(){
+  public RegisterTranslations() {
     this.translate.get('alerts.emailVerHeader').subscribe(
       value => {
         this.alertHeader = value;
@@ -96,7 +96,7 @@ export class TranslationService {
     );
   }
 
-  public signTranslations(){
+  public signTranslations() {
     this.translate.get('toasts.successLogin').subscribe(
       value => {
         this.toastMessage = value;
@@ -114,8 +114,8 @@ export class TranslationService {
     );
   }
 
-  public regLeavePageTranslations(){
-    this.translate.get('alerts.regLeavePageHeader').subscribe(
+  public regLeavePageTranslations() {
+    this.translate.get('alerts.leavePageHeader').subscribe(
       value => {
         this.alertHeader = value;
       }
@@ -137,7 +137,7 @@ export class TranslationService {
     );
   }
 
-  public forgotPasswordTranslation(){
+  public forgotPasswordTranslation() {
     this.translate.get('alerts.forgotPasswordHeader').subscribe(
       value => {
         this.alertHeader = value;
@@ -165,7 +165,7 @@ export class TranslationService {
     );
   }
 
-  public forgotPasswordCodeTranslation(){
+  public forgotPasswordCodeTranslation() {
     this.translate.get('toasts.passwordChangeSuccess').subscribe(
       value => {
         this.toastMessage = value;
@@ -179,6 +179,70 @@ export class TranslationService {
     this.translate.get('alerts.buttonOk').subscribe(
       value => {
         this.alertButtonOne = value;
+      }
+    );
+  }
+
+  public stressSignatureCancel() {
+    this.translate.get('alerts.leavePageHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.stressLeaveMessage').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.buttonYes').subscribe(
+      value => {
+        this.alertButtonOne = value;
+      }
+    );
+    this.translate.get('alerts.buttonNo').subscribe(
+      value => {
+        this.alertButtonTwo = value;
+      }
+    );
+  }
+
+  public stressSignatureSave() {
+    this.translate.get('alerts.stressSaveHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.stressSaveMessage').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButtonOne = value;
+      }
+    );
+  }
+
+  public StressQuestionsGoBack(){
+    this.translate.get('alerts.leavePageHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.stressQuestionsMessage').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.buttonYes').subscribe(
+      value => {
+        this.alertButtonOne = value;
+      }
+    );
+    this.translate.get('alerts.buttonNo').subscribe(
+      value => {
+        this.alertButtonTwo = value;
       }
     );
   }
