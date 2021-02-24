@@ -40,24 +40,6 @@ export class AuthenticationService {
     });
   }
 
-  private signTranslations(){
-    this.translate.get('toasts.successLogin').subscribe(
-      value => {
-        this.toastMessage = value;
-      }
-    );
-    this.translate.get('alerts.authErrorHeader').subscribe(
-      value => {
-        this.alertHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
-  }
-
   async signIn(username: string, password: string) {
     this.signTranslations();
     try {
@@ -91,28 +73,6 @@ export class AuthenticationService {
     }
   }
 
-  private RegisterTranslations(){
-    this.translate.get('alerts.emailVerHeader').subscribe(
-      value => {
-        this.alertHeader = value;
-      }
-    );
-    this.translate.get('alerts.email.VerMessage').subscribe(
-      value => {
-        this.alertMessage = value;
-      }
-    );
-    this.translate.get('alerts.errorHeader').subscribe(
-      value => {
-        this.alertErrorHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
-  }
   register(email: string, password: string, firstName: string,
            lastName: string, hospital?: string, college?: string, collegeYear?: number) {
     this.RegisterTranslations();
@@ -164,28 +124,6 @@ export class AuthenticationService {
     }
   }
 
-  private resendTranslations() {
-    this.translate.get('alerts.emailVerHeader').subscribe(
-      value => {
-        this.alertHeader = value;
-      }
-    );
-    this.translate.get('alerts.emailCode').subscribe(
-      value => {
-        this.alertMessage = value;
-      }
-    );
-    this.translate.get('alerts.errorHeader').subscribe(
-      value => {
-        this.alertErrorHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
-  }
   async resendConfirmationCode(username: string) {
     this.resendTranslations();
     try {
@@ -220,23 +158,6 @@ export class AuthenticationService {
     }
   }
 
-  private confirmSignUpWithCodeTranslation() {
-    this.translate.get('toasts.verifySuccess').subscribe(
-      value => {
-        this.toastMessage = value;
-      }
-    );
-    this.translate.get('alerts.errorHeader').subscribe(
-      value => {
-        this.alertErrorHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
-  }
    // can use code for verification
    async confirmSignUpWithCode(username: string, code: string) {
      this.confirmSignUpWithCodeTranslation();
@@ -266,23 +187,6 @@ export class AuthenticationService {
     }
   }
 
-  private signoutTranslation() {
-    this.translate.get('toasts.logoutSuccess').subscribe(
-      value => {
-        this.toastMessage = value;
-      }
-    );
-    this.translate.get('alerts.errorHeader').subscribe(
-      value => {
-        this.alertErrorHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
-  }
   async signOut() {
     this.signoutTranslation();
     try {
@@ -341,5 +245,105 @@ export class AuthenticationService {
 
   submitCode(email: string, code: string, password: string) {
     return Auth.forgotPasswordSubmit(email, code, password);
+  }
+
+  private resendTranslations() {
+    this.translate.get('alerts.emailVerHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.emailCode').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.errorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
+  }
+
+  private confirmSignUpWithCodeTranslation() {
+    this.translate.get('toasts.verifySuccess').subscribe(
+      value => {
+        this.toastMessage = value;
+      }
+    );
+    this.translate.get('alerts.errorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
+  }
+
+  private signoutTranslation() {
+    this.translate.get('toasts.logoutSuccess').subscribe(
+      value => {
+        this.toastMessage = value;
+      }
+    );
+    this.translate.get('alerts.errorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
+  }
+
+  private RegisterTranslations(){
+    this.translate.get('alerts.emailVerHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.email.VerMessage').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.errorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
+  }
+  
+  private signTranslations(){
+    this.translate.get('toasts.successLogin').subscribe(
+      value => {
+        this.toastMessage = value;
+      }
+    );
+    this.translate.get('alerts.authErrorHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButton = value;
+      }
+    );
   }
 }
