@@ -5,18 +5,13 @@ import { Auth } from 'aws-amplify';
 import { BehaviorSubject } from 'rxjs';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { StorageService } from './storage.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslationService } from './translation.service';
 
 const TOKEN_KEY = 'auth-token';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private toastMessage: string;
-  private alertHeader: string;
-  private alertMessage: string;
-  private alertButton: string;
-  private alertErrorHeader: string;
   emailAddress: '';
   authenticationState = new BehaviorSubject(false);
   constructor(private go: Router,
@@ -24,7 +19,7 @@ export class AuthenticationService {
               private storageService: StorageService,
               private toaster: ToastController,
               private alertController: AlertController,
-              private translate: TranslateService) {
+              private translate: TranslationService) {
     this.plt.ready().then(() => {
       this.checkToken();
     });
@@ -41,14 +36,14 @@ export class AuthenticationService {
   }
 
   async signIn(username: string, password: string) {
-    this.signTranslations();
+    this.translate.signTranslations();
     try {
       const user = await Auth.signIn(username.toString(), password.toString());
       const tokens = user.signInUserSession;
       if (tokens != null){
         this.setLogin(tokens.idToken.jwtToken);
         const toast = this.toaster.create({
-          message: this.toastMessage,
+          message: this.translate.toastMessage,
           duration: 3000,
           position: 'top'
         });
@@ -58,11 +53,11 @@ export class AuthenticationService {
       }
     } catch (error) {
       const alert = await this.alertController.create({
-        header: this.alertHeader,
+        header: this.translate.alertHeader,
         message: error.message,
         buttons: [
           {
-            text: this.alertButton,
+            text: this.translate.alertButton,
             handler: () => {
               console.log('pressed');
             }
@@ -75,7 +70,7 @@ export class AuthenticationService {
 
   register(email: string, password: string, firstName: string,
            lastName: string, hospital?: string, college?: string, collegeYear?: number) {
-    this.RegisterTranslations();
+    this.translate.RegisterTranslations();
     try {
       Auth.signUp({
         username: email,
@@ -91,11 +86,11 @@ export class AuthenticationService {
         validationData: []
       }).then(async data => {
         const alert = await this.alertController.create({
-          header: this.alertHeader,
-          message: this.alertMessage,
+          header: this.translate.alertHeader,
+          message: this.translate.alertMessage,
           buttons: [
             {
-              text: this.alertButton,
+              text: this.translate.alertButton,
               handler: () => {
                 this.go.navigate(['/login']);
               }
@@ -106,11 +101,11 @@ export class AuthenticationService {
 
       }).catch(async error => {
         const alert = await this.alertController.create({
-          header: this.alertErrorHeader,
+          header: this.translate.alertErrorHeader,
           message: error.message,
           buttons: [
             {
-              text: this.alertButton,
+              text: this.translate.alertButton,
               handler: () => {
                 console.log('pressed');
               }
@@ -125,15 +120,15 @@ export class AuthenticationService {
   }
 
   async resendConfirmationCode(username: string) {
-    this.resendTranslations();
+    this.translate.resendTranslations();
     try {
       await Auth.resendSignUp(username);
       const alert = await this.alertController.create({
-        header: this.alertHeader,
-        message: this.alertMessage,
+        header: this.translate.alertHeader,
+        message: this.translate.alertMessage,
         buttons: [
           {
-            text: this.alertButton,
+            text: this.translate.alertButton,
             handler: () => {
               console.log('pressed');
             }
@@ -143,11 +138,11 @@ export class AuthenticationService {
       await alert.present();
     } catch (err) {
       const alert = await this.alertController.create({
-        header: this.alertErrorHeader,
+        header: this.translate.alertErrorHeader,
         message: err.message,
         buttons: [
           {
-            text: this.alertButton,
+            text: this.translate.alertButton,
             handler: () => {
               console.log('pressed');
             }
@@ -160,11 +155,11 @@ export class AuthenticationService {
 
    // can use code for verification
    async confirmSignUpWithCode(username: string, code: string) {
-     this.confirmSignUpWithCodeTranslation();
+     this.translate.confirmSignUpWithCodeTranslation();
      try {
       await Auth.confirmSignUp(username, code);
       const toast = this.toaster.create({
-        message: this.toastMessage,
+        message: this.translate.toastMessage,
         duration: 3000,
         position: 'bottom'
       });
@@ -172,11 +167,11 @@ export class AuthenticationService {
       toast.then(toast => toast.present());
     } catch (error) {
       const alert = await this.alertController.create({
-        header: this.alertErrorHeader,
+        header: this.translate.alertErrorHeader,
         message: error.message,
         buttons: [
           {
-            text: this.alertButton,
+            text: this.translate.alertButton,
             handler: () => {
               console.log('pressed');
             }
@@ -188,11 +183,11 @@ export class AuthenticationService {
   }
 
   async signOut() {
-    this.signoutTranslation();
+    this.translate.signoutTranslation();
     try {
       await Auth.signOut().then((response) => {
         const toast = this.toaster.create({
-          message: this.toastMessage,
+          message: this.translate.toastMessage,
           duration: 3000,
           position: 'top'
         });
@@ -204,11 +199,11 @@ export class AuthenticationService {
       });
     } catch (error) {
       const alert = await this.alertController.create({
-        header: this.alertErrorHeader,
+        header: this.translate.alertErrorHeader,
         message: error.message,
         buttons: [
           {
-            text: this.alertButton,
+            text: this.translate.alertButton,
             handler: () => {
               console.log('pressed');
             }
@@ -245,105 +240,5 @@ export class AuthenticationService {
 
   submitCode(email: string, code: string, password: string) {
     return Auth.forgotPasswordSubmit(email, code, password);
-  }
-
-  private resendTranslations() {
-    this.translate.get('alerts.emailVerHeader').subscribe(
-      value => {
-        this.alertHeader = value;
-      }
-    );
-    this.translate.get('alerts.emailCode').subscribe(
-      value => {
-        this.alertMessage = value;
-      }
-    );
-    this.translate.get('alerts.errorHeader').subscribe(
-      value => {
-        this.alertErrorHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
-  }
-
-  private confirmSignUpWithCodeTranslation() {
-    this.translate.get('toasts.verifySuccess').subscribe(
-      value => {
-        this.toastMessage = value;
-      }
-    );
-    this.translate.get('alerts.errorHeader').subscribe(
-      value => {
-        this.alertErrorHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
-  }
-
-  private signoutTranslation() {
-    this.translate.get('toasts.logoutSuccess').subscribe(
-      value => {
-        this.toastMessage = value;
-      }
-    );
-    this.translate.get('alerts.errorHeader').subscribe(
-      value => {
-        this.alertErrorHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
-  }
-
-  private RegisterTranslations(){
-    this.translate.get('alerts.emailVerHeader').subscribe(
-      value => {
-        this.alertHeader = value;
-      }
-    );
-    this.translate.get('alerts.email.VerMessage').subscribe(
-      value => {
-        this.alertMessage = value;
-      }
-    );
-    this.translate.get('alerts.errorHeader').subscribe(
-      value => {
-        this.alertErrorHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
-  }
-  
-  private signTranslations(){
-    this.translate.get('toasts.successLogin').subscribe(
-      value => {
-        this.toastMessage = value;
-      }
-    );
-    this.translate.get('alerts.authErrorHeader').subscribe(
-      value => {
-        this.alertHeader = value;
-      }
-    );
-    this.translate.get('alerts.buttonOk').subscribe(
-      value => {
-        this.alertButton = value;
-      }
-    );
   }
 }
