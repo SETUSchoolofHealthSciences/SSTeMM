@@ -1,4 +1,11 @@
 <ion-content class="dark-gb" [fullscreen]="true">
+  <div class="flag" align="right">
+  <ngx-flag-picker
+      [selectedCountryCode]="selectedCountryCode"
+      [countryCodes]="countryCodes"
+      (changedCountryCode)="changeSelectedCountryCode($event)">
+    </ngx-flag-picker>
+  </div>
   <div class="logoLogin">
     <div class="center">
       <ion-img

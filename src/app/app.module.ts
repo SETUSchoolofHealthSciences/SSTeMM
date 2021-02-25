@@ -16,6 +16,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import aws_exports from '../aws-exports';
+import { NgxFlagPickerModule } from 'ngx-flag-picker';
 Amplify.configure(aws_exports);
 /* Amplify.configure({
   Auth: {
@@ -47,7 +48,8 @@ export function httpLoaderFactory(http: HttpClient) {
         useFactory: (httpLoaderFactory),
         deps: [HttpClient]
       }
-    })
+    }),
+    NgxFlagPickerModule
   ],
   providers: [
     StatusBar,

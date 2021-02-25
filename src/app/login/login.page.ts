@@ -7,6 +7,9 @@ import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms'
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  selectedCountryCode = 'ie';
+  countryCodes = ['ie', 'es', 'si'];
+
   formGroup: FormGroup;
   submitted = false;
   constructor(public fb: FormBuilder, private auth: AuthenticationService) {
@@ -28,6 +31,10 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {}
+
+  changeSelectedCountryCode(value: string): void {
+    this.selectedCountryCode = value;
+  }
 
   get loginFormControl() {
     return this.formGroup.controls;

@@ -10,6 +10,7 @@ import { LoginPage } from './login.page';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { httpLoaderFactory } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
+import { NgxFlagPickerModule } from 'ngx-flag-picker';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { HttpClient } from '@angular/common/http';
         useFactory: httpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    NgxFlagPickerModule
   ],
   declarations: [LoginPage]
 })
