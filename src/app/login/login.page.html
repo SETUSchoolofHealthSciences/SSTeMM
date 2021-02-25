@@ -1,6 +1,8 @@
 <ion-content class="dark-gb" [fullscreen]="true">
   <div class="flag" align="right">
   <ngx-flag-picker
+      [showArrow]="false"
+      [showLabels]="false"
       [selectedCountryCode]="selectedCountryCode"
       [countryCodes]="countryCodes"
       (changedCountryCode)="changeSelectedCountryCode($event)">
