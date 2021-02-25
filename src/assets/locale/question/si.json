@@ -1,0 +1,37 @@
+{
+	"domains": [
+		{
+			"domain": "Thoughts",
+			"id": "think",
+			"questions": [
+				{ "id": 1, "question": "Nisem sposob(e)n/a in prepričan/a v svoje delo v kliničnem okolju" },
+				{ "id": 2, "question": "Razmišljam o  stvareh, ki so se zgodile pri delu v kliničnem delu"},
+				{ "id": 3, "question": "Nenehno razmišljam o obveznostih na fakulteti"},
+				{ "id": 4, "question": "Mislim, da nisem dovolj dob(e)r/a, da bi klinično delo opravil/a pravilno"},
+				{ "id": 5, "question": "Mislim, da nisem sposob(e)n/a obvladovati svojih obveznosti na fakulteti"}
+			]
+		},
+		{
+			"domain": "Feelings",
+			"id": "feel",
+			"questions": [
+				{ "id": 1, "question": "Vedno, ko moram narediti nekaj novega, dobim 'metuljčke' v trebuhu/počutim se prestrašeno"},
+				{ "id": 2, "question": "Imam občutek, da moji sošolci lažje opravljajo delo v kliničnem okolju, kot jaz"},
+				{ "id": 3, "question": "Skrbi me, da bom morda naredil/a napake in bodo ljudje zaradi tega trpeli"},
+				{ "id": 4, "question": "Nervoz(e)n/a sem, ker lahko osebje v kliničnem okolju ugotovi, da nisem sposob(e)n/a toliko kot mislijo"},
+				{ "id": 5, "question": "Zaskrbljen/a sem glede vrednotenja/supervizije in strah me je, ko me drugi ocenjujejo"}
+			]
+		},
+		{
+			"domain": "Behaviours",
+			"id": "do",
+			"questions": [
+				{ "id": 1, "question": "Ne izražam svojega mnenja, ker se bojim nesoglasij s sodelavci v kliničnem okolju"},
+				{ "id": 2, "question": "Nikoli se ne naspim"},
+				{ "id": 3, "question": "Pogosto prosim za nasvet več različnih ljudi, preden sem zadovolj(e)n/a s tem,  kar počnem"},
+				{ "id": 4, "question": "V mislih vedno znova ponavljam stvari, da se pomirim"},
+				{ "id": 5, "question": "Odlagam opravljanje nalog/študijskih obveznosti, katere se mi zdijo težke"}
+			]
+		}
+	]
+}
