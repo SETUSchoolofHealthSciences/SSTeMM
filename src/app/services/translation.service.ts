@@ -11,6 +11,9 @@ export class TranslationService {
   alertButtonOne: string;
   alertButtonTwo: string;
   alertErrorHeader: string;
+  thoughts: string;
+  feelings: string;
+  behaviours: string;
 
   constructor(private translate: TranslateService) { }
 
@@ -243,6 +246,24 @@ export class TranslationService {
     this.translate.get('alerts.buttonNo').subscribe(
       value => {
         this.alertButtonTwo = value;
+      }
+    );
+  }
+
+  public DomainNames(){
+    this.translate.get('button.thoughts').subscribe(
+      value => {
+        this.thoughts = value;
+      }
+    );
+    this.translate.get('button.feelings').subscribe(
+      value => {
+        this.feelings = value;
+      }
+    );
+    this.translate.get('button.behaviours').subscribe(
+      value => {
+        this.behaviours = value;
       }
     );
   }

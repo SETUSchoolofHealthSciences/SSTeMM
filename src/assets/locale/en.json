@@ -57,7 +57,8 @@
   },
   "stressRecord": {
     "title": "Create Stress Signature Record",
-    "reflection": "Personal Reflection"
+    "reflection": "Personal Reflection",
+    "score": "Your Score"
   },
   "alerts": {
     "errorHeader": "Authenication Error",

@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content class="dark-gb">
-  <h1 class="regTitle">Registration</h1>
+  <h1 class="regTitle">{{ 'reg.title' | translate }}</h1>
   <form [formGroup]="formGroup" (ngSubmit)="register()">
     <div>
       <ion-input

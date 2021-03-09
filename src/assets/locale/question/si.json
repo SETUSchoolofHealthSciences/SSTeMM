@@ -1,7 +1,7 @@
 {
 	"domains": [
 		{
-			"domain": "Thoughts",
+			"domain": "Misli",
 			"id": "think",
 			"questions": [
 				{ "id": 1, "question": "Nisem sposob(e)n/a in prepričan/a v svoje delo v kliničnem okolju" },
@@ -12,7 +12,7 @@
 			]
 		},
 		{
-			"domain": "Feelings",
+			"domain": "Občutki",
 			"id": "feel",
 			"questions": [
 				{ "id": 1, "question": "Vedno, ko moram narediti nekaj novega, dobim 'metuljčke' v trebuhu/počutim se prestrašeno"},
@@ -23,7 +23,7 @@
 			]
 		},
 		{
-			"domain": "Behaviours",
+			"domain": "Vedenja",
 			"id": "do",
 			"questions": [
 				{ "id": 1, "question": "Ne izražam svojega mnenja, ker se bojim nesoglasij s sodelavci v kliničnem okolju"},

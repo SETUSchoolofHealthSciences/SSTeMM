@@ -57,7 +57,8 @@
     },
     "stressRecord": {
       "title": "Ustvarite poročilo o stresu",
-      "reflection": "Osebna refleksija"
+      "reflection": "Osebna refleksija",
+      "score": "Vaš rezultat"
     },
     "alerts": {
       "errorHeader": "Preverjanje pristnosti ni uspelo",

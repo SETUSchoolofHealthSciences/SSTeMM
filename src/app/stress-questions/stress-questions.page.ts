@@ -35,7 +35,8 @@ export class StressQuestionsPage implements OnInit {
 
   readData() {
     const questionId = this.route.snapshot.paramMap.get('id');
-    fetch('./assets/locale/question/en.json').then(res => res.json())
+    this.storageService.getLocalData('lang').then(language => {
+      fetch('./assets/locale/question/' + language + '.json').then(res => res.json())
       .then(json => {
         for (const con of json.domains) {
           if (questionId === con.id) {
@@ -46,6 +47,7 @@ export class StressQuestionsPage implements OnInit {
           }
         }
       });
+    });
   }
 
   async goBack(){

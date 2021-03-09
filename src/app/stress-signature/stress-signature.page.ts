@@ -25,6 +25,7 @@ export class StressSignaturePage implements OnInit {
   behaviourDomain = false;
   totalScore = 0;
   domains = [] as string[];
+
   public isDomainHidden = false;
   public isChoiceHidden = true;
 
@@ -38,6 +39,7 @@ export class StressSignaturePage implements OnInit {
   }
 
   ionViewDidEnter(){
+    this.translate.DomainNames();
     this.storageService.getLocalData(TOKEN_KEY_TWO).then((res) => {
       if (res === null) {
         return;
@@ -47,17 +49,17 @@ export class StressSignaturePage implements OnInit {
       this.domains.push(res.domain);
       for (const domain of this.totalScores) {
         switch (domain.domain ) {
-          case 'Thoughts': {
+          case this.translate.thoughts: {
             this.thoughtDomain = true;
             break;
           }
 
-          case 'Feelings': {
+          case this.translate.feelings: {
             this.feelingDomain = true;
             break;
           }
 
-          case 'Behaviours': {
+          case this.translate.behaviours: {
             this.behaviourDomain = true;
             break;
           }
