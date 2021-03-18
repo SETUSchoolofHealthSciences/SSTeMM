@@ -1,88 +1,88 @@
 {
   "input": {
-    "email": "Email Address",
-    "password": "Password",
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "college": "College",
-    "collegeYear": "College Year",
+    "email": "Dirección de correo electrónico",
+    "password": "Contraseña",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "college": "Universidad",
+    "collegeYear": "Curso académico",
     "hospital": "Hospital",
-    "confirmPassword": "Confirm Password",
-    "termsStart": "By clicking here I accept the ",
-    "termsLink": "Terms & Conditions",
-    "termsEnd": "for using this service",
-    "verify": "Verification Code",
-    "reflection": "Enter your personal Reflection here...."
+    "confirmPassword": "Confirmar contraseña",
+    "termsStart": "Al hacer clic aquí acepto los ",
+    "termsLink": " términos y condiciones",
+    "termsEnd": "de uso de este servicio",
+    "verify": "Código de verificación",
+    "reflection": "Introduzca aquí su reflexión personal...."
   },
   "validation": {
-    "emailRequired": "Email address is required",
-    "emailValid": "Enter a valid email address",
-    "passwordRequired": "Password is required",
-    "firstRequired": "First Name is required",
-    "lastRequired": "Last Name is required",
-    "collegeYear": "College Year is between 1-5",
-    "passwordRequirements": "Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
-    "confirmPassword": "Confirm Password is required",
-    "matchPasswords": "Passwords does not match",
-    "terms": "Please accept the terms & conditions",
-    "verify": "Verification Code is required"
+    "emailRequired": "Se requiere la dirección de correo electrónico",
+    "emailValid": "Introduzca una dirección de correo electrónico válida",
+    "passwordRequired": "La contraseña es obligatoria",
+    "firstRequired": "El nombre es obligatorio",
+    "lastRequired": "Apellido es obligatorio",
+    "collegeYear": "El año de la universidad es entre 1-5",
+    "passwordRequirements": "La contraseña debe tener un mínimo de 8 caracteres, al menos 1 letra mayúscula, 1 letra minúscula y 1 número",
+    "confirmPassword": "Se requiere confirmar la contraseña",
+    "matchPasswords": "La contraseña no coincide",
+    "terms": "Por favor, acepte los términos y condiciones",
+    "verify": "Se requiere un código de verificación"
   },
   "login": {
-    "forgotPass": "Forgot Password",
-    "new": "help me se"
+    "forgotPass": "Olvidé mi contraseña",
+    "new": "¿Aún no tiene accesso? Cree una cuenta"
   },
   "reg": {
-    "title": "Registration"
+    "title": "Registro"
   },
   "button": {
-    "cancel": "Cancel",
-    "register": "Register",
-    "login": "Login",
-    "already": "Already Have Code",
-    "submit": "Submit",
-    "save": "Save",
-    "pickDomain": "Pick Domain",
-    "thoughts": "Thoughts",
-    "feelings": "Feelings",
-    "behaviours": "Behaviours",
-    "back": "Go Back"
+    "cancel": "Cancelar",
+    "register": "Registrarse",
+    "login": "Iniciar sesión",
+    "already": "Ya tengo el código",
+    "submit": "Enviar",
+    "save": "Guardar",
+    "pickDomain": "Escoger dominio",
+    "thoughts": "Pensamientos",
+    "feelings": "Sentimientos",
+    "behaviours": "Comportamientos",
+    "back": "Regresar"
   },
   "forgot": {
-    "title": "Forgot Password",
-    "code": "Submit Code"
+    "title": "Olvidé mi contraseña",
+    "code": "Ingrese el código"
   },
   "home": {
-    "title": "Most Recent Entries",
-    "none": "There is no recent entries"
+    "title": "Entradas más recientes",
+    "none": "No hay entradas recientes"
   },
   "stressRecord": {
-    "title": "Create Stress Signature Record",
-    "reflection": "Personal Reflection",
+    "title": "Crear registro de firma de estrés",
+    "reflection": "Reflexión personal",
     "score": "Tu puntuación"
   },
   "alerts": {
-    "errorHeader": "Authenication Error",
-    "buttonOk": "Ok",
+    "errorHeader": "Error de autentificación",
+    "buttonOk": "De acuerdo",
     "buttonNo": "No",
-    "buttonYes": "Yes",
-    "buttonTry": "Try Again",
-    "leavePageHeader": "Leave this page?",
-    "regLeavePageMessage": "Are you sure you want to leave this page? Your registration will not be saved.",
-    "emailVerHeader": "Email Verification",
-    "emailVerMessage": "Please check your emails to verify your account.",
-    "emailCode": "Please check emails for new code.",
-    "forgotPasswordHeader": "Verification Code",
-    "forgotPasswordMessage": "A verification code has been sent to ",
-    "forgotPassworderrorHeader": "User Not Found",
-    "stressLeaveMessage": "Are you sure you want to leave this page? Stress Signature entry will not be saved.",
-    "stressSaveHeader": "No data to be saved",
-    "stressSaveMessage": "There is no data to be saved to this entry.",
-    "stressQuestionsMessage":"Are you sure you want to leave this page? Your current score will not be saved."
+    "buttonYes": "Si",
+    "buttonTry": "Inténtelo de nuevo",
+    "leavePageHeader": "¿Dejar esta página?",
+    "regLeavePageMessage": "¿Seguro de que quiere abandonar esta página? Su registro no se guardará.",
+    "emailVerHeader": "Verificación del correo electrónico",
+    "emailVerMessage": "Compruebe los correos electrónicos para verificar la cuenta.",
+    "emailCode": "Por favor, compruebe los correos electrónicos para el nuevo código.",
+    "forgotPasswordHeader": "Código de verificación",
+    "forgotPasswordMessage": "Se ha enviado un código de verificación a ",
+    "forgotPassworderrorHeader": "Usuario no encontrado",
+    "stressLeaveMessage": "¿Seguro de que quieres abandonar esta página? La entrada de la firma de estrés no se guardará.",
+    "stressSaveHeader": "No hay datos que guardar",
+    "stressSaveMessage": "No hay datos que guardar en esta entrada.",
+    "stressQuestionsMessage":"¿Seguro de que desea abandonar esta página? Su puntuación actual no se guardará."
   },
   "toasts": {
-    "successLogin": "You are logged in successfully!",
-    "verifySuccess": "Your account is now verified!",
-    "logoutSuccess": "You are signed out successfully!",
-    "passwordChangeSuccess": "Your password was changed successfully!"
+    "successLogin": "¡Ha iniciado la sesión con éxito!",
+    "verifySuccess": "Su cuenta ya está verificada",
+    "logoutSuccess": "¡Ha cerrado la sesión con éxito!",
+    "passwordChangeSuccess": "¡Su contraseña ha sido cambiada con éxito!"
   }
 }
