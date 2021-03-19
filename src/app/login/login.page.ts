@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LoginPage implements OnInit {
   selectedCountryCode: string;
-  countryCodes = ['ie', 'es', 'si'];
+  countryCodes = ['ie', 'es', 'si', 'de'];
 
   formGroup: FormGroup;
   submitted = false;
@@ -49,6 +49,11 @@ export class LoginPage implements OnInit {
           break;
         }
         case 'si': {
+          this.selectedCountryCode = data;
+          this.translate.use(data);
+          break;
+        }
+        case 'de': {
           this.selectedCountryCode = data;
           this.translate.use(data);
           break;
