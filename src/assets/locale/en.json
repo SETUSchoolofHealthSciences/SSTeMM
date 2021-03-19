@@ -1,0 +1,88 @@
+{
+  "input": {
+    "email": "Email Address",
+    "password": "Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "college": "College",
+    "collegeYear": "College Year",
+    "hospital": "Hospital",
+    "confirmPassword": "Confirm Password",
+    "termsStart": "By clicking here I accept the ",
+    "termsLink": "Terms & Conditions",
+    "termsEnd": "for using this service",
+    "verify": "Verification Code",
+    "reflection": "Enter your personal Reflection here...."
+  },
+  "validation": {
+    "emailRequired": "Email address is required",
+    "emailValid": "Enter a valid email address",
+    "passwordRequired": "Password is required",
+    "firstRequired": "First Name is required",
+    "lastRequired": "Last Name is required",
+    "collegeYear": "College Year is between 1-5",
+    "passwordRequirements": "Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
+    "confirmPassword": "Confirm Password is required",
+    "matchPasswords": "Passwords does not match",
+    "terms": "Please accept the terms & conditions",
+    "verify": "Verification Code is required"
+  },
+  "login": {
+    "forgotPass": "Forgot Password",
+    "new": "No account yet? Create one"
+  },
+  "reg": {
+    "title": "Registration"
+  },
+  "button": {
+    "cancel": "Cancel",
+    "register": "Register",
+    "login": "Login",
+    "already": "Already Have Code",
+    "submit": "Submit",
+    "save": "Save",
+    "pickDomain": "Pick Domain",
+    "thoughts": "Thoughts",
+    "feelings": "Feelings",
+    "behaviours": "Behaviours",
+    "back": "Go Back"
+  },
+  "forgot": {
+    "title": "Forgot Password",
+    "code": "Submit Code"
+  },
+  "home": {
+    "title": "Most Recent Entries",
+    "none": "There is no recent entries"
+  },
+  "stressRecord": {
+    "title": "Create Stress Signature Record",
+    "reflection": "Personal Reflection",
+    "score": "Your Score"
+  },
+  "alerts": {
+    "errorHeader": "Authenication Error",
+    "buttonOk": "Ok",
+    "buttonNo": "No",
+    "buttonYes": "Yes",
+    "buttonTry": "Try Again",
+    "leavePageHeader": "Leave this page?",
+    "regLeavePageMessage": "Are you sure you want to leave this page? Your registration will not be saved.",
+    "emailVerHeader": "Email Verification",
+    "emailVerMessage": "Please check your emails to verify your account.",
+    "emailCode": "Please check emails for new code.",
+    "forgotPasswordHeader": "Verification Code",
+    "forgotPasswordMessage": "A verification code has been sent to ",
+    "forgotPassworderrorHeader": "User Not Found",
+    "stressLeaveMessage": "Are you sure you want to leave this page? Stress Signature entry will not be saved.",
+    "stressSaveHeader": "No data to be saved",
+    "stressSaveMessage": "There is no data to be saved to this entry.",
+    "stressQuestionsMessage":"Are you sure you want to leave this page? Your current score will not be saved."
+  },
+  "toasts": {
+    "successLogin": "You are logged in successfully!",
+    "verifySuccess": "Your account is now verified!",
+    "logoutSuccess": "You are signed out successfully!",
+    "passwordChangeSuccess": "Your password was changed successfully!"
+  }
+}

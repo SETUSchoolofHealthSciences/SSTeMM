@@ -12,7 +12,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { PasswordPatternDirective } from './directives/password-pattern.directive';
 import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import aws_exports from '../aws-exports';
+import { NgxFlagPickerModule } from 'ngx-flag-picker';
 Amplify.configure(aws_exports);
 /* Amplify.configure({
   Auth: {
@@ -23,6 +27,9 @@ Amplify.configure(aws_exports);
     authenticationFlowType: 'USER_PASSWORD_AUTH'
   }
 }); */
+export function httpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/locale/', '.json');
+}
 @NgModule({
   declarations: [AppComponent, PasswordMatchDirective, PasswordPatternDirective],
   entryComponents: [],
@@ -32,7 +39,17 @@ Amplify.configure(aws_exports);
     IonicStorageModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    AmplifyAngularModule
+    AmplifyAngularModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (httpLoaderFactory),
+        deps: [HttpClient]
+      }
+    }),
+    NgxFlagPickerModule
   ],
   providers: [
     StatusBar,

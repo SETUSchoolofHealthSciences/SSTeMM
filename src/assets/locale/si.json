@@ -1,0 +1,88 @@
+{
+    "input": {
+      "email": "E-poštni naslov",
+      "password": "Geslo",
+      "firstName": "Ime",
+      "lastName": "Priimek",
+      "college": "Visokošolski zavod",
+      "collegeYear": "Letnik študija",
+      "hospital": "Bolnišnica",
+      "confirmPassword": "Potrdi geslo",
+      "termsStart": "S klikom na to povezavo sprejemam ",
+      "termsLink": "splošne pogoje uporabe",
+      "termsEnd": "za uporabo te storitve",
+      "verify": "Potrditvena koda",
+      "reflection": "Tukaj vnesite vašo osebno refleksijo "
+    },
+    "validation": {
+      "emailRequired": "E-naslov je obvezen",
+      "emailValid": "Vnesite veljaven e-naslov",
+      "passwordRequired": "Zahtevano je geslo",
+      "firstRequired": "Ime je obvezen podatek",
+      "lastRequired": "Priimek je obvezen podatek",
+      "collegeYear": "Letnik študija je med 1 in 3",
+      "passwordRequirements": "Geslo mora imeti najmanj 8 znakov, vsebovati mora vsaj 1 veliko črko, 1 malo črko in 1 številko",
+      "confirmPassword": "Potrditev gesla je obvezna",
+      "matchPasswords": "Geslo se ne ujema",
+      "terms": "Prosimo, sprejmite pogoje in določila",
+      "verify": "Potrditvena koda je obvezna"
+    },
+    "login": {
+      "forgotPass": "Pozabljeno geslo",
+      "new": "Še nimate uporabniškega računa? Ustvarite ga"
+    },
+    "reg": {
+      "title": "Registracija"
+    },
+    "button": {
+      "cancel": "Prekliči",
+      "register": "Registrirajte se",
+      "login": "Prijava",
+      "already": "Že imam kodo",
+      "submit": "Oddajte",
+      "save": "Shranite",
+      "pickDomain": "Izberite domeno",
+      "thoughts": "Misli",
+      "feelings": "Občutki",
+      "behaviours": "Vedenja",
+      "back": "Pojdite nazaj"
+    },
+    "forgot": {
+      "title": "Pozabljeno geslo",
+      "code": "Oddajte kodo"
+    },
+    "home": {
+      "title": "Nedavni vnosi",
+      "none": "Ni nedavnih vnosov"
+    },
+    "stressRecord": {
+      "title": "Ustvarite poročilo o stresu",
+      "reflection": "Osebna refleksija",
+      "score": "Vaš rezultat"
+    },
+    "alerts": {
+      "errorHeader": "Preverjanje pristnosti ni uspelo",
+      "buttonOk": "V redu",
+      "buttonNo": "Ne",
+      "buttonYes": "Da",
+      "buttonTry": "Poskusite znova",
+      "leavePageHeader": "Ali želite zapustiti to stran?",
+      "regLeavePageMessage": "Ali ste prepričani, da želite zapustiti to stran? Vaša registracija ne bo shranjena.",
+      "emailVerHeader": "Verifikacija e-poštnega naslova",
+      "emailVerMessage": "Prosimo, preverite ali ste prejeli sporočilo za verifikacijo vašega e-poštnega naslova.",
+      "emailCode": "Prosimo, preverite e-pošto za novo geslo.",
+      "forgotPasswordHeader": "Potrditvena koda",
+      "forgotPasswordMessage": "Potrditvena koda je bila poslana ",
+      "forgotPassworderrorHeader": "Uporabnik ni najden",
+      "stressLeaveMessage": "Ali ste prepričani, da želite zapustiti to stran? Vnos poročila o stresu ne bo shranjen.",
+      "stressSaveHeader": "Ni podatkov za shranjevanje",
+      "stressSaveMessage": "Za ta vnos ni podatkov, ki bi jih bilo mogoče shraniti.",
+      "stressQuestionsMessage":"Ali ste prepričani, da želite zapustiti to stran? Vaš trenutni rezultat ne bo shranjen."
+    },
+    "toasts": {
+      "successLogin": "Uspešno ste se prijavili! ",
+      "verifySuccess": "Vaš račun je sedaj preverjen!",
+      "logoutSuccess": "Uspešno ste se odjavili!",
+      "passwordChangeSuccess": "Vaše geslo je bilo uspešno spremenjeno!"
+    }
+  }

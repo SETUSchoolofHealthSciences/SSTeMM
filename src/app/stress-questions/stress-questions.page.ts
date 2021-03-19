@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ScoreCard, TotalScore } from '../interface/stress-signature';
 import { StorageService } from '../services/storage.service';
 import { AlertController } from '@ionic/angular';
+import { TranslationService } from '../services/translation.service';
 
 const TOKEN_KEY = 'domain-quest';
 @Component({
@@ -24,7 +25,8 @@ export class StressQuestionsPage implements OnInit {
   constructor(private go: Router,
               private route: ActivatedRoute,
               private storageService: StorageService,
-              private alertController: AlertController ) {
+              private alertController: AlertController,
+              private translate: TranslationService ) {
     this.readData();
    }
 
@@ -33,7 +35,8 @@ export class StressQuestionsPage implements OnInit {
 
   readData() {
     const questionId = this.route.snapshot.paramMap.get('id');
-    fetch('./assets/data/questions.json').then(res => res.json())
+    this.storageService.getLocalData('lang').then(language => {
+      fetch('./assets/locale/question/' + language + '.json').then(res => res.json())
       .then(json => {
         for (const con of json.domains) {
           if (questionId === con.id) {
@@ -44,21 +47,23 @@ export class StressQuestionsPage implements OnInit {
           }
         }
       });
+    });
   }
 
   async goBack(){
+    this.translate.StressQuestionsGoBack();
     const alert = await this.alertController.create({
-      header: 'Leave this page?',
-      message: 'Are you sure you want to leave this page? Your current score will not be saved.',
+      header: this.translate.alertHeader,
+      message: this.translate.alertMessage,
       buttons: [
         {
-          text: 'No',
+          text: this.translate.alertButtonTwo,
           handler: () => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Yes',
+          text: this.translate.alertButtonOne,
           handler: () => {
             this.go.navigate(['/stress-signature']);
           }

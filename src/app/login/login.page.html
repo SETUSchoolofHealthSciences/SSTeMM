@@ -1,4 +1,13 @@
 <ion-content class="dark-gb" [fullscreen]="true">
+  <div class="flag" align="right">
+  <ngx-flag-picker
+      class="picker"
+      [showLabels]="false"
+      [selectedCountryCode]="selectedCountryCode"
+      [countryCodes]="countryCodes"
+      (changedCountryCode)="changeSelectedCountryCode($event)">
+    </ngx-flag-picker>
+  </div>
   <div class="logoLogin">
     <div class="center">
       <ion-img
@@ -14,20 +23,20 @@
         formControlName="emailControl"
         required="true"
         type="email"
-        placeholder="Email Address"
+        placeholder="{{ 'input.email' | translate }}"
       >
       </ion-input>
       <span
         class="text-danger"
         *ngIf="(loginFormControl.emailControl.touched || submitted) && loginFormControl.emailControl.errors?.required"
       >
-        Email address is required
+      {{ 'validation.emailRequired' | translate }}
       </span>
       <span
         class="text-danger"
         *ngIf="loginFormControl.emailControl.touched && loginFormControl.emailControl.errors?.email"
       >
-        Enter a valid email address
+      {{ 'validation.emailValid' | translate }}
       </span>
     </div>
     <div>
@@ -36,29 +45,29 @@
         formControlName="passwordControl"
         required="true"
         type="password"
-        placeholder="Password"
+        placeholder="{{ 'input.password' | translate }}"
       >
       </ion-input>
       <span
         class="text-danger"
         *ngIf="(loginFormControl.passwordControl.touched || submitted) && loginFormControl.passwordControl.errors?.required"
       >
-        Password is required
+      {{ 'validation.passwordRequired' | translate }}
       </span>
     </div>
 
     <div class="forgotPassword">
-      <a class="text" routerLink="/forgot-password">Forgot Password</a>
+      <a class="text" routerLink="/forgot-password">{{ 'login.forgotPass' | translate }}</a>
     </div>
 
     <div class="loginButton">
       <ion-button class="buttonDetails" expand="block" type="submit"
-        >Login</ion-button
+        >{{ 'button.login' | translate }}</ion-button
       >
     </div>
   </form>
   <div class="registration">
-    <a class="text" routerLink="/registration">No account yet? Create one</a>
+    <a class="text" routerLink="/registration">{{ 'login.new' | translate }}</a>
   </div>
   <div class="logoEU">
     <div class="image">

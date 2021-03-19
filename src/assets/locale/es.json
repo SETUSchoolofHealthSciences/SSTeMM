@@ -1,0 +1,88 @@
+{
+  "input": {
+    "email": "Dirección de correo electrónico",
+    "password": "Contraseña",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "college": "Universidad",
+    "collegeYear": "Curso académico",
+    "hospital": "Hospital",
+    "confirmPassword": "Confirmar contraseña",
+    "termsStart": "Al hacer clic aquí acepto los ",
+    "termsLink": " términos y condiciones",
+    "termsEnd": "de uso de este servicio",
+    "verify": "Código de verificación",
+    "reflection": "Introduzca aquí su reflexión personal...."
+  },
+  "validation": {
+    "emailRequired": "Se requiere la dirección de correo electrónico",
+    "emailValid": "Introduzca una dirección de correo electrónico válida",
+    "passwordRequired": "La contraseña es obligatoria",
+    "firstRequired": "El nombre es obligatorio",
+    "lastRequired": "Apellido es obligatorio",
+    "collegeYear": "El año de la universidad es entre 1-5",
+    "passwordRequirements": "La contraseña debe tener un mínimo de 8 caracteres, al menos 1 letra mayúscula, 1 letra minúscula y 1 número",
+    "confirmPassword": "Se requiere confirmar la contraseña",
+    "matchPasswords": "La contraseña no coincide",
+    "terms": "Por favor, acepte los términos y condiciones",
+    "verify": "Se requiere un código de verificación"
+  },
+  "login": {
+    "forgotPass": "Olvidé mi contraseña",
+    "new": "¿Aún no tiene accesso? Cree una cuenta"
+  },
+  "reg": {
+    "title": "Registro"
+  },
+  "button": {
+    "cancel": "Cancelar",
+    "register": "Registrarse",
+    "login": "Iniciar sesión",
+    "already": "Ya tengo el código",
+    "submit": "Enviar",
+    "save": "Guardar",
+    "pickDomain": "Escoger dominio",
+    "thoughts": "Pensamientos",
+    "feelings": "Sentimientos",
+    "behaviours": "Comportamientos",
+    "back": "Regresar"
+  },
+  "forgot": {
+    "title": "Olvidé mi contraseña",
+    "code": "Ingrese el código"
+  },
+  "home": {
+    "title": "Entradas más recientes",
+    "none": "No hay entradas recientes"
+  },
+  "stressRecord": {
+    "title": "Crear registro de firma de estrés",
+    "reflection": "Reflexión personal",
+    "score": "Tu puntuación"
+  },
+  "alerts": {
+    "errorHeader": "Error de autentificación",
+    "buttonOk": "De acuerdo",
+    "buttonNo": "No",
+    "buttonYes": "Si",
+    "buttonTry": "Inténtelo de nuevo",
+    "leavePageHeader": "¿Dejar esta página?",
+    "regLeavePageMessage": "¿Seguro de que quiere abandonar esta página? Su registro no se guardará.",
+    "emailVerHeader": "Verificación del correo electrónico",
+    "emailVerMessage": "Compruebe los correos electrónicos para verificar la cuenta.",
+    "emailCode": "Por favor, compruebe los correos electrónicos para el nuevo código.",
+    "forgotPasswordHeader": "Código de verificación",
+    "forgotPasswordMessage": "Se ha enviado un código de verificación a ",
+    "forgotPassworderrorHeader": "Usuario no encontrado",
+    "stressLeaveMessage": "¿Seguro de que quieres abandonar esta página? La entrada de la firma de estrés no se guardará.",
+    "stressSaveHeader": "No hay datos que guardar",
+    "stressSaveMessage": "No hay datos que guardar en esta entrada.",
+    "stressQuestionsMessage":"¿Seguro de que desea abandonar esta página? Su puntuación actual no se guardará."
+  },
+  "toasts": {
+    "successLogin": "¡Ha iniciado la sesión con éxito!",
+    "verifySuccess": "Su cuenta ya está verificada",
+    "logoutSuccess": "¡Ha cerrado la sesión con éxito!",
+    "passwordChangeSuccess": "¡Su contraseña ha sido cambiada con éxito!"
+  }
+}
