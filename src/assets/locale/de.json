@@ -1,0 +1,88 @@
+{
+    "input": {
+      "email": "E-Mail Adresse",
+      "password": "Passwort",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "college": "Hochschule",
+      "collegeYear": "Hochschuljahr",
+      "hospital": "Hospital",
+      "confirmPassword": "Bitte das Passwort bestätigen",
+      "termsStart": "Mit dem Anklicken bestätigen Sie die ",
+      "termsLink": "AGBs",
+      "termsEnd": "für die Nutzung dieses Dienstes",
+      "verify": "Verifizierungscode",
+      "reflection": "Geben Sie hier Ihre persönlichen Gedanken ein...."
+    },
+    "validation": {
+      "emailRequired": "Die E-Mail Adresse ist erforderlich",
+      "emailValid": "Geben Sie eine gültige E-Mail Adresse ein",
+      "passwordRequired": "Das Passwort ist erforderlich",
+      "firstRequired": "Der Vorname ist erforderlich",
+      "lastRequired": "Der Nachname ist erforderlich",
+      "collegeYear": "Das Hochschuljahr muss zwischen 1 und 5 liegen",
+      "passwordRequirements": "Das Passwort sollte mindestens 8 Zeichen haben, davon mindestens 1 Großbuchstabe, 1 Kleinbuchstabe und 1 Zahl",
+      "confirmPassword": "Passwort muss bestätiget werden",
+      "matchPasswords": "Die Passwörter stimmen nicht überein",
+      "terms": "Bitte akzeptieren Sie die AGBs",
+      "verify": "Der Verifizierungscode ist erforderlich"
+    },
+    "login": {
+      "forgotPass": "Passwort vergessen",
+      "new": "Noch kein Konto? Erstellen Sie eines"
+    },
+    "reg": {
+      "title": "Registrierung"
+    },
+    "button": {
+      "cancel": "Abbrechen",
+      "register": "Abbrechen",
+      "login": "Anmelden",
+      "already": "Code bereits vorhanden",
+      "submit": "Senden",
+      "save": "Speichern",
+      "pickDomain": "Domain auswählen",
+      "thoughts": "Überlegungen",
+      "feelings": "Gefühle",
+      "behaviours": "Verhaltensweisen",
+      "back": "Gehe zurück"
+    },
+    "forgot": {
+      "title": "Passwort vergessen",
+      "code": "Code abschicken"
+    },
+    "home": {
+      "title": "Neueste Einträge",
+      "none": "Es sind keine aktuellen Einträge vorhanden"
+    },
+    "stressRecord": {
+      "title": "Stress-Signatur Datensatz erstellen",
+      "reflection": "Persönliche Gedanken",
+      "score": "Ihre Punktzahl"
+    },
+    "alerts": {
+      "errorHeader": "Authentifizierungsfehler",
+      "buttonOk": "Ok",
+      "buttonNo": "Nein",
+      "buttonYes": "Ja",
+      "buttonTry": "Erneut versuchen",
+      "leavePageHeader": "Diese Seite verlassen?",
+      "regLeavePageMessage": "Sind Sie sicher, dass Sie diese Seite verlassen wollen? Ihre Registrierung wird dann verworfen.",
+      "emailVerHeader": "E-Mail Bestätigung",
+      "emailVerMessage": "Bitte überprüfen Sie Ihre E-Mails um Ihr Konto zu bestätigen.",
+      "emailCode": "Bitte überprüfen Sie Ihre E-Mails auf neue Codes.",
+      "forgotPasswordHeader": "Verifizierungscode",
+      "forgotPasswordMessage": "Es wurde ein Verifizierungscode gesendet an ",
+      "forgotPassworderrorHeader": "Benutzer ist nicht bekannt",
+      "stressLeaveMessage": "Sind Sie sicher, dass Sie diese Seite verlassen wollen? Der Stress-Signatur-Eintrag wird nicht gespeichert.",
+      "stressSaveHeader": "Keine zu speichernden Daten vorhanden",
+      "stressSaveMessage": "Es sind keine Daten zu diesem Eintrag zu speichern.",
+      "stressQuestionsMessage":"Sind Sie sicher, dass Sie diese Seite verlassen wollen? Ihr aktueller Score wird nicht gespeichert."
+    },
+    "toasts": {
+      "successLogin": "Sie wurden erfolgreich angemeldet!",
+      "verifySuccess": "Ihr Konto ist jetzt bestätigt!",
+      "logoutSuccess": "Sie wurden erfolgreich abgemeldet!",
+      "passwordChangeSuccess": "Ihr Passwort wurde erfolgreich geändert!"
+    }
+  }
