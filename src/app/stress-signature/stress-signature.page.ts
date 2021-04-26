@@ -169,4 +169,8 @@ export class StressSignaturePage implements OnInit {
       this.go.navigate(['/home']);
     }
   }
+
+  resources(){
+    window.location.href = 'https://sstemm.eu';
+  }
 }

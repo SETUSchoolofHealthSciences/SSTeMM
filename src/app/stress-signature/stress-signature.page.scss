@@ -85,3 +85,12 @@ hr {
   color: #5ACAF9; /* old IE */
   background-color: #5ACAF9; /* Modern Browsers */
 }
+
+.resources {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
