@@ -9,7 +9,7 @@ import {
 import { CustomvalidationService } from '../services/customvalidation.service';
 import { Router } from '@angular/router';
 import { TranslationService } from '../services/translation.service';
-import { threadId } from 'worker_threads';
+import { StorageService } from '../services/storage.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.page.html',
@@ -18,13 +18,15 @@ import { threadId } from 'worker_threads';
 export class RegistrationPage implements OnInit {
   formGroup: FormGroup;
   submitted = false;
+  si = false;
   constructor(
     public fb: FormBuilder,
     private go: Router,
     private auth: AuthenticationService,
     private customValidator: CustomvalidationService,
     private alertController: AlertController,
-    private translate: TranslationService
+    private translate: TranslationService,
+    private storage: StorageService
   ) {
     this.formGroup = fb.group(
       {
@@ -34,6 +36,10 @@ export class RegistrationPage implements OnInit {
         collegeYearControl: [
           '',
           [Validators.maxLength(1), Validators.min(1), Validators.max(5)],
+        ],
+        collegeYearControlSi: [
+          '',
+          [Validators.maxLength(1), Validators.min(1), Validators.max(3)],
         ],
         hospitalControl: [''],
         emailControl: ['', [Validators.required, Validators.email]],
@@ -56,13 +62,28 @@ export class RegistrationPage implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.storage.getLocalData('lang').then(data => {
+      console.log('lang ', data);
+      if (data === 'si') {
+        this.si = true;
+      } else {
+        this.si = false;
+      }
+    });
+  }
 
   get RegistrationFormControl() {
     return this.formGroup.controls;
   }
 
   register() {
+    let year = 1;
+    if (this.si) {
+      year = this.formGroup.value.collegeYearControlSi;
+    } else {
+      year = this.formGroup.value.collegeYearControl;
+    }
     this.submitted = true;
     if (this.formGroup.valid) {
       this.auth.register(
@@ -72,7 +93,7 @@ export class RegistrationPage implements OnInit {
         this.formGroup.value.lastNameControl,
         this.formGroup.value.hospitalControl,
         this.formGroup.value.collegeControl,
-        this.formGroup.value.collegeYearControl
+        year
       );
     }
   }

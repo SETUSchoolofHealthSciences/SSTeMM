@@ -82,7 +82,7 @@ export class TranslationService {
         this.alertHeader = value;
       }
     );
-    this.translate.get('alerts.email.VerMessage').subscribe(
+    this.translate.get('alerts.emailVerMessage').subscribe(
       value => {
         this.alertMessage = value;
       }
