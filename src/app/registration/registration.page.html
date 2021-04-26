@@ -45,7 +45,21 @@
         type="text"
       ></ion-input>
     </div>
-    <div>
+    <div *ngIf="si; else all">
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.collegeYear' | translate }}"
+        formControlName="collegeYearControlSi"
+        type="number"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.collegeYearControlSi.touched || submitted) && (RegistrationFormControl.collegeYearControlSi.errors?.max || RegistrationFormControl.collegeYearControlSi.errors?.min)"
+      >
+      {{ 'validation.collegeYear' | translate }}
+      </span>
+    </div>
+    <ng-template #all>
       <ion-input
         class="input"
         placeholder="{{ 'input.collegeYear' | translate }}"
@@ -58,7 +72,7 @@
       >
       {{ 'validation.collegeYear' | translate }}
       </span>
-    </div>
+    </ng-template>
     <div>
       <ion-input
         class="input"
