@@ -45,7 +45,8 @@
     "thoughts": "Thoughts",
     "feelings": "Feelings",
     "behaviours": "Behaviours",
-    "back": "Go Back"
+    "back": "Go Back",
+    "resources": "Resources"
   },
   "forgot": {
     "title": "Forgot Password",
