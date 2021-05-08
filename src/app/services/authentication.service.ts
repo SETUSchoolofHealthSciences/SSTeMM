@@ -49,7 +49,7 @@ export class AuthenticationService {
         });
         // tslint:disable-next-line: no-shadowed-variable
         toast.then(toast => toast.present());
-        this.go.navigate(['home']);
+        this.go.navigate(['']);
       }
     } catch (error) {
       const alert = await this.alertController.create({

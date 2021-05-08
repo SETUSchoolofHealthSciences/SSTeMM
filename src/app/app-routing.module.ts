@@ -3,10 +3,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
+
   {
-    path: 'home',
+    path: '',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
     path: 'login',
@@ -15,11 +16,6 @@ const routes: Routes = [
   {
     path: 'registration',
     loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
-  },
-  {
-    path: 'stress-signature',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./stress-signature/stress-signature.module').then( m => m.StressSignaturePageModule)
   },
   {
     path: 'stress-questions/:id',
