@@ -86,5 +86,11 @@
       "verifySuccess": "Ihr Konto ist jetzt bestätigt!",
       "logoutSuccess": "Sie wurden erfolgreich abgemeldet!",
       "passwordChangeSuccess": "Ihr Passwort wurde erfolgreich geändert!"
+    },
+    "tabs": {
+      "home": "Home",
+      "create": "Create",
+      "profile": "Profile",
+      "history": "History"
     }
   }

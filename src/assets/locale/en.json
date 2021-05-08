@@ -86,5 +86,11 @@
     "verifySuccess": "Your account is now verified!",
     "logoutSuccess": "You are signed out successfully!",
     "passwordChangeSuccess": "Your password was changed successfully!"
+  },
+  "tabs": {
+    "home": "Home",
+    "create": "Create",
+    "profile": "Profile",
+    "history": "History"
   }
 }

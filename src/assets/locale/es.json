@@ -86,5 +86,11 @@
     "verifySuccess": "Su cuenta ya está verificada",
     "logoutSuccess": "¡Ha cerrado la sesión con éxito!",
     "passwordChangeSuccess": "¡Su contraseña ha sido cambiada con éxito!"
+  },
+  "tabs": {
+    "home": "Home",
+    "create": "Create",
+    "profile": "Profile",
+    "history": "History"
   }
 }
