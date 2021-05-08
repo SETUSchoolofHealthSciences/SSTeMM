@@ -33,7 +33,7 @@ export class HomePage implements OnInit {
   }
 
   add(){
-    this.go.navigate(['/stress-signature']);
+    this.go.navigate(['tabs/stress-signature']);
   }
 
   logout(){
