@@ -29,6 +29,26 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+            import('../profile/profile.module').then( m => m.ProfilePageModule)
+          }
+        ]
+      },
+      {
+        path: 'history',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+            import('../history/history.module').then( m => m.HistoryPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
