@@ -54,7 +54,8 @@
   },
   "home": {
     "title": "Most Recent Entries",
-    "none": "There is no recent entries"
+    "none": "There is no recent entries",
+    "create": "Create"
   },
   "stressRecord": {
     "title": "Create Stress Signature Record",

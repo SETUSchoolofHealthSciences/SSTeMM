@@ -54,7 +54,8 @@
     },
     "home": {
       "title": "Neueste Einträge",
-      "none": "Es sind keine aktuellen Einträge vorhanden"
+      "none": "Es sind keine aktuellen Einträge vorhanden",
+      "create": "Erstellen"
     },
     "stressRecord": {
       "title": "Stress-Signatur Datensatz erstellen",

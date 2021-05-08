@@ -54,7 +54,8 @@
   },
   "home": {
     "title": "Entradas más recientes",
-    "none": "No hay entradas recientes"
+    "none": "No hay entradas recientes",
+    "create": "Crear"
   },
   "stressRecord": {
     "title": "Crear historial de estrés",

@@ -54,7 +54,8 @@
     },
     "home": {
       "title": "Nedavni vnosi",
-      "none": "Ni nedavnih vnosov"
+      "none": "Ni nedavnih vnosov",
+      "create": "Ustvari"
     },
     "stressRecord": {
       "title": "Ustvarite poročilo o stresu",
