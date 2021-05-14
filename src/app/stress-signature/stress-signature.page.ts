@@ -113,7 +113,7 @@ export class StressSignaturePage implements OnInit {
             this.storageService.removeLocalData(TOKEN_KEY_TWO);
             this.totalScore = 0;
             this.domains = [];
-            this.go.navigate(['/home']);
+            this.go.navigate(['tabs/home']);
           }
         }
       ]
@@ -134,7 +134,7 @@ export class StressSignaturePage implements OnInit {
               this.storageService.removeLocalData(TOKEN_KEY_TWO);
               this.totalScore = 0;
               this.domains = [];
-              this.go.navigate(['/home']);
+              this.go.navigate(['tabs/home']);
             }
           }
         ]
@@ -166,7 +166,7 @@ export class StressSignaturePage implements OnInit {
             this.domains = [];
           });
       }});
-      this.go.navigate(['/home']);
+      this.go.navigate(['tabs/home']);
     }
   }
 

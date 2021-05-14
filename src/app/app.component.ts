@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
+import { StorageService } from './services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private authenticationService: AuthenticationService,
     private router: Router,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private storageService: StorageService
   ) {
     this.initializeApp();
   }
@@ -28,6 +30,13 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.storageService.getLocalData('lang').then((language) => {
+        if (language === null || language === undefined) {
+          this.translate.use('en');
+        } else {
+          this.translate.use(language);
+        }
+      });
     });
     this.authenticationService.authenticationState.subscribe(state => {
 

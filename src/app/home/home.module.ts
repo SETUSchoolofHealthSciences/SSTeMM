@@ -24,6 +24,6 @@ import { RouterModule } from '@angular/router';
     }),
     RouterModule.forChild([{ path: '', component: HomePage }])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, RecordComponent]
 })
 export class HomePageModule {}

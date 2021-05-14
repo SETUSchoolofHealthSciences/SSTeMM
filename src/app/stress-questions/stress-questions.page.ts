@@ -4,6 +4,7 @@ import { ScoreCard, TotalScore } from '../interface/stress-signature';
 import { StorageService } from '../services/storage.service';
 import { AlertController } from '@ionic/angular';
 import { TranslationService } from '../services/translation.service';
+import { TranslateService } from '@ngx-translate/core';
 
 const TOKEN_KEY = 'domain-quest';
 @Component({
@@ -26,7 +27,8 @@ export class StressQuestionsPage implements OnInit {
               private route: ActivatedRoute,
               private storageService: StorageService,
               private alertController: AlertController,
-              private translate: TranslationService ) {
+              private translate: TranslationService,
+              private language: TranslateService ) {
     this.readData();
    }
 
@@ -35,8 +37,7 @@ export class StressQuestionsPage implements OnInit {
 
   readData() {
     const questionId = this.route.snapshot.paramMap.get('id');
-    this.storageService.getLocalData('lang').then(language => {
-      fetch('./assets/locale/question/' + language + '.json').then(res => res.json())
+    fetch('./assets/locale/question/' + this.language.currentLang  + '.json').then(res => res.json())
       .then(json => {
         for (const con of json.domains) {
           if (questionId === con.id) {
@@ -47,7 +48,6 @@ export class StressQuestionsPage implements OnInit {
           }
         }
       });
-    });
   }
 
   async goBack(){
@@ -65,7 +65,7 @@ export class StressQuestionsPage implements OnInit {
         {
           text: this.translate.alertButtonOne,
           handler: () => {
-            this.go.navigate(['/stress-signature']);
+            this.go.navigate(['tabs/stress-signature']);
           }
         }
       ]
@@ -87,8 +87,9 @@ export class StressQuestionsPage implements OnInit {
       scoreCard: this.scoreCard,
       totalScore
     };
+    console.log(JSON.stringify(this.scoreCard));
     await this.storageService.setLocalData(TOKEN_KEY, this.totalScoreCard).then(() => {
-      this.go.navigate(['/stress-signature']);
+      this.go.navigate(['tabs/stress-signature']);
     });
   }
 

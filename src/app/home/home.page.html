@@ -13,9 +13,9 @@
 
 <ion-content [fullscreen]="true">
   <h1 class="header">{{ 'home.title' | translate }}</h1>
-  <h3 class="noentries" *ngIf="displayNoEntries">{{ 'home.none' | translate }}</h3>
+  <h3 class="noentries" *ngIf="api.displayNoEntries">{{ 'home.none' | translate }}</h3>
   <div class=records>
-  <app-record *ngFor="let entry of signatures" overallScore={{entry.totalScore}} timestamp={{entry.timeStamp}}
+  <app-record *ngFor="let entry of api.homeSignatures" overallScore={{entry.totalScore}} timestamp={{entry.timeStamp}}
   [domain]="entry.domain">
   </app-record>
   </div>

@@ -1,9 +1,17 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>history</ion-title>
+    <div class="logoHeader">
+      <img src="assets/sstemm-header.png" width="150px" />
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <h1 class="header">{{ 'history.title' | translate }}</h1>
+  <h3 class="noentries" *ngIf="displayNoEntries">{{ 'home.none' | translate }}</h3>
+  <div class=records>
+  <app-record *ngFor="let entry of api.allSignatures" overallScore={{entry.totalScore}} timestamp={{entry.timeStamp}}
+  [domain]="entry.domain">
+  </app-record>
+  </div>
 </ion-content>

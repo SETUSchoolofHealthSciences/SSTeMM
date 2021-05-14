@@ -92,5 +92,8 @@
     "create": "Create",
     "profile": "Profile",
     "history": "History"
+  },
+  "history": {
+    "title": "Your Stress Signature Entries"
   }
 }

@@ -1,0 +1,36 @@
+.dark-gb{
+    --ion-background-color: #08415C !important;
+  }
+  ion-toolbar{
+    --background: #08415C;
+  }
+  .logoHeader {
+    background: #08415C;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding-bottom: 10px;
+    text-align:center;
+  }
+  .header{
+    color:  #08415C;
+    text-align: center;
+  
+  }
+  .records{
+    display: block;
+    align-items: center;
+    justify-content: center;  
+  }
+  
+  .noentries {
+    text-align: center;
+  }
+  /* ion-icon{
+    font-size: 128px !important;
+  }
+  
+  .sc-ion-buttons-md-s ion-icon[slot=icon-only]{
+    // font-size: 128px !important;
+  }# */

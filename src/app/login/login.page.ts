@@ -36,8 +36,8 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.storage.getLocalData('lang').then(data => {
-      switch (data) {
+    const data = this.translate.currentLang;
+    switch (data) {
         case 'en': {
           this.selectedCountryCode = 'ie';
           this.translate.use(data);
@@ -63,7 +63,6 @@ export class LoginPage implements OnInit {
           this.translate.use('en');
         }
       }
-    });
   }
 
   changeSelectedCountryCode(value: string): void {

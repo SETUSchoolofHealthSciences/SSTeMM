@@ -9,7 +9,7 @@ import {
 import { CustomvalidationService } from '../services/customvalidation.service';
 import { Router } from '@angular/router';
 import { TranslationService } from '../services/translation.service';
-import { StorageService } from '../services/storage.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.page.html',
@@ -26,7 +26,7 @@ export class RegistrationPage implements OnInit {
     private customValidator: CustomvalidationService,
     private alertController: AlertController,
     private translate: TranslationService,
-    private storage: StorageService
+    private language: TranslateService
   ) {
     this.formGroup = fb.group(
       {
@@ -63,14 +63,11 @@ export class RegistrationPage implements OnInit {
   }
 
   ngOnInit() {
-    this.storage.getLocalData('lang').then(data => {
-      console.log('lang ', data);
-      if (data === 'si') {
-        this.si = true;
-      } else {
-        this.si = false;
-      }
-    });
+    if (this.language.currentLang === 'si') {
+      this.si = true;
+    } else {
+      this.si = false;
+    }
   }
 
   get RegistrationFormControl() {
@@ -108,15 +105,15 @@ export class RegistrationPage implements OnInit {
           text: this.translate.alertButtonTwo,
           handler: () => {
             console.log('Cancel clicked');
-          }
+          },
         },
         {
           text: this.translate.alertButtonOne,
           handler: () => {
             this.go.navigate(['login']);
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
     await alert.present();
   }

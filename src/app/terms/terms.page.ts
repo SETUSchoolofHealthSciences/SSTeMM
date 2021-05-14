@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from '../services/storage.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-terms',
   templateUrl: './terms.page.html',
@@ -7,14 +7,13 @@ import { StorageService } from '../services/storage.service';
 })
 export class TermsPage implements OnInit {
 
-  constructor(private storage: StorageService) { }
+  constructor(private language: TranslateService) { }
   de = false;
   en = false;
   es = false;
   si = false;
   ngOnInit() {
-    this.storage.getLocalData('lang').then(data => {
-      switch (data) {
+      switch (this.language.currentLang) {
         case 'en': {
           this.en = true;
           this.de = false;
@@ -50,6 +49,5 @@ export class TermsPage implements OnInit {
           this.si = false;
         }
       }
-    });
   }
 }
