@@ -1,8 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-import { StressSignatue } from '../interface/stress-signature';
 import { ApiService } from '../services/api.service';
+import { LoadingController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -11,25 +10,33 @@ import { ApiService } from '../services/api.service';
 })
 export class HomePage implements OnInit {
 
-  constructor(private go: Router,
+  constructor(private go: NavController,
               private auth: AuthenticationService,
-              private api: ApiService) {}
+              private api: ApiService,
+              private loadingController: LoadingController) {}
 
   ngOnInit(): void {
   }
 
-  ionViewDidEnter(){
-    this.api.displayNoEntries = false;
-    this.api.allSignatures = [] as StressSignatue[];
-    this.api.homeSignatures = [] as StressSignatue[];
-    this.api.fetchData();
+  async presentLoading(): Promise<void> {
+
+    const loading = await this.loadingController.create({
+        message: 'Please wait...',
+        translucent: true,
+      });
+    return await loading.present();
   }
 
-  add(){
-    this.go.navigate(['tabs/stress-signature']);
+  ionViewDidEnter(): void {
+    this.presentLoading();
+    this.api.fetchData(this.loadingController);
   }
 
-  logout(){
+  add(): void {
+    this.go.navigateBack(['tabs/stress-signature']);
+  }
+
+  logout(): void {
     this.auth.signOut();
   }
 }
