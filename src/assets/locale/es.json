@@ -92,5 +92,15 @@
     "create": "Create",
     "profile": "Profile",
     "history": "History"
+  },
+  "history": {
+    "title": "Sus entradas de firma de estrés",
+    "dropdown": "Filter Results",
+    "all": "Todas",
+    "wk": "Semana",
+    "mm": "Mes",
+    "yy": "Año",
+    "cancel": "Cancelar",
+    "ok": "De acuerdo"
   }
 }

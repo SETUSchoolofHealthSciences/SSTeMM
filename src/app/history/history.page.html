@@ -8,6 +8,17 @@
 
 <ion-content [fullscreen]="true">
   <h1 class="header">{{ 'history.title' | translate }}</h1>
+  <ion-list class="dropdown">
+    <ion-item>
+      <ion-label>{{ 'history.dropdown' | translate }}</ion-label>
+      <ion-select [(ngModel)]="filter"  okText="{{ 'history.ok' | translate }}" cancelText="{{ 'history.cancel' | translate }}" (ionChange)='changeFilter()'>
+        <ion-select-option value="all">{{ 'history.all' | translate }}</ion-select-option>
+        <ion-select-option value="wk">{{ 'history.wk' | translate }}</ion-select-option>
+        <ion-select-option value="mm">{{ 'history.mm' | translate }}</ion-select-option>
+        <ion-select-option value="yy">{{ 'history.yy' | translate }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
   <h3 class="noentries" *ngIf="displayNoEntries">{{ 'home.none' | translate }}</h3>
   <div class=records>
   <app-record *ngFor="let entry of api.allSignatures" overallScore={{entry.totalScore}} timestamp={{entry.timeStamp}}

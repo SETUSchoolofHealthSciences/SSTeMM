@@ -92,5 +92,15 @@
       "create": "Create",
       "profile": "Profile",
       "history": "History"
+    },
+    "history": {
+      "title": "Vaši vpisi za podpis stresa",
+      "dropdown": "Filtriraj rezultate",
+      "all": "Vse",
+      "wk": "Teden",
+      "mm": "Mesec",
+      "yy": "Leto",
+      "cancel": "Prekliči",
+      "ok": "V redu"
     }
   }

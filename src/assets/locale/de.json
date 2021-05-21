@@ -92,5 +92,15 @@
       "create": "Create",
       "profile": "Profile",
       "history": "History"
+    },
+    "history": {
+      "title": "Ihre Stress-Signatur-Einträge",
+      "dropdown": "Filter Results",
+      "all": "Alle",
+      "wk": "Woche",
+      "mm": "Monat",
+      "yy": "Jahr",
+      "cancel": "Abbrechen",
+      "ok": "Ok"
     }
   }

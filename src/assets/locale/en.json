@@ -94,6 +94,13 @@
     "history": "History"
   },
   "history": {
-    "title": "Your Stress Signature Entries"
+    "title": "Your Stress Signature Entries",
+    "dropdown": "Filter Results",
+    "all": "All",
+    "wk": "Week",
+    "mm": "Month",
+    "yy": "Year",
+    "cancel": "Cancel",
+    "ok": "Ok"
   }
 }
