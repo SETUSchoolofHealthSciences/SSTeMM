@@ -1,54 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import jwt_decode, { JwtPayload } from 'jwt-decode';
-import { CreateSSTeMMInput } from '../../API';
-import { AppsyncService } from '../services/appsync.service';
-import { StorageService } from '../services/storage.service';
-import { createSsTeMm } from '../../graphql/mutations';
-import { TotalScore } from '../interface/stress-signature';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AlertController, NavController } from '@ionic/angular';
+import { NavigationStart, Router } from '@angular/router';
 import { TranslationService } from '../services/translation.service';
-
-const TOKEN_KEY_ONE = 'auth-token';
-const TOKEN_KEY_TWO = 'domain-quest';
+import { RecordService } from '../services/record.service';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-stress-signature',
   templateUrl: './stress-signature.page.html',
   styleUrls: ['./stress-signature.page.scss'],
 })
-export class StressSignaturePage implements OnInit {
-  stressSignature = {} as CreateSSTeMMInput;
-  totalScores = [] as TotalScore[];
-
-  thoughtDomain = false;
-  feelingDomain = false;
-  behaviourDomain = false;
-  totalScore = 0;
-  domains = [] as string[];
-
-  public isDomainHidden = false;
-  public isChoiceHidden = true;
-
-  constructor(private go: Router,
-              private appsync: AppsyncService,
-              private storageService: StorageService,
+export class StressSignaturePage implements AfterViewInit {
+  private thoughtDomain = false;
+  private feelingDomain = false;
+  private behaviourDomain = false;
+  private isDomainHidden = false;
+  private isChoiceHidden = true;
+  constructor(private nav: NavController,
+              private router: Router,
               private alertController: AlertController,
-              private translate: TranslationService) { }
+              private translate: TranslationService,
+              private record: RecordService) {
+              }
 
-  ngOnInit() {
-  }
-
-  ionViewDidEnter(){
+  /* async ngOnInit() {
+    // this.onViewEnter();
     this.translate.DomainNames();
-    this.storageService.getLocalData(TOKEN_KEY_TWO).then((res) => {
-      if (res === null) {
-        return;
+    this.handleRecord();
+  } */
+
+  onViewEnter() {
+    // this.translate.DomainNames();
+    /* this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+    ).subscribe((route: NavigationStart) => {
+      console.log(route);
+      if (route.url === '/tabs/stress-signature') {
+        this.handleRecord();
       }
-      this.totalScores.push(res);
-      this.totalScore = this.totalScore + res.totalScore;
-      this.domains.push(res.domain);
-      for (const domain of this.totalScores) {
-        switch (domain.domain ) {
+    }); */
+  }
+  /* async ionViewWillEnter() {
+    console.log('length ', this.record.totalScores.length);
+    if (this.record.totalScores.length > 0){
+      for (const domain of this.record.totalScores) {
+        await this.record.domains.push(domain.domain);
+        switch (domain.domain) {
           case this.translate.thoughts: {
             this.thoughtDomain = true;
             break;
@@ -69,7 +65,15 @@ export class StressSignaturePage implements OnInit {
           }
         }
       }
-    });
+    }
+  } */
+  ngAfterViewInit(){
+    this.translate.DomainNames();
+    this.handleRecord();
+  }
+
+  async handleRecord() {
+    
   }
 
   pickDomain(){
@@ -78,19 +82,19 @@ export class StressSignaturePage implements OnInit {
   }
 
   thoughts(){
-    this.go.navigate(['/stress-questions/think']);
+    this.nav.navigateBack(['/stress-questions/think']);
     this.isDomainHidden = false;
     this.isChoiceHidden = true;
   }
 
   feelings(){
-    this.go.navigate(['/stress-questions/feel']);
+    this.nav.navigateBack(['/stress-questions/feel']);
     this.isDomainHidden = false;
     this.isChoiceHidden = true;
   }
 
   behaviours(){
-    this.go.navigate(['/stress-questions/do']);
+    this.nav.navigateBack(['/stress-questions/do']);
     this.isDomainHidden = false;
     this.isChoiceHidden = true;
   }
@@ -110,10 +114,13 @@ export class StressSignaturePage implements OnInit {
         {
           text: this.translate.alertButtonOne,
           handler: () => {
-            this.storageService.removeLocalData(TOKEN_KEY_TWO);
-            this.totalScore = 0;
-            this.domains = [];
-            this.go.navigate(['tabs/home']);
+            this.behaviourDomain = false;
+            this.feelingDomain = false;
+            this.thoughtDomain = false;
+            this.record.totalScores = [];
+            this.record.domains = [];
+            this.record.totalScore = 0;
+            this.nav.navigateBack(['/tabs/home']);
           }
         }
       ]
@@ -121,9 +128,9 @@ export class StressSignaturePage implements OnInit {
     await alert.present();
   }
 
-  async save(){
+  async save() {
     this.translate.stressSignatureSave();
-    if (this.domains.length === 0 && !this.stressSignature.reflection){
+    if (this.record.domains.length === 0 && !this.record.stressSignature.reflection){
       const alert = await this.alertController.create({
         header: this.translate.alertHeader,
         message: this.translate.alertMessage,
@@ -131,46 +138,64 @@ export class StressSignaturePage implements OnInit {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              this.storageService.removeLocalData(TOKEN_KEY_TWO);
-              this.totalScore = 0;
-              this.domains = [];
-              this.go.navigate(['tabs/home']);
+              this.nav.navigateBack(['/tabs/home']);
             }
           }
         ]
       });
       await alert.present();
     } else {
-      const date = (+new Date());
-      this.storageService.getLocalData(TOKEN_KEY_ONE).then((res) => {
-        if (res !== null) {
-          const decoded = jwt_decode<JwtPayload>(res);
-          this.appsync.initializeClient().then(async client => {
-            const data: CreateSSTeMMInput = {
-              cognitoId: decoded.sub,
-              domain: this.domains,
-              timeStamp: date,
-              scoreCard: JSON.stringify(this.totalScores),
-              totalScore: this.totalScore,
-              reflection: this.stressSignature.reflection
-            };
-            const mut = createSsTeMm;
-            const mutation = client.mutate({
-              mutation: mut,
-              variables: {
-                input: data
-              }
-            });
-            this.storageService.removeLocalData(TOKEN_KEY_TWO);
-            this.totalScore = 0;
-            this.domains = [];
-          });
-      }});
-      this.go.navigate(['tabs/home']);
+      this.record.saveRecord();
+      this.behaviourDomain = false;
+      this.feelingDomain = false;
+      this.thoughtDomain = false;
     }
   }
 
   resources(){
     window.location.href = 'https://sstemm.eu';
+  }
+
+  async ionViewWillEnter(){
+    this.translate.DomainNames();
+    console.log('length ', this.record.totalScores.length);
+    if (this.record.totalScores.length > 0){
+      for (const domain of this.record.totalScores) {
+        await this.record.domains.push(domain.domain);
+        switch (domain.domain) {
+          case this.translate.thoughts: {
+            this.thoughtDomain = true;
+            break;
+          }
+
+          case this.translate.feelings: {
+            this.feelingDomain = true;
+            break;
+          }
+
+          case this.translate.behaviours: {
+            this.behaviourDomain = true;
+            break;
+          }
+
+          default: {
+            break;
+          }
+        }
+      }
+    }
+    console.log('scanlop will enter');
+  }
+
+  ionViewDidEnter(){
+    console.log('scanlop did enter');
+  }
+
+  ionViewWillLeave(){
+    console.log('scanlop will leave');
+  }
+
+  ionViewDidLeave(){
+    console.log('scanlop did leave');
   }
 }

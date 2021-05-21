@@ -12,4 +12,19 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter(){
+    console.log('scanlop profile did enter');
+  }
+
+  ionViewDidEnter(){
+    console.log('scanlop profile did enter');
+  }
+
+  ionViewWillLeave(){
+    console.log('scanlop profile will leave');
+  }
+
+  ionViewDidLeave(){
+    console.log('scanlop profile did leave');
+  }
 }

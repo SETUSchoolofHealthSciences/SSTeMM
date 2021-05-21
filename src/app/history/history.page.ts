@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StressSignatue } from '../interface/stress-signature';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -9,10 +10,24 @@ import { ApiService } from '../services/api.service';
 export class HistoryPage implements OnInit {
 
   constructor(public api: ApiService) {
-    console.log('scanlop', JSON.stringify(this.api.allSignatures));
-   }
+  }
 
   ngOnInit() {
   }
 
+  ionViewWillEnter(){
+    console.log('scanlop history did enter');
+  }
+
+  ionViewDidEnter(){
+    console.log('scanlop history did enter');
+  }
+
+  ionViewWillLeave(){
+    console.log('scanlop history will leave');
+  }
+
+  ionViewDidLeave(){
+    console.log('scanlop history did leave');
+  }
 }

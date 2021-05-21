@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ScoreCard, TotalScore } from '../interface/stress-signature';
-import { StorageService } from '../services/storage.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { TranslationService } from '../services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
+import { RecordService } from '../services/record.service';
+import { StorageService } from '../services/storage.service';
 
 const TOKEN_KEY = 'domain-quest';
 @Component({
@@ -22,10 +23,10 @@ export class StressQuestionsPage implements OnInit {
   private questionFour = [];
   private questionFive = [];
   private scoreCard = [] as ScoreCard[];
-  totalScoreCard = {} as TotalScore;
-  constructor(private go: Router,
+  private totalScoreCard = {} as TotalScore;
+  constructor(private nav: NavController,
               private route: ActivatedRoute,
-              private storageService: StorageService,
+              private record: RecordService,
               private alertController: AlertController,
               private translate: TranslationService,
               private language: TranslateService ) {
@@ -65,7 +66,7 @@ export class StressQuestionsPage implements OnInit {
         {
           text: this.translate.alertButtonOne,
           handler: () => {
-            this.go.navigate(['tabs/stress-signature']);
+            this.nav.navigateRoot(['/tabs/stress-signature']);
           }
         }
       ]
@@ -87,10 +88,13 @@ export class StressQuestionsPage implements OnInit {
       scoreCard: this.scoreCard,
       totalScore
     };
-    console.log(JSON.stringify(this.scoreCard));
-    await this.storageService.setLocalData(TOKEN_KEY, this.totalScoreCard).then(() => {
+    await this.record.totalScores.push({domain: this.title,
+      scoreCard: this.scoreCard,
+      totalScore});
+    this.nav.navigateForward(['/tabs/stress-signature']);
+    /* await this.storageService.setLocalData(TOKEN_KEY, this.totalScoreCard).then(() => {
       this.go.navigate(['tabs/stress-signature']);
-    });
+    }); */
   }
 
   sliderValueChanged($event): void {
