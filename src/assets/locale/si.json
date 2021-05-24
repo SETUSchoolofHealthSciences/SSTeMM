@@ -29,7 +29,8 @@
     },
     "login": {
       "forgotPass": "Pozabljeno geslo",
-      "new": "Še nimate uporabniškega računa? Ustvarite ga"
+      "new": "Še nimate uporabniškega računa? Ustvarite ga",
+      "verification": "Kliknite tukaj, da znova pošljete e-poštno sporočilo za preverjanje"
     },
     "reg": {
       "title": "Registracija"
@@ -106,5 +107,8 @@
     "update": {
       "title": "Vaši podatki",
       "button": "Podrobnosti posodobitve"
+    },
+    "verification": {
+      "title": "Ponovno pošlje potrditveno e-poštno sporočilo"
     }
   }

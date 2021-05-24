@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController, Platform, ToastController } from '@ionic/angular';
+import { AlertController, NavController, Platform, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
 import { BehaviorSubject } from 'rxjs';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
@@ -14,7 +13,7 @@ const TOKEN_KEY = 'auth-token';
 export class AuthenticationService {
   emailAddress: '';
   authenticationState = new BehaviorSubject(false);
-  constructor(private go: Router,
+  constructor(private go: NavController,
               private plt: Platform,
               private storageService: StorageService,
               private toaster: ToastController,
@@ -49,7 +48,7 @@ export class AuthenticationService {
         });
         // tslint:disable-next-line: no-shadowed-variable
         toast.then(toast => toast.present());
-        this.go.navigate(['']);
+        this.go.navigateBack(['']);
       }
     } catch (error) {
       const alert = await this.alertController.create({
@@ -92,7 +91,7 @@ export class AuthenticationService {
             {
               text: this.translate.alertButtonOne,
               handler: () => {
-                this.go.navigate(['/login']);
+                this.go.navigateBack(['/login']);
               }
             }
           ]
@@ -130,7 +129,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              this.go.navigateBack(['/login']);
             }
           }
         ]
@@ -193,7 +192,7 @@ export class AuthenticationService {
         });
         // tslint:disable-next-line: no-shadowed-variable
         toast.then(toast => toast.present());
-        this.go.navigate(['login']);
+        this.go.navigateBack(['login']);
         this.storageService.removeLocalData(TOKEN_KEY);
         this.authenticationState.next(false);
       });

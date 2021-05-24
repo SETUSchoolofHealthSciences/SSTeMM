@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'terms',
     loadChildren: () => import('./terms/terms.module').then( m => m.TermsPageModule)
+  },
+  {
+    path: 'resend-verification',
+    loadChildren: () => import('./password/resend-verification/resend-verification.module').then( m => m.ResendVerificationPageModule)
   }
 ];
 

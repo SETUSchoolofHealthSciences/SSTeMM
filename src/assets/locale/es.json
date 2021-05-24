@@ -29,7 +29,8 @@
   },
   "login": {
     "forgotPass": "Olvidé mi contraseña",
-    "new": "¿Aún no tiene accesso? Cree una cuenta"
+    "new": "¿Aún no tiene accesso? Cree una cuenta",
+    "verification": "Haga clic aquí para reenviar el correo electrónico de verificación"
   },
   "reg": {
     "title": "Registro"
@@ -106,5 +107,8 @@
   "update": {
     "title": "Tus detalles",
     "button": "Detalles de actualización"
+  },
+  "verification": {
+    "title": "Reenviar correo electrónico de verificación"
   }
 }

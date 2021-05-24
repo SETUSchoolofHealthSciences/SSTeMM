@@ -29,7 +29,8 @@
   },
   "login": {
     "forgotPass": "Forgot Password",
-    "new": "No account yet? Create one"
+    "new": "No account yet? Create one",
+    "verification": "Click here to resend verification email"
   },
   "reg": {
     "title": "Registration"
@@ -106,5 +107,8 @@
   "update": {
     "title": "Your Details",
     "button": "Update Details"
+  },
+  "verification": {
+    "title": "Resend Verification Email"
   }
 }

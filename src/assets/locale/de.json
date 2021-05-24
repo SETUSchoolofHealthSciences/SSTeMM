@@ -29,7 +29,8 @@
     },
     "login": {
       "forgotPass": "Passwort vergessen",
-      "new": "Noch kein Konto? Erstellen Sie eines"
+      "new": "Noch kein Konto? Erstellen Sie eines",
+      "verification": "Klicken Sie hier, um die Bestätigungs-E-Mail erneut zu senden"
     },
     "reg": {
       "title": "Registrierung"
@@ -106,5 +107,8 @@
     "update": {
       "title": "Deine Details",
       "button": "Details aktualisieren"
+    },
+    "verification": {
+      "title": "Bestätigungsmail erneut senden"
     }
   }
