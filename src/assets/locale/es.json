@@ -88,10 +88,10 @@
     "passwordChangeSuccess": "¡Su contraseña ha sido cambiada con éxito!"
   },
   "tabs": {
-    "home": "Home",
-    "create": "Create",
-    "profile": "Profile",
-    "history": "History"
+    "home": "Casa",
+    "create": "Crear",
+    "profile": "Perfil",
+    "history": "Historia"
   },
   "history": {
     "title": "Sus entradas de firma de estrés",
@@ -102,5 +102,9 @@
     "yy": "Año",
     "cancel": "Cancelar",
     "ok": "De acuerdo"
+  },
+  "update": {
+    "title": "Tus detalles",
+    "button": "Detalles de actualización"
   }
 }

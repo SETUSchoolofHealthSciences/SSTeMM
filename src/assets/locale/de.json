@@ -88,19 +88,23 @@
       "passwordChangeSuccess": "Ihr Passwort wurde erfolgreich geändert!"
     },
     "tabs": {
-      "home": "Home",
-      "create": "Create",
-      "profile": "Profile",
-      "history": "History"
+      "home": "Zuhause",
+      "create": "Erstellen",
+      "profile": "Profil",
+      "history": "Geschichte"
     },
     "history": {
       "title": "Ihre Stress-Signatur-Einträge",
-      "dropdown": "Filter Results",
+      "dropdown": "Filter Ergebnisse",
       "all": "Alle",
       "wk": "Woche",
       "mm": "Monat",
       "yy": "Jahr",
       "cancel": "Abbrechen",
       "ok": "Ok"
+    },
+    "update": {
+      "title": "Deine Details",
+      "button": "Details aktualisieren"
     }
   }

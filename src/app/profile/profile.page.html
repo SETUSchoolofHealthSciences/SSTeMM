@@ -1,9 +1,88 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <div class="logoHeader">
+      <img src="assets/sstemm-header.png" width="150px" />
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="dark-gb">
+  <h1 class="regTitle">{{ 'update.title' | translate }}</h1>
+  <form [formGroup]="formGroup" (ngSubmit)="update()">
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.firstName' | translate }}"
+        formControlName="firstNameControl"
+        type="text"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(UpdateFormControl.firstNameControl.touched || submitted) && UpdateFormControl.firstNameControl.errors?.required"
+      >
+      {{ 'validation.firstRequired' | translate }}
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.lastName' | translate }}"
+        formControlName="lastNameControl"
+        type="text"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(UpdateFormControl.lastNameControl.touched || submitted) && UpdateFormControl.lastNameControl.errors?.required"
+      >
+      {{ 'validation.lastRequired' | translate }}
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.college' | translate }}"
+        formControlName="collegeControl"
+        type="text"
+      ></ion-input>
+    </div>
+    <div *ngIf="si; else all">
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.collegeYear' | translate }}"
+        formControlName="collegeYearControlSi"
+        type="number"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(UpdateFormControl.collegeYearControlSi.touched || submitted) && (UpdateFormControl.collegeYearControlSi.errors?.max || UpdateFormControl.collegeYearControlSi.errors?.min)"
+      >
+      {{ 'validation.collegeYear' | translate }}
+      </span>
+    </div>
+    <ng-template #all>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.collegeYear' | translate }}"
+        formControlName="collegeYearControl"
+        type="number"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(UpdateFormControl.collegeYearControl.touched || submitted) && (UpdateFormControl.collegeYearControl.errors?.max || UpdateFormControl.collegeYearControl.errors?.min)"
+      >
+      {{ 'validation.collegeYear' | translate }}
+      </span>
+    </ng-template>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.hospital' | translate }}"
+        formControlName="hospitalControl"
+        type="text"
+      ></ion-input>
+    </div>
+    <div class="updateButton">
+      <ion-button class="buttonDetails" expand="block" type="submit">{{ 'update.button' | translate }}</ion-button>
+    </div>
+  </form>
 </ion-content>

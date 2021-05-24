@@ -102,5 +102,9 @@
     "yy": "Year",
     "cancel": "Cancel",
     "ok": "Ok"
+  },
+  "update": {
+    "title": "Your Details",
+    "button": "Update Details"
   }
 }
