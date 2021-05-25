@@ -16,6 +16,7 @@ export class ProfilePage implements OnInit {
   formGroup: FormGroup;
   submitted = false;
   si = false;
+  user: any;
   constructor(public fb: FormBuilder,
               private go: Router,
               private auth: AuthenticationService,
@@ -54,6 +55,7 @@ export class ProfilePage implements OnInit {
   }
 
   ionViewWillEnter(){
+    this.getUserAttributes();
     console.log('scanlop profile did enter');
   }
 
@@ -66,6 +68,43 @@ export class ProfilePage implements OnInit {
   }
 
   ionViewDidLeave(){
+    this.formGroup.reset();
     console.log('scanlop profile did leave');
+  }
+
+  async getUserAttributes(){
+    this.user = await this.auth.getCurrentUserAttributes();
+    console.log(this.user);
+    this.formGroup.patchValue({
+      firstNameControl: this.user.given_name
+    });
+    this.formGroup.patchValue({
+      lastNameControl: this.user.family_name
+    });
+    if (typeof this.user['custom:hospital'] !== 'undefined'){
+      this.formGroup.patchValue({
+        hospitalControl: this.user['custom:hospital']
+      });
+    }
+    if (typeof this.user['custom:college'] !== 'undefined'){
+      this.formGroup.patchValue({
+        collegeControl: this.user['custom:college']
+      });
+    } else {
+      console.log('nothing to show');
+    }
+    if (typeof this.user['custom:collegeyear'] !== 'undefined'){
+      if (this.si){
+        this.formGroup.patchValue({
+          collegeYearControlSi: this.user['custom:collegeyear']
+        });
+      } else {
+        this.formGroup.patchValue({
+          collegeYearControl: this.user['custom:collegeyear']
+        });
+      }
+    } else {
+      console.log('nothing to show');
+    }
   }
 }

@@ -240,4 +240,9 @@ export class AuthenticationService {
   submitCode(email: string, code: string, password: string) {
     return Auth.forgotPasswordSubmit(email, code, password);
   }
+
+  async getCurrentUserAttributes(){
+    const user = await Auth.currentAuthenticatedUser();
+    return user.attributes;
+  }
 }
