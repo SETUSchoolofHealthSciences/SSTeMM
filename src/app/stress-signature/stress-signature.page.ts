@@ -4,6 +4,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { TranslationService } from '../services/translation.service';
 import { RecordService } from '../services/record.service';
 import { filter } from 'rxjs/operators';
+import { TotalScore } from '../interface/stress-signature';
 @Component({
   selector: 'app-stress-signature',
   templateUrl: './stress-signature.page.html',
@@ -196,6 +197,12 @@ export class StressSignaturePage implements AfterViewInit {
   }
 
   ionViewDidLeave(){
+    this.behaviourDomain = false;
+    this.feelingDomain = false;
+    this.thoughtDomain = false;
+    this.record.totalScores = [] as TotalScore[];
+    this.record.totalScore = 0;
+    this.record.domains = [] as string[];
     console.log('scanlop did leave');
   }
 }

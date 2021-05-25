@@ -80,7 +80,11 @@
       "stressLeaveMessage": "Ali ste prepričani, da želite zapustiti to stran? Vnos poročila o stresu ne bo shranjen.",
       "stressSaveHeader": "Ni podatkov za shranjevanje",
       "stressSaveMessage": "Za ta vnos ni podatkov, ki bi jih bilo mogoče shraniti.",
-      "stressQuestionsMessage":"Ali ste prepričani, da želite zapustiti to stran? Vaš trenutni rezultat ne bo shranjen."
+      "stressQuestionsMessage":"Ali ste prepričani, da želite zapustiti to stran? Vaš trenutni rezultat ne bo shranjen.",
+      "updateProfileSuccessHeader": "Profil posodobljen",
+      "updateProfileSuccessMessage": "Podrobnosti o vašem profilu so posodobljene.",
+      "updateProfileErrorHeader": "Napaka pri posodobitvi profila",
+      "updateProfileErrorMessage": "Pri posodabljanju profila je prišlo do napake."
     },
     "toasts": {
       "successLogin": "Uspešno ste se prijavili! ",

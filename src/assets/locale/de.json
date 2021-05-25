@@ -80,7 +80,11 @@
       "stressLeaveMessage": "Sind Sie sicher, dass Sie diese Seite verlassen wollen? Der Stress-Signatur-Eintrag wird nicht gespeichert.",
       "stressSaveHeader": "Keine zu speichernden Daten vorhanden",
       "stressSaveMessage": "Es sind keine Daten zu diesem Eintrag zu speichern.",
-      "stressQuestionsMessage":"Sind Sie sicher, dass Sie diese Seite verlassen wollen? Ihr aktueller Score wird nicht gespeichert."
+      "stressQuestionsMessage":"Sind Sie sicher, dass Sie diese Seite verlassen wollen? Ihr aktueller Score wird nicht gespeichert.",
+      "updateProfileSuccessHeader": "Profil aktualisiert",
+      "updateProfileSuccessMessage": "Ihre Profildetails wurden aktualisiert.",
+      "updateProfileErrorHeader": "Profilaktualisierungsfehler",
+      "updateProfileErrorMessage": "Fehler beim Aktualisieren von profle."
     },
     "toasts": {
       "successLogin": "Sie wurden erfolgreich angemeldet!",

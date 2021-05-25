@@ -80,7 +80,11 @@
     "stressLeaveMessage": "¿Seguro de que quieres abandonar esta página? La entrada de la firma de estrés no se guardará.",
     "stressSaveHeader": "No hay datos que guardar",
     "stressSaveMessage": "No hay datos que guardar en esta entrada.",
-    "stressQuestionsMessage":"¿Seguro de que desea abandonar esta página? Su puntuación actual no se guardará."
+    "stressQuestionsMessage":"¿Seguro de que desea abandonar esta página? Su puntuación actual no se guardará.",
+    "updateProfileSuccessHeader": "Perfil actualizado",
+    "updateProfileSuccessMessage": "Los detalles de su perfil se han actualizado.",
+    "updateProfileErrorHeader": "Error de actualización de perfil",
+    "updateProfileErrorMessage": "Se encontró un error al actualizar el perfil."
   },
   "toasts": {
     "successLogin": "¡Ha iniciado la sesión con éxito!",

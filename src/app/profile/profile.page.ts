@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { CustomvalidationService } from '../services/customvalidation.service';
-import { TranslationService } from '../services/translation.service';
 
 @Component({
   selector: 'app-profile',
@@ -18,11 +14,7 @@ export class ProfilePage implements OnInit {
   si = false;
   user: any;
   constructor(public fb: FormBuilder,
-              private go: Router,
               private auth: AuthenticationService,
-              private customValidator: CustomvalidationService,
-              private alertController: AlertController,
-              private translate: TranslationService,
               private language: TranslateService) {
     this.formGroup = fb.group(
       {
@@ -56,44 +48,37 @@ export class ProfilePage implements OnInit {
 
   ionViewWillEnter(){
     this.getUserAttributes();
-    console.log('scanlop profile did enter');
   }
 
   ionViewDidEnter(){
-    console.log('scanlop profile did enter');
   }
 
   ionViewWillLeave(){
-    console.log('scanlop profile will leave');
   }
 
   ionViewDidLeave(){
     this.formGroup.reset();
-    console.log('scanlop profile did leave');
   }
 
   async getUserAttributes(){
     this.user = await this.auth.getCurrentUserAttributes();
-    console.log(this.user);
     this.formGroup.patchValue({
       firstNameControl: this.user.given_name
     });
     this.formGroup.patchValue({
       lastNameControl: this.user.family_name
     });
-    if (typeof this.user['custom:hospital'] !== 'undefined'){
+    if (typeof this.user['custom:hospital'] !== 'undefined') {
       this.formGroup.patchValue({
         hospitalControl: this.user['custom:hospital']
       });
     }
-    if (typeof this.user['custom:college'] !== 'undefined'){
+    if (typeof this.user['custom:college'] !== 'undefined') {
       this.formGroup.patchValue({
         collegeControl: this.user['custom:college']
       });
-    } else {
-      console.log('nothing to show');
     }
-    if (typeof this.user['custom:collegeyear'] !== 'undefined'){
+    if (typeof this.user['custom:collegeyear'] !== 'undefined') {
       if (this.si){
         this.formGroup.patchValue({
           collegeYearControlSi: this.user['custom:collegeyear']
@@ -103,8 +88,25 @@ export class ProfilePage implements OnInit {
           collegeYearControl: this.user['custom:collegeyear']
         });
       }
+    }
+  }
+
+  update(){
+    let year;
+    if (this.si) {
+      year = this.formGroup.value.collegeYearControlSi;
     } else {
-      console.log('nothing to show');
+      year = this.formGroup.value.collegeYearControl;
+    }
+    this.submitted = true;
+    if (this.formGroup.valid) {
+      this.auth.updateUserAttributes(
+        this.formGroup.value.firstNameControl,
+        this.formGroup.value.lastNameControl,
+        this.formGroup.value.hospitalControl,
+        this.formGroup.value.collegeControl,
+        year
+      );
     }
   }
 }

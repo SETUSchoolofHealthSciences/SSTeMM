@@ -9,6 +9,7 @@
 <ion-content class="dark-gb">
   <h1 class="regTitle">{{ 'update.title' | translate }}</h1>
   <form [formGroup]="formGroup" (ngSubmit)="update()">
+    <ion-label class="label">{{ 'input.firstName' | translate }}</ion-label>
     <div>
       <ion-input
         class="input"
@@ -23,6 +24,7 @@
       {{ 'validation.firstRequired' | translate }}
       </span>
     </div>
+    <ion-label class="label">{{ 'input.lastName' | translate }}</ion-label>
     <div>
       <ion-input
         class="input"
@@ -37,6 +39,7 @@
       {{ 'validation.lastRequired' | translate }}
       </span>
     </div>
+    <ion-label class="label">{{ 'input.college' | translate }}</ion-label>
     <div>
       <ion-input
         class="input"
@@ -45,6 +48,7 @@
         type="text"
       ></ion-input>
     </div>
+    <ion-label class="label">{{ 'input.collegeYear' | translate }}</ion-label>
     <div *ngIf="si; else all">
       <ion-input
         class="input"
@@ -73,6 +77,7 @@
       {{ 'validation.collegeYear' | translate }}
       </span>
     </ng-template>
+    <ion-label class="label">{{ 'input.hospital' | translate }}</ion-label>
     <div>
       <ion-input
         class="input"

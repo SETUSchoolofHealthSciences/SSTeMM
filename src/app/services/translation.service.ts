@@ -11,6 +11,7 @@ export class TranslationService {
   alertButtonOne: string;
   alertButtonTwo: string;
   alertErrorHeader: string;
+  alertErrorMessage: string;
   thoughts: string;
   feelings: string;
   behaviours: string;
@@ -264,6 +265,34 @@ export class TranslationService {
     this.translate.get('button.behaviours').subscribe(
       value => {
         this.behaviours = value;
+      }
+    );
+  }
+
+  public UpdateProfile() {
+    this.translate.get('alerts.updateProfileSuccessHeader').subscribe(
+      value => {
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.updateProfileSuccessMessage').subscribe(
+      value => {
+        this.alertMessage = value;
+      }
+    );
+    this.translate.get('alerts.buttonOk').subscribe(
+      value => {
+        this.alertButtonOne = value;
+      }
+    );
+    this.translate.get('alerts.updateProfileErrorHeader').subscribe(
+      value => {
+        this.alertErrorHeader = value;
+      }
+    );
+    this.translate.get('alerts.updateProfileErrorMessage').subscribe(
+      value => {
+        this.alertErrorMessage = value;
       }
     );
   }

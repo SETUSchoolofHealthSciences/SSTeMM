@@ -55,7 +55,7 @@
   },
   "home": {
     "title": "Most Recent Entries",
-    "none": "There is no recent entries",
+    "none": "There are no recent entries",
     "create": "Create"
   },
   "stressRecord": {
@@ -80,7 +80,11 @@
     "stressLeaveMessage": "Are you sure you want to leave this page? Stress Signature entry will not be saved.",
     "stressSaveHeader": "No data to be saved",
     "stressSaveMessage": "There is no data to be saved to this entry.",
-    "stressQuestionsMessage":"Are you sure you want to leave this page? Your current score will not be saved."
+    "stressQuestionsMessage":"Are you sure you want to leave this page? Your current score will not be saved.",
+    "updateProfileSuccessHeader": "Profile Updated",
+    "updateProfileSuccessMessage": "Your profile details have been updated.",
+    "updateProfileErrorHeader": "Profile Update Error",
+    "updateProfileErrorMessage": "Error encountered while updating profle."
   },
   "toasts": {
     "successLogin": "You are logged in successfully!",

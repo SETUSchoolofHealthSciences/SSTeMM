@@ -13,6 +13,7 @@ const TOKEN_KEY = 'auth-token';
 export class AuthenticationService {
   emailAddress: '';
   authenticationState = new BehaviorSubject(false);
+  private user: any;
   constructor(private go: NavController,
               private plt: Platform,
               private storageService: StorageService,
@@ -242,7 +243,51 @@ export class AuthenticationService {
   }
 
   async getCurrentUserAttributes(){
-    const user = await Auth.currentAuthenticatedUser();
-    return user.attributes;
+    this.user = await Auth.currentAuthenticatedUser();
+    return this.user.attributes;
+  }
+
+  async updateUserAttributes(firstName: string, lastName: string, hospital?: string,
+                             college?: string, collegeYear?: number){
+    this.translate.UpdateProfile();
+    Auth.updateUserAttributes(this.user, {
+      given_name: firstName,
+      family_name: lastName,
+      'custom:hospital': hospital,
+      'custom:college': college,
+      'custom:collegeyear': collegeYear.toString()
+    }).then(async response => {
+      console.log(JSON.stringify(response));
+      if (response === 'SUCCESS'){
+        const alert = await this.alertController.create({
+          header: this.translate.alertHeader,
+          message: this.translate.alertMessage,
+          buttons: [
+            {
+              text: this.translate.alertButtonOne,
+              handler: () => {
+                this.go.navigateBack(['/tabs/home']);
+              }
+            }
+          ]
+        });
+        await alert.present();
+      }
+    }).catch(async error => {
+      console.log(JSON.stringify(error));
+      const alert = await this.alertController.create({
+        header: this.translate.alertErrorHeader,
+        message: this.translate.alertErrorMessage,
+        buttons: [
+          {
+            text: this.translate.alertButtonOne,
+            handler: () => {
+              console.log('pressed');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    });
   }
 }
