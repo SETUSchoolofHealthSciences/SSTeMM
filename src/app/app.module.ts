@@ -17,16 +17,17 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import aws_exports from '../aws-exports';
 import { NgxFlagPickerModule } from 'ngx-flag-picker';
-Amplify.configure(aws_exports);
-/* Amplify.configure({
+import { awscognitoregion, awsuserpoolsidsi, awsuserpoolswebclientidsi } from 'config';
+// Amplify.configure(aws_exports);
+Amplify.configure({
   Auth: {
     mandatorySignIn: true,
-    region: 'eu-west-1',
-    userPoolId: 'eu-west-1_dSJfazWPw',
-    userPoolWebClientId: '2hss4se424llruhcc82hg1rpd3',
+    region: awscognitoregion,
+    userPoolId: awsuserpoolsidsi,
+    userPoolWebClientId: awsuserpoolswebclientidsi,
     authenticationFlowType: 'USER_PASSWORD_AUTH'
   }
-}); */
+});
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/locale/', '.json');
 }

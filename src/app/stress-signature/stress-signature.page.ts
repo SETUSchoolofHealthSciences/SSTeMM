@@ -197,12 +197,12 @@ export class StressSignaturePage implements AfterViewInit {
   }
 
   ionViewDidLeave(){
-    this.behaviourDomain = false;
+    /* this.behaviourDomain = false;
     this.feelingDomain = false;
     this.thoughtDomain = false;
     this.record.totalScores = [] as TotalScore[];
     this.record.totalScore = 0;
-    this.record.domains = [] as string[];
+    this.record.domains = [] as string[]; */
     console.log('scanlop did leave');
   }
 }
