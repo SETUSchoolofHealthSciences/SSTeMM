@@ -15,19 +15,8 @@ import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import aws_exports from '../aws-exports';
 import { NgxFlagPickerModule } from 'ngx-flag-picker';
-import { awscognitoregion, awsuserpoolsidsi, awsuserpoolswebclientidsi } from 'config';
-// Amplify.configure(aws_exports);
-Amplify.configure({
-  Auth: {
-    mandatorySignIn: true,
-    region: awscognitoregion,
-    userPoolId: awsuserpoolsidsi,
-    userPoolWebClientId: awsuserpoolswebclientidsi,
-    authenticationFlowType: 'USER_PASSWORD_AUTH'
-  }
-});
+
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/locale/', '.json');
 }

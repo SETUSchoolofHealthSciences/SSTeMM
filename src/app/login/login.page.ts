@@ -36,6 +36,10 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  ionViewDidEnter(){
     const data = this.translate.currentLang;
     switch (data) {
         case 'en': {

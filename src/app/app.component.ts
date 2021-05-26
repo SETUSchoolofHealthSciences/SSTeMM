@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageService } from './services/storage.service';
+import Amplify from 'aws-amplify';
+import { awscognitoregion, awsuserpoolsides, awsuserpoolsidie,
+  awsuserpoolsidsi, awsuserpoolswebclientides, awsuserpoolswebclientidie, awsuserpoolswebclientidsi } from 'config';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +33,71 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.storageService.getLocalData('country').then(country => {
+        console.log(country);
+        switch (country) {
+          case 'ireland': {
+            Amplify.configure({
+              Auth: {
+                mandatorySignIn: true,
+                region: awscognitoregion,
+                userPoolId: awsuserpoolsidie,
+                userPoolWebClientId: awsuserpoolswebclientidie,
+                authenticationFlowType: 'USER_PASSWORD_AUTH'
+              }
+            });
+            this.authenticationService.authenticationState.subscribe(state => {
+              if (state) {
+                this.router.navigate(['']);
+              } else {
+                this.router.navigate(['login']);
+              }
+            });
+            break;
+          }
+          case 'slovenia': {
+            Amplify.configure({
+              Auth: {
+                mandatorySignIn: true,
+                region: awscognitoregion,
+                userPoolId: awsuserpoolsidsi,
+                userPoolWebClientId: awsuserpoolswebclientidsi,
+                authenticationFlowType: 'USER_PASSWORD_AUTH'
+              }
+            });
+            this.authenticationService.authenticationState.subscribe(state => {
+              if (state) {
+                this.router.navigate(['']);
+              } else {
+                this.router.navigate(['login']);
+              }
+            });
+            break;
+          }
+          case 'spain': {
+            Amplify.configure({
+              Auth: {
+                mandatorySignIn: true,
+                region: awscognitoregion,
+                userPoolId: awsuserpoolsides,
+                userPoolWebClientId: awsuserpoolswebclientides,
+                authenticationFlowType: 'USER_PASSWORD_AUTH'
+              }
+            });
+            this.authenticationService.authenticationState.subscribe(state => {
+              if (state) {
+                this.router.navigate(['']);
+              } else {
+                this.router.navigate(['login']);
+              }
+            });
+            break;
+          }
+          default: {
+            this.router.navigate(['cognito']);
+          }
+        }
+      });
       this.storageService.getLocalData('lang').then((language) => {
         if (language === null || language === undefined) {
           this.translate.use('en');
@@ -37,14 +105,6 @@ export class AppComponent {
           this.translate.use(language);
         }
       });
-    });
-    this.authenticationService.authenticationState.subscribe(state => {
-
-      if (state) {
-        this.router.navigate(['']);
-      } else {
-        this.router.navigate(['login']);
-      }
     });
   }
 }
