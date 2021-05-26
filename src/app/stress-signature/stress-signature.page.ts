@@ -74,7 +74,7 @@ export class StressSignaturePage implements AfterViewInit {
   }
 
   async handleRecord() {
-    
+
   }
 
   pickDomain(){

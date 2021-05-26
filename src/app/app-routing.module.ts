@@ -37,6 +37,10 @@ const routes: Routes = [
   {
     path: 'resend-verification',
     loadChildren: () => import('./password/resend-verification/resend-verification.module').then( m => m.ResendVerificationPageModule)
+  },
+  {
+    path: 'cognito',
+    loadChildren: () => import('./cognito/cognito.module').then( m => m.CognitoPageModule)
   }
 ];
 
