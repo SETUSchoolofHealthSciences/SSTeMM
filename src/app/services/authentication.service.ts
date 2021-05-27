@@ -41,6 +41,7 @@ export class AuthenticationService {
       const user = await Auth.signIn(username.toString(), password.toString());
       const tokens = user.signInUserSession;
       if (tokens != null){
+        this.go.navigateForward(['/tabs/home']);
         this.setLogin(tokens.idToken.jwtToken);
         const toast = this.toaster.create({
           message: this.translate.toastMessage,
@@ -49,7 +50,6 @@ export class AuthenticationService {
         });
         // tslint:disable-next-line: no-shadowed-variable
         toast.then(toast => toast.present());
-        this.go.navigateBack(['']);
       }
     } catch (error) {
       const alert = await this.alertController.create({
@@ -257,7 +257,6 @@ export class AuthenticationService {
       'custom:college': college,
       'custom:collegeyear': collegeYear.toString()
     }).then(async response => {
-      console.log(JSON.stringify(response));
       if (response === 'SUCCESS'){
         const alert = await this.alertController.create({
           header: this.translate.alertHeader,

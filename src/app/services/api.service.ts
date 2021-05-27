@@ -23,34 +23,46 @@ export class ApiService {
     this.displayNoEntries = false;
     this.allSignatures = [] as StressSignatue[];
     this.homeSignatures = [] as StressSignatue[];
-    this.storageService.getLocalData(TOKEN_KEY).then((res) => {
+    let observables: any;
+    this.storageService.getLocalData(TOKEN_KEY).then(async (res) => {
       if (res !== null) {
         const decoded = jwt_decode<JwtPayload>(res);
-        this.appsync.initializeClient().then(async client => {
-          console.log('scanlop client ', client)
-          const query = listSsTeMms;
-          const observables = await client.query({
-            query,
-            fetchPolicy: 'network-only',
-            variables: {
-              filter: {cognitoId: {eq: decoded.sub}},
-            }
-          });
-          observables.data.listSSTeMMS.items.sort((a: StressSignatue, b: StressSignatue) => a.timeStamp < b.timeStamp ? 1 : -1);
-          for (const con of  observables.data.listSSTeMMS.items){
-            console.log('length ', observables.data.listSSTeMMS.items.length)
+        observables = await this.getItems(decoded);
+        if (observables.data.listSSTeMMS.items.length === 5) {
+          console.log('fiver');
+          observables = await this.getItems(decoded);
+        }
+        observables.data.listSSTeMMS.items.sort((a: StressSignatue, b: StressSignatue) => a.timeStamp < b.timeStamp ? 1 : -1);
+        const tempobs = observables.data.listSSTeMMS.items;
+        console.log('length ', observables.data.listSSTeMMS.items.length);
+        for (const con of  observables.data.listSSTeMMS.items){
             this.allSignatures.push(con);
           }
-          observables.data.listSSTeMMS.items.splice(5);
-          for (const con of  observables.data.listSSTeMMS.items){
+        tempobs.splice(5);
+        for (const con of  tempobs){
             this.homeSignatures.push(con);
           }
-          if (this.allSignatures.length === 0) {
+        if (this.allSignatures.length === 0) {
             this.displayNoEntries = true;
           }
-          loading.dismiss();
-        });
+        loading.dismiss();
       }
     });
+  }
+
+  private async getItems(token: JwtPayload){
+    let results: any;
+    await this.appsync.initializeClient().then(async client => {
+      const query = listSsTeMms;
+      results =  await client.query({
+        query,
+        fetchPolicy: 'network-only',
+        variables: {
+          filter: {cognitoId: {eq: token.sub}},
+          limit: 500
+        }
+      });
+    });
+    return results;
   }
 }

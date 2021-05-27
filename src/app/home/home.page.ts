@@ -1,7 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { ApiService } from '../services/api.service';
-import { LoadingController, NavController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +10,7 @@ import { LoadingController, NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  constructor(private go: NavController,
-              private auth: AuthenticationService,
+  constructor(private auth: AuthenticationService,
               private api: ApiService,
               private loadingController: LoadingController) {}
 
@@ -32,8 +31,8 @@ export class HomePage implements OnInit {
     this.api.fetchData(this.loadingController);
   }
 
-  add(): void {
-    this.go.navigateBack(['tabs/stress-signature']);
+  resources(): void {
+    window.location.href = 'https://sstemm.eu';
   }
 
   logout(): void {

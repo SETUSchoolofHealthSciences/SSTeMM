@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import Amplify from 'aws-amplify';
 import { awscognitoregion, awsuserpoolsidie, awsuserpoolswebclientidie,
   awsuserpoolsidsi, awsuserpoolswebclientidsi, awsuserpoolsides, awsuserpoolswebclientides } from 'config';
+import { AuthenticationService } from '../services/authentication.service';
 import { StorageService } from '../services/storage.service';
 
 const COUNTRY = 'country';
@@ -17,13 +18,21 @@ export class CognitoPage implements OnInit {
 
   constructor(private storage: StorageService,
               private route: NavController,
-              private translate: TranslateService) { }
+              private router: Router,
+              private translate: TranslateService,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
   selectCountry(country: string){
-    console.log('pressed', country);
+    this.authenticationService.authenticationState.subscribe(state => {
+      if (state) {
+        this.router.navigate(['']);
+      } else {
+        this.router.navigate(['login']);
+      }
+    });
     this.storage.setLocalData(COUNTRY, country);
     switch (country) {
       case 'ireland': {
@@ -38,7 +47,7 @@ export class CognitoPage implements OnInit {
         });
         this.storage.setLocalData('lang', 'en');
         this.translate.use('en');
-        this.route.navigateBack(['login']);
+        this.route.navigateRoot(['login']);
         break;
       }
       case 'slovenia': {

@@ -34,7 +34,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.storageService.getLocalData('country').then(country => {
-        console.log(country);
         switch (country) {
           case 'ireland': {
             Amplify.configure({

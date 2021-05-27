@@ -19,6 +19,7 @@ export class AppsyncService {
         jwtToken: async () =>
           (await Auth.currentSession()).getIdToken().getJwtToken(),
       },
+      disableOffline: true
     });
     // this.hc = client.hydrated;
     this.apolloClient = client;

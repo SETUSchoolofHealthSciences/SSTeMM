@@ -14,20 +14,4 @@ export class HistoryPage implements OnInit {
 
   ngOnInit() {
   }
-
-  ionViewWillEnter(){
-    console.log('scanlop history did enter');
-  }
-
-  ionViewDidEnter(){
-    console.log('scanlop history did enter');
-  }
-
-  ionViewWillLeave(){
-    console.log('scanlop history will leave');
-  }
-
-  ionViewDidLeave(){
-    console.log('scanlop history did leave');
-  }
 }

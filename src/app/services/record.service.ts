@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CreateSSTeMMInput } from 'src/API';
-import { StressSignatue, TotalScore } from '../interface/stress-signature';
+import { ScoreCard, TotalScore } from '../interface/stress-signature';
 import { StorageService } from './storage.service';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { AppsyncService } from './appsync.service';
@@ -16,6 +16,14 @@ export class RecordService {
   totalScores = [] as TotalScore[];
   totalScore = 0;
   domains = [] as string[];
+  savedPressed = false;
+  questionOne = [];
+  questionTwo = [];
+  questionThree = [];
+  questionFour = [];
+  questionFive = [];
+  scoreCard = [] as ScoreCard[];
+  totalScoreCard = {} as TotalScore;
   constructor(private storageService: StorageService,
               private appsync: AppsyncService,
               private nav: NavController) {}
@@ -45,13 +53,21 @@ export class RecordService {
               input: data,
             },
           });
-          console.log('scanlop ', JSON.stringify(mutation));
           this.totalScore = 0;
           this.domains = [];
           this.totalScores = [];
+          this.stressSignature.reflection = null;
+          this.savedPressed = false;
+          this.questionOne = [];
+          this.questionTwo = [];
+          this.questionThree = [];
+          this.questionFour = [];
+          this.questionFive = [];
+          this.scoreCard = [] as ScoreCard[];
+          this.totalScoreCard = {} as TotalScore;
         });
       }
     });
-    this.nav.navigateBack(['/tabs/home']);
+    this.nav.navigateRoot(['/tabs/home']);
   }
 }
