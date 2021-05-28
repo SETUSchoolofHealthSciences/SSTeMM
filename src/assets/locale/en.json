@@ -90,7 +90,8 @@
     "successLogin": "You are logged in successfully!",
     "verifySuccess": "Your account is now verified!",
     "logoutSuccess": "You are signed out successfully!",
-    "passwordChangeSuccess": "Your password was changed successfully!"
+    "passwordChangeSuccess": "Your password was changed successfully!",
+    "expire": "Token expired"
   },
   "tabs": {
     "home": "Home",

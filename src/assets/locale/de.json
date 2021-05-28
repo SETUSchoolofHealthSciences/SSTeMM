@@ -90,7 +90,8 @@
       "successLogin": "Sie wurden erfolgreich angemeldet!",
       "verifySuccess": "Ihr Konto ist jetzt bestätigt!",
       "logoutSuccess": "Sie wurden erfolgreich abgemeldet!",
-      "passwordChangeSuccess": "Ihr Passwort wurde erfolgreich geändert!"
+      "passwordChangeSuccess": "Ihr Passwort wurde erfolgreich geändert!",
+      "expire": "Token abgelaufen"
     },
     "tabs": {
       "home": "Zuhause",

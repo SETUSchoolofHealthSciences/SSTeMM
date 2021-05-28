@@ -5,7 +5,9 @@ import { StorageService } from './storage.service';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { AppsyncService } from './appsync.service';
 import { createSsTeMm } from 'src/graphql/mutations';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
+import { AuthenticationService } from './authentication.service';
+import { TranslationService } from './translation.service';
 
 const TOKEN_KEY_ONE = 'auth-token';
 @Injectable({
@@ -24,50 +26,65 @@ export class RecordService {
   questionFive = [];
   scoreCard = [] as ScoreCard[];
   totalScoreCard = {} as TotalScore;
-  constructor(private storageService: StorageService,
+  constructor(private auth: AuthenticationService,
               private appsync: AppsyncService,
-              private nav: NavController) {}
+              private nav: NavController,
+              private translate: TranslationService,
+              private toaster: ToastController) {}
 
-  saveRecord() {
+  async saveRecord() {
     const date = +new Date();
     for (const item of this.totalScores){
       this.totalScore = this.totalScore + item.totalScore;
     }
     console.log('score', this.totalScore);
-    this.storageService.getLocalData(TOKEN_KEY_ONE).then((res) => {
-      if (res !== null) {
-        const decoded = jwt_decode<JwtPayload>(res);
-        this.appsync.initializeClient().then(async (client) => {
-          const data: CreateSSTeMMInput = {
-            cognitoId: decoded.sub,
-            domain: this.domains,
-            timeStamp: date,
-            scoreCard: JSON.stringify(this.totalScores),
-            totalScore: this.totalScore,
-            reflection: this.stressSignature.reflection,
-          };
-          const mut = createSsTeMm;
-          const mutation = client.mutate({
-            mutation: mut,
-            variables: {
-              input: data,
-            },
-          });
-          this.totalScore = 0;
-          this.domains = [];
-          this.totalScores = [];
-          this.stressSignature.reflection = null;
-          this.savedPressed = false;
-          this.questionOne = [];
-          this.questionTwo = [];
-          this.questionThree = [];
-          this.questionFour = [];
-          this.questionFive = [];
-          this.scoreCard = [] as ScoreCard[];
-          this.totalScoreCard = {} as TotalScore;
+    await this.auth.checkToken();
+    if (this.auth.authenticationState) {
+      this.appsync.initializeClient().then(async (client) => {
+        const data: CreateSSTeMMInput = {
+          cognitoId: this.auth.currentToken.sub,
+          domain: this.domains,
+          timeStamp: date,
+          scoreCard: JSON.stringify(this.totalScores),
+          totalScore: this.totalScore,
+          reflection: this.stressSignature.reflection,
+        };
+        const mut = createSsTeMm;
+        const mutation = client.mutate({
+          mutation: mut,
+          variables: {
+            input: data,
+          },
         });
-      }
-    });
-    this.nav.navigateRoot(['/tabs/home']);
+        this.clearData();
+      });
+      this.nav.navigateRoot(['/tabs/home']);
+    } else {
+      this.translate.timeout();
+      const toast = this.toaster.create({
+        message: this.translate.toastMessage,
+        duration: 3000,
+        position: 'top'
+      });
+      // tslint:disable-next-line: no-shadowed-variable
+      toast.then(toast => toast.present());
+      this.clearData();
+      this.nav.navigateRoot(['login']);
+    }
+  }
+
+  private clearData(){
+    this.totalScore = 0;
+    this.domains = [];
+    this.totalScores = [];
+    this.stressSignature.reflection = null;
+    this.savedPressed = false;
+    this.questionOne = [];
+    this.questionTwo = [];
+    this.questionThree = [];
+    this.questionFour = [];
+    this.questionFive = [];
+    this.scoreCard = [] as ScoreCard[];
+    this.totalScoreCard = {} as TotalScore;
   }
 }

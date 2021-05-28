@@ -13,6 +13,7 @@ const TOKEN_KEY = 'auth-token';
 export class AuthenticationService {
   emailAddress: '';
   authenticationState = new BehaviorSubject(false);
+  currentToken: JwtPayload;
   private user: any;
   constructor(private go: NavController,
               private plt: Platform,
@@ -223,6 +224,7 @@ export class AuthenticationService {
     const decoded = jwt_decode<JwtPayload>(token);
     if (Date.now() < decoded.exp * 1000) {
       this.authenticationState.next(true);
+      this.currentToken = decoded;
     } else {
       this.authenticationState.next(false);
     }

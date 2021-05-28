@@ -90,7 +90,8 @@
     "successLogin": "¡Ha iniciado la sesión con éxito!",
     "verifySuccess": "Su cuenta ya está verificada",
     "logoutSuccess": "¡Ha cerrado la sesión con éxito!",
-    "passwordChangeSuccess": "¡Su contraseña ha sido cambiada con éxito!"
+    "passwordChangeSuccess": "¡Su contraseña ha sido cambiada con éxito!",
+    "expire": "Token caducado"
   },
   "tabs": {
     "home": "Casa",

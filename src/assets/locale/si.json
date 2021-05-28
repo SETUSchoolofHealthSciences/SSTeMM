@@ -90,7 +90,8 @@
       "successLogin": "Uspešno ste se prijavili! ",
       "verifySuccess": "Vaš račun je sedaj preverjen!",
       "logoutSuccess": "Uspešno ste se odjavili!",
-      "passwordChangeSuccess": "Vaše geslo je bilo uspešno spremenjeno!"
+      "passwordChangeSuccess": "Vaše geslo je bilo uspešno spremenjeno!",
+      "expire": "Žeton je potekel"
     },
     "tabs": {
       "home": "Domov",

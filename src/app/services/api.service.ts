@@ -4,8 +4,9 @@ import { AppsyncService } from './appsync.service';
 import { StorageService } from './storage.service';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { listSsTeMms } from '../../graphql/queries';
-import { LoadingController } from '@ionic/angular';
-
+import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { AuthenticationService } from './authentication.service';
+import { TranslationService } from './translation.service';
 const TOKEN_KEY = 'auth-token';
 
 @Injectable({
@@ -17,37 +18,44 @@ export class ApiService {
   displayNoEntries = false;
 
   constructor(private appsync: AppsyncService,
-              private storageService: StorageService) { }
+              private route: NavController,
+              private auth: AuthenticationService,
+              private toaster: ToastController,
+              private translate: TranslationService) { }
 
-  fetchData(loading: LoadingController){
+  async fetchData(loading: LoadingController){
     this.displayNoEntries = false;
     this.allSignatures = [] as StressSignatue[];
     this.homeSignatures = [] as StressSignatue[];
     let observables: any;
-    this.storageService.getLocalData(TOKEN_KEY).then(async (res) => {
-      if (res !== null) {
-        const decoded = jwt_decode<JwtPayload>(res);
-        observables = await this.getItems(decoded);
-        if (observables.data.listSSTeMMS.items.length === 5) {
-          console.log('fiver');
-          observables = await this.getItems(decoded);
-        }
-        observables.data.listSSTeMMS.items.sort((a: StressSignatue, b: StressSignatue) => a.timeStamp < b.timeStamp ? 1 : -1);
-        const tempobs = observables.data.listSSTeMMS.items;
-        console.log('length ', observables.data.listSSTeMMS.items.length);
-        for (const con of  observables.data.listSSTeMMS.items){
-            this.allSignatures.push(con);
-          }
-        tempobs.splice(5);
-        for (const con of  tempobs){
-            this.homeSignatures.push(con);
-          }
-        if (this.allSignatures.length === 0) {
-            this.displayNoEntries = true;
-          }
-        loading.dismiss();
+    await this.auth.checkToken();
+    if (this.auth.authenticationState) {
+      observables = await this.getItems(this.auth.currentToken);
+      if (observables.data.listSSTeMMS.items.length === 5) {
+        console.log('fiver');
+        observables = await this.getItems(this.auth.currentToken);
       }
-    });
+      observables.data.listSSTeMMS.items.sort((a: StressSignatue, b: StressSignatue) => a.timeStamp < b.timeStamp ? 1 : -1);
+      console.log('length ', observables.data.listSSTeMMS.items.length);
+      for (const con of  observables.data.listSSTeMMS.items){
+            this.allSignatures.push(con);
+      }
+      this.slice();
+      if (this.allSignatures.length === 0) {
+        this.displayNoEntries = true;
+      }
+      loading.dismiss();
+    } else {
+      this.translate.timeout();
+      const toast = this.toaster.create({
+        message: this.translate.toastMessage,
+        duration: 3000,
+        position: 'top'
+      });
+      // tslint:disable-next-line: no-shadowed-variable
+      toast.then(toast => toast.present());
+      this.route.navigateRoot(['login']);
+    }
   }
 
   private async getItems(token: JwtPayload){
@@ -64,5 +72,11 @@ export class ApiService {
       });
     });
     return results;
+  }
+
+  slice(){
+    const size = 5;
+    const sliced = this.allSignatures.slice(0, size);
+    this.homeSignatures = sliced;
   }
 }

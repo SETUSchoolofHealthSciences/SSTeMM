@@ -296,4 +296,12 @@ export class TranslationService {
       }
     );
   }
+
+  public timeout(){
+    this.translate.get('toasts.expire').subscribe(
+      value => {
+        this.toastMessage = value;
+      }
+    );
+  }
 }
