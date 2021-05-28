@@ -115,5 +115,11 @@
     },
     "verification": {
       "title": "Bestätigungsmail erneut senden"
+    },
+    "details": {
+      "close": "Schließen",
+      "title": "Einzelheiten",
+      "domains": "Domain (s)",
+      "reflection": "Persönliche Gedanken"
     }
   }

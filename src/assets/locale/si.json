@@ -115,5 +115,11 @@
     },
     "verification": {
       "title": "Ponovno pošlje potrditveno e-poštno sporočilo"
+    },
+    "details": {
+      "close": "Zapri",
+      "title": "Podrobnosti",
+      "domains": "Domena (-e)",
+      "reflection": "Osebna refleksija"
     }
   }

@@ -115,5 +115,11 @@
   },
   "verification": {
     "title": "Reenviar correo electrónico de verificación"
+  },
+  "details": {
+    "close": "Cerca",
+    "title": "Detalles",
+    "domains": "Dominio (s)",
+    "reflection": "Reflexión personal"
   }
 }
