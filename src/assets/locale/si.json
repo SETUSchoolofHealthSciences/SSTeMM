@@ -120,6 +120,8 @@
       "close": "Zapri",
       "title": "Podrobnosti",
       "domains": "Domena (-e)",
-      "reflection": "Osebna refleksija"
+      "reflection": "Osebna refleksija",
+      "nodomain": "Nobena domena ni zabeležena",
+      "noreflection": "Ni zabeleženih osebnih razmislekov"
     }
   }

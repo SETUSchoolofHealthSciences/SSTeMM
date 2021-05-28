@@ -120,6 +120,8 @@
     "close": "Cerca",
     "title": "Detalles",
     "domains": "Dominio (s)",
-    "reflection": "Reflexión personal"
+    "reflection": "Reflexión personal",
+    "nodomain": "Ningún dominio (s) registrado (s)",
+    "noreflection": "Keine persönliche Reflexion aufgezeichnet"
   }
 }

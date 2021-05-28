@@ -120,6 +120,8 @@
       "close": "Schließen",
       "title": "Einzelheiten",
       "domains": "Domain (s)",
-      "reflection": "Persönliche Gedanken"
+      "reflection": "Persönliche Gedanken",
+      "nodomain": "Keine Domain (s) aufgezeichnet",
+      "noreflection": "Keine persönliche Reflexion aufgezeichnet"
     }
   }

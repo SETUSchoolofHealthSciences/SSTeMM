@@ -19,7 +19,7 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <h3 class="noentries" *ngIf="displayNoEntries">{{ 'home.none' | translate }}</h3>
+  <h3 class="noentries" *ngIf="api.displayNoEntries">{{ 'home.none' | translate }}</h3>
   <div class=records>
   <app-record *ngFor="let entry of filters" overallScore={{entry.totalScore}} timestamp={{entry.timeStamp}}
   [domain]="entry.domain" (click)="openModal(entry)">

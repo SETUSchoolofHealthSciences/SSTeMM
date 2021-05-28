@@ -120,6 +120,8 @@
     "close": "Close",
     "title": "Details",
     "domains": "Domain(s)",
-    "reflection": "Personal Reflection"
+    "reflection": "Personal Reflection",
+    "nodomain": "No domain(s) recorded",
+    "noreflection": "No personal reflection recorded"
   }
 }
