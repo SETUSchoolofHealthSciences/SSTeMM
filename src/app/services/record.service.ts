@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CreateSSTeMMInput } from 'src/API';
 import { ScoreCard, TotalScore } from '../interface/stress-signature';
-import { StorageService } from './storage.service';
-import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { AppsyncService } from './appsync.service';
 import { createSsTeMm } from 'src/graphql/mutations';
 import { NavController, ToastController } from '@ionic/angular';
 import { AuthenticationService } from './authentication.service';
 import { TranslationService } from './translation.service';
-
-const TOKEN_KEY_ONE = 'auth-token';
 @Injectable({
   providedIn: 'root',
 })

@@ -52,6 +52,6 @@ export class HomePage implements OnInit {
       }
     }).then((modalElement) => {
       modalElement.present();
-    });;
+    });
   }
 }

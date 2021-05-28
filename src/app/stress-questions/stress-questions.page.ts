@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ScoreCard, TotalScore } from '../interface/stress-signature';
+import { ActivatedRoute } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
 import { TranslationService } from '../services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
 import { RecordService } from '../services/record.service';
-import { StorageService } from '../services/storage.service';
 import { NgForm } from '@angular/forms';
 
 const TOKEN_KEY = 'domain-quest';
