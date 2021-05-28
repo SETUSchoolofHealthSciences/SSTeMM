@@ -104,7 +104,7 @@ export class RegistrationPage implements OnInit {
         {
           text: this.translate.alertButtonTwo,
           handler: () => {
-            console.log('Cancel clicked');
+            console.log('...');
           },
         },
         {

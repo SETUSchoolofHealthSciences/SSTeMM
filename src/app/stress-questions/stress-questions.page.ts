@@ -54,7 +54,7 @@ export class StressQuestionsPage implements OnInit {
         {
           text: this.translate.alertButtonTwo,
           handler: () => {
-            console.log('Cancel clicked');
+            console.log('...');
           }
         },
         {
@@ -119,7 +119,6 @@ export class StressQuestionsPage implements OnInit {
       }
 
       default: {
-        console.log('outside of scope');
         break;
       }
     }

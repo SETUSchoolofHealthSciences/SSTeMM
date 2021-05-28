@@ -37,7 +37,6 @@ export class RecordService {
     for (const item of this.totalScores){
       this.totalScore = this.totalScore + item.totalScore;
     }
-    console.log('score', this.totalScore);
     await this.auth.checkToken();
     if (this.auth.authenticationState) {
       this.appsync.initializeClient().then(async (client) => {

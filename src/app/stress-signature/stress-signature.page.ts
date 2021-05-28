@@ -52,7 +52,7 @@ export class StressSignaturePage {
         {
           text: this.translate.alertButtonTwo,
           handler: () => {
-            console.log('Cancel clicked');
+            console.log('...');
           }
         },
         {
@@ -106,7 +106,6 @@ export class StressSignaturePage {
     this.record.savedPressed = false;
     this.translate.DomainNames();
     this.record.domains = [];
-    console.log('length ', this.record.totalScores.length);
     if (this.record.totalScores.length > 0){
       for (const domain of this.record.totalScores) {
         await this.record.domains.push(domain.domain);

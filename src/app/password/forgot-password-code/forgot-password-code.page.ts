@@ -88,7 +88,7 @@ export class ForgotPasswordCodePage implements OnInit {
               {
                 text: this.translate.alertButtonOne,
                 handler: () => {
-                  console.log('pressed');
+                  console.log('...');
                 }
               }
             ]

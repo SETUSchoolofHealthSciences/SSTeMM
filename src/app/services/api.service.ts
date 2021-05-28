@@ -67,7 +67,7 @@ export class ApiService {
         fetchPolicy: 'network-only',
         variables: {
           filter: {cognitoId: {eq: token.sub}},
-          limit: 500
+          limit: 5000
         }
       });
     });

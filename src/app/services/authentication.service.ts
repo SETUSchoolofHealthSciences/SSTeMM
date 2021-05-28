@@ -60,7 +60,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              console.log('...');
             }
           }
         ]
@@ -108,7 +108,7 @@ export class AuthenticationService {
             {
               text: this.translate.alertButtonOne,
               handler: () => {
-                console.log('pressed');
+                console.log('...');
               }
             }
           ]
@@ -145,7 +145,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              console.log('...');
             }
           }
         ]
@@ -174,7 +174,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              console.log('...');
             }
           }
         ]
@@ -206,7 +206,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              console.log('...');
             }
           }
         ]
@@ -283,7 +283,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              console.log('...');
             }
           }
         ]

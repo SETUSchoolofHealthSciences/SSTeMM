@@ -69,7 +69,6 @@ export class HistoryPage implements OnInit {
   }
 
   openModal(details: any) {
-    console.log(JSON.stringify(details));
     this.modalController.create({
       component: DetailsPage,
       componentProps: {
