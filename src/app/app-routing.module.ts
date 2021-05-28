@@ -41,6 +41,10 @@ const routes: Routes = [
   {
     path: 'cognito',
     loadChildren: () => import('./cognito/cognito.module').then( m => m.CognitoPageModule)
+  },
+  {
+    path: 'details',
+    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   }
 ];
 

@@ -1,0 +1,118 @@
+ion-toolbar{
+    --background: #08415C;
+}
+
+.logoHeader {
+    background: #08415C;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding-bottom: 10px;
+    text-align:center;
+}
+
+.header{
+    color:  #08415C;
+    text-align: center;  
+}
+
+
+
+.maincontent {
+    margin: 30px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .date {
+        flex: 1 1;
+    }
+    .score{
+        flex: 1 1;
+        text-align: center;
+        .circle {
+            font-size: 45px;
+            width:150px;
+            height:150px;
+            background-color: #5ACAF9;
+            color: #ffffff;
+            border-radius: 75px;
+        }
+    }
+}
+
+.domain {
+    margin: 30px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .scores {
+        text-align: center;
+        flex: 1 0 0;
+        border: 2px solid #5ACAF9;
+        .domaintitle {
+            color: #5ACAF9;
+            font-size:larger;
+            font-weight: bold;
+        }
+        .domainscore {
+            color:#08415C;
+            font-size: large;
+        }
+    }
+}
+
+.domainheader {
+    margin-left: 20px;
+    color: #08415C;
+}
+
+.reflection {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;;
+}
+
+.add-button{
+    margin-bottom: 50px;
+    margin-left: -50px;
+    width: 150px; 
+    height: 40px;
+    --border-radius: 20px;
+    ion-icon{
+      color: white;
+      padding: 10px;
+    }
+    ion-text{
+      color: white;
+      font-size: x-large;
+      font-family: Roboto-Light;
+      padding-right: 10px;
+    }
+  }
+
+  .icon {
+      padding-right: 5px;
+      color: #08415C;
+  }
+
+  .circle {
+    background-color: #5ACAF9;
+    color: #ffffff;
+    width: 150px;
+    height: 150px;
+    border-radius: 1000px; 
+    margin: 0.5em;
+    margin-right: 30px;
+}
+
+.aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    font-size: 45px;
+  }

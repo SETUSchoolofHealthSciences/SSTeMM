@@ -115,5 +115,11 @@
   },
   "verification": {
     "title": "Resend Verification Email"
+  },
+  "details": {
+    "close": "Close",
+    "title": "Details",
+    "domains": "Domain(s)",
+    "reflection": "Personal Reflection"
   }
 }

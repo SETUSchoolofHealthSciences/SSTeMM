@@ -16,7 +16,7 @@
   <h3 class="noentries" *ngIf="api.displayNoEntries">{{ 'home.none' | translate }}</h3>
   <div class=records>
   <app-record *ngFor="let entry of api.homeSignatures" overallScore={{entry.totalScore}} timestamp={{entry.timeStamp}}
-  [domain]="entry.domain">
+  [domain]="entry.domain" (click)="openModal(entry)">
   </app-record>
   </div>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">

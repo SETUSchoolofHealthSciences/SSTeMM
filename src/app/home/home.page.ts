@@ -1,7 +1,8 @@
 import { Component, OnInit, } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { ApiService } from '../services/api.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
+import { DetailsPage } from '../details/details.page';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class HomePage implements OnInit {
 
   constructor(private auth: AuthenticationService,
               private api: ApiService,
-              private loadingController: LoadingController) {}
+              private loadingController: LoadingController,
+              private modalController: ModalController) {}
 
   ngOnInit(): void {
   }
@@ -37,5 +39,19 @@ export class HomePage implements OnInit {
 
   logout(): void {
     this.auth.signOut();
+  }
+
+  openModal(details: any) {
+    this.modalController.create({
+      component: DetailsPage,
+      componentProps: {
+        timestamp: details.timeStamp,
+        overallScore: details.totalScore,
+        domain: JSON.parse(details.scoreCard),
+        reflection: details.reflection
+      }
+    }).then((modalElement) => {
+      modalElement.present();
+    });;
   }
 }

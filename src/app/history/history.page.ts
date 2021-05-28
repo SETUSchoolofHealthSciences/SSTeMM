@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { DetailsPage } from '../details/details.page';
 import { StressSignatue } from '../interface/stress-signature';
 import { ApiService } from '../services/api.service';
 
@@ -10,7 +12,8 @@ import { ApiService } from '../services/api.service';
 export class HistoryPage implements OnInit {
   filter: string;
   filters = [] as StressSignatue[];
-  constructor(public api: ApiService) {
+  constructor(public api: ApiService,
+              private modalController: ModalController) {
   }
 
   ngOnInit() {
@@ -63,5 +66,20 @@ export class HistoryPage implements OnInit {
         this.filters = this.api.allSignatures;
       }
     }
+  }
+
+  openModal(details: any) {
+    console.log(JSON.stringify(details));
+    this.modalController.create({
+      component: DetailsPage,
+      componentProps: {
+        timestamp: details.timeStamp,
+        overallScore: details.totalScore,
+        domain: JSON.parse(details.scoreCard),
+        reflection: details.reflection
+      }
+    }).then((modalElement) => {
+      modalElement.present();
+    });
   }
 }
