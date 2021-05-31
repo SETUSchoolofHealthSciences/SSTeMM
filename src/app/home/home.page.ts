@@ -24,6 +24,7 @@ export class HomePage implements OnInit {
     const loading = await this.loadingController.create({
         message: 'Please wait...',
         translucent: true,
+        duration: 3000
       });
     return await loading.present();
   }
