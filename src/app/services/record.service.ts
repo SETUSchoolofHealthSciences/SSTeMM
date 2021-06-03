@@ -45,7 +45,7 @@ export class RecordService {
           reflection: this.stressSignature.reflection,
         };
         const mut = createSsTeMm;
-        const mutation = client.mutate({
+        const mutation = await client.mutate({
           mutation: mut,
           variables: {
             input: data,
