@@ -30,7 +30,7 @@
     "login": {
       "forgotPass": "Pozabljeno geslo",
       "new": "Še nimate uporabniškega računa? Ustvarite ga",
-      "verification": "Kliknite tukaj, da znova pošljete e-poštno sporočilo za preverjanje"
+      "verification": "Kliknite tukaj, da znova pošljete potrditveno e-sporočilo"
     },
     "reg": {
       "title": "Registracija"
@@ -47,7 +47,7 @@
       "feelings": "Občutki",
       "behaviours": "Vedenja",
       "back": "Pojdite nazaj",
-      "resources": "Virov"
+      "resources": "Viri"
     },
     "forgot": {
       "title": "Pozabljeno geslo",
@@ -82,7 +82,7 @@
       "stressSaveMessage": "Za ta vnos ni podatkov, ki bi jih bilo mogoče shraniti.",
       "stressQuestionsMessage":"Ali ste prepričani, da želite zapustiti to stran? Vaš trenutni rezultat ne bo shranjen.",
       "updateProfileSuccessHeader": "Profil posodobljen",
-      "updateProfileSuccessMessage": "Podrobnosti o vašem profilu so posodobljene.",
+      "updateProfileSuccessMessage": "Podrobnosti o vašem profilu so bile posodobljene.",
       "updateProfileErrorHeader": "Napaka pri posodobitvi profila",
       "updateProfileErrorMessage": "Pri posodabljanju profila je prišlo do napake."
     },
@@ -91,7 +91,7 @@
       "verifySuccess": "Vaš račun je sedaj preverjen!",
       "logoutSuccess": "Uspešno ste se odjavili!",
       "passwordChangeSuccess": "Vaše geslo je bilo uspešno spremenjeno!",
-      "expire": "Žeton je potekel"
+      "expire": "Čas za prijavo je potekel"
     },
     "tabs": {
       "home": "Domov",
@@ -100,7 +100,7 @@
       "history": "Zgodovina"
     },
     "history": {
-      "title": "Vaši vpisi za podpis stresa",
+      "title": "Vaši vnosi o stresu",
       "dropdown": "Filtriraj rezultate",
       "all": "Vse",
       "wk": "Teden",
@@ -111,17 +111,17 @@
     },
     "update": {
       "title": "Vaši podatki",
-      "button": "Podrobnosti posodobitve"
+      "button": "Posodobite podatke"
     },
     "verification": {
-      "title": "Ponovno pošlje potrditveno e-poštno sporočilo"
+      "title": "Ponovno pošlje potrditveno e-sporočilo"
     },
     "details": {
       "close": "Zapri",
       "title": "Podrobnosti",
       "domains": "Domena (-e)",
       "reflection": "Osebna refleksija",
-      "nodomain": "Nobena domena ni zabeležena",
-      "noreflection": "Ni zabeleženih osebnih razmislekov"
+      "nodomain": "Domena(-e) ni(-so) zabeležena(-e",
+      "noreflection": "Osebna refleksija ni zabeležena"
     }
   }
