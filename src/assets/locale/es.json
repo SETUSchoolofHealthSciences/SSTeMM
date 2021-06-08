@@ -30,7 +30,7 @@
   "login": {
     "forgotPass": "Olvidé mi contraseña",
     "new": "¿Aún no tiene accesso? Cree una cuenta",
-    "verification": "Haga clic aquí para reenviar el correo electrónico de verificación"
+    "verification": "Haga clic aquí para volver a enviar el correo electrónico de verificación"
   },
   "reg": {
     "title": "Registro"
@@ -82,27 +82,27 @@
     "stressSaveMessage": "No hay datos que guardar en esta entrada.",
     "stressQuestionsMessage":"¿Seguro de que desea abandonar esta página? Su puntuación actual no se guardará.",
     "updateProfileSuccessHeader": "Perfil actualizado",
-    "updateProfileSuccessMessage": "Los detalles de su perfil se han actualizado.",
-    "updateProfileErrorHeader": "Error de actualización de perfil",
-    "updateProfileErrorMessage": "Se encontró un error al actualizar el perfil."
+    "updateProfileSuccessMessage": "Los detalles de su perfil han sido actualizados.",
+    "updateProfileErrorHeader": "Error en la actualización del perfil",
+    "updateProfileErrorMessage": "Se ha producido un error al actualizar el perfil."
   },
   "toasts": {
     "successLogin": "¡Ha iniciado la sesión con éxito!",
     "verifySuccess": "Su cuenta ya está verificada",
     "logoutSuccess": "¡Ha cerrado la sesión con éxito!",
     "passwordChangeSuccess": "¡Su contraseña ha sido cambiada con éxito!",
-    "expire": "Token caducado"
+    "expire": "Código expirado"
   },
   "tabs": {
-    "home": "Casa",
+    "home": "Inicio",
     "create": "Crear",
     "profile": "Perfil",
     "history": "Historia"
   },
   "history": {
-    "title": "Sus entradas de firma de estrés",
-    "dropdown": "Filter Results",
-    "all": "Todas",
+    "title": "Tus entradas de historial de estrés",
+    "dropdown": "Filtrar resultados",
+    "all": "Todo",
     "wk": "Semana",
     "mm": "Mes",
     "yy": "Año",
@@ -110,18 +110,18 @@
     "ok": "De acuerdo"
   },
   "update": {
-    "title": "Tus detalles",
-    "button": "Detalles de actualización"
+    "title": "Sus datos",
+    "button": "Actualizar datos"
   },
   "verification": {
-    "title": "Reenviar correo electrónico de verificación"
+    "title": "Reenviar correo de verificación"
   },
   "details": {
-    "close": "Cerca",
+    "close": "Cerrar",
     "title": "Detalles",
-    "domains": "Dominio (s)",
+    "domains": "Dominio(s)",
     "reflection": "Reflexión personal",
-    "nodomain": "Ningún dominio (s) registrado (s)",
-    "noreflection": "Keine persönliche Reflexion aufgezeichnet"
+    "nodomain": "No hay dominio(s) registrado(s)",
+    "noreflection": "No se ha registrado ninguna reflexión personal"
   }
 }
