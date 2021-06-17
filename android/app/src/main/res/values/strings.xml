@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">SSTeMM</string>
-    <string name="title_activity_main">SSTeMM</string>
-    <string name="package_name">sstemm.eu</string>
-    <string name="custom_url_scheme">sstemm.eu</string>
-</resources>
