@@ -16,7 +16,8 @@ $RECYCLE.BIN/
 *.log
 log.txt
 npm-debug.log*
-
+/android
+/ios
 /.idea
 /.ionic
 /.sass-cache
@@ -45,3 +46,5 @@ amplifyconfiguration.json
 amplify-build-config.json
 amplify-gradle-config.json
 amplifytools.xcconfig
+
+config.ts

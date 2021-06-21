@@ -3,10 +3,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
+
   {
-    path: 'home',
+    path: '',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
     path: 'login',
@@ -15,11 +16,6 @@ const routes: Routes = [
   {
     path: 'registration',
     loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
-  },
-  {
-    path: 'stress-signature',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./stress-signature/stress-signature.module').then( m => m.StressSignaturePageModule)
   },
   {
     path: 'stress-questions/:id',
@@ -38,6 +34,18 @@ const routes: Routes = [
     path: 'terms',
     loadChildren: () => import('./terms/terms.module').then( m => m.TermsPageModule)
   },
+  {
+    path: 'resend-verification',
+    loadChildren: () => import('./password/resend-verification/resend-verification.module').then( m => m.ResendVerificationPageModule)
+  },
+  {
+    path: 'cognito',
+    loadChildren: () => import('./cognito/cognito.module').then( m => m.CognitoPageModule)
+  },
+  {
+    path: 'details',
+    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+  }
 ];
 
 @NgModule({

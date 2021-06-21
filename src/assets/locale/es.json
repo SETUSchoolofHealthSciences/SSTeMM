@@ -29,7 +29,8 @@
   },
   "login": {
     "forgotPass": "Olvidé mi contraseña",
-    "new": "¿Aún no tiene accesso? Cree una cuenta"
+    "new": "¿Aún no tiene accesso? Cree una cuenta",
+    "verification": "Haga clic aquí para volver a enviar el correo electrónico de verificación"
   },
   "reg": {
     "title": "Registro"
@@ -54,7 +55,8 @@
   },
   "home": {
     "title": "Entradas más recientes",
-    "none": "No hay entradas recientes"
+    "none": "No hay entradas recientes",
+    "create": "Crear"
   },
   "stressRecord": {
     "title": "Crear historial de estrés",
@@ -78,12 +80,48 @@
     "stressLeaveMessage": "¿Seguro de que quieres abandonar esta página? La entrada de la firma de estrés no se guardará.",
     "stressSaveHeader": "No hay datos que guardar",
     "stressSaveMessage": "No hay datos que guardar en esta entrada.",
-    "stressQuestionsMessage":"¿Seguro de que desea abandonar esta página? Su puntuación actual no se guardará."
+    "stressQuestionsMessage":"¿Seguro de que desea abandonar esta página? Su puntuación actual no se guardará.",
+    "updateProfileSuccessHeader": "Perfil actualizado",
+    "updateProfileSuccessMessage": "Los detalles de su perfil han sido actualizados.",
+    "updateProfileErrorHeader": "Error en la actualización del perfil",
+    "updateProfileErrorMessage": "Se ha producido un error al actualizar el perfil."
   },
   "toasts": {
     "successLogin": "¡Ha iniciado la sesión con éxito!",
     "verifySuccess": "Su cuenta ya está verificada",
     "logoutSuccess": "¡Ha cerrado la sesión con éxito!",
-    "passwordChangeSuccess": "¡Su contraseña ha sido cambiada con éxito!"
+    "passwordChangeSuccess": "¡Su contraseña ha sido cambiada con éxito!",
+    "expire": "Código expirado"
+  },
+  "tabs": {
+    "home": "Inicio",
+    "create": "Crear",
+    "profile": "Perfil",
+    "history": "Historia"
+  },
+  "history": {
+    "title": "Tus entradas de historial de estrés",
+    "dropdown": "Filtrar resultados",
+    "all": "Todo",
+    "wk": "Semana",
+    "mm": "Mes",
+    "yy": "Año",
+    "cancel": "Cancelar",
+    "ok": "De acuerdo"
+  },
+  "update": {
+    "title": "Sus datos",
+    "button": "Actualizar datos"
+  },
+  "verification": {
+    "title": "Reenviar correo de verificación"
+  },
+  "details": {
+    "close": "Cerrar",
+    "title": "Detalles",
+    "domains": "Dominio(s)",
+    "reflection": "Reflexión personal",
+    "nodomain": "No hay dominio(s) registrado(s)",
+    "noreflection": "No se ha registrado ninguna reflexión personal"
   }
 }

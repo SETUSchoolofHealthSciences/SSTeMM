@@ -4,10 +4,10 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { RecordComponent } from '../component/record/record.component';
-import { HomePageRoutingModule } from './home-routing.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { httpLoaderFactory } from '../app.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,14 +15,14 @@ import { httpLoaderFactory } from '../app.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
         useFactory: httpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    RouterModule.forChild([{ path: '', component: HomePage }])
   ],
   declarations: [HomePage, RecordComponent]
 })

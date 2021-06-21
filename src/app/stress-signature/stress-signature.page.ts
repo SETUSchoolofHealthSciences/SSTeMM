@@ -1,54 +1,115 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import jwt_decode, { JwtPayload } from 'jwt-decode';
-import { CreateSSTeMMInput } from '../../API';
-import { AppsyncService } from '../services/appsync.service';
-import { StorageService } from '../services/storage.service';
-import { createSsTeMm } from '../../graphql/mutations';
-import { TotalScore } from '../interface/stress-signature';
+import { Component } from '@angular/core';
+import { AlertController, NavController } from '@ionic/angular';
 import { TranslationService } from '../services/translation.service';
-
-const TOKEN_KEY_ONE = 'auth-token';
-const TOKEN_KEY_TWO = 'domain-quest';
+import { RecordService } from '../services/record.service';
+import { ScoreCard, TotalScore } from '../interface/stress-signature';
 @Component({
   selector: 'app-stress-signature',
   templateUrl: './stress-signature.page.html',
   styleUrls: ['./stress-signature.page.scss'],
 })
-export class StressSignaturePage implements OnInit {
-  stressSignature = {} as CreateSSTeMMInput;
-  totalScores = [] as TotalScore[];
-
-  thoughtDomain = false;
-  feelingDomain = false;
-  behaviourDomain = false;
-  totalScore = 0;
-  domains = [] as string[];
-
-  public isDomainHidden = false;
-  public isChoiceHidden = true;
-
-  constructor(private go: Router,
-              private appsync: AppsyncService,
-              private storageService: StorageService,
+export class StressSignaturePage {
+  private thoughtDomain = false;
+  private feelingDomain = false;
+  private behaviourDomain = false;
+  private isDomainHidden = false;
+  private isChoiceHidden = true;
+  constructor(private nav: NavController,
               private alertController: AlertController,
-              private translate: TranslationService) { }
+              private translate: TranslationService,
+              private record: RecordService) {
+              }
 
-  ngOnInit() {
+  pickDomain(){
+    this.isDomainHidden = true;
+    this.isChoiceHidden = false;
   }
 
-  ionViewDidEnter(){
+  thoughts(){
+    this.nav.navigateBack(['/stress-questions/think']);
+    this.isDomainHidden = false;
+    this.isChoiceHidden = true;
+  }
+
+  feelings(){
+    this.nav.navigateBack(['/stress-questions/feel']);
+    this.isDomainHidden = false;
+    this.isChoiceHidden = true;
+  }
+
+  behaviours(){
+    this.nav.navigateBack(['/stress-questions/do']);
+    this.isDomainHidden = false;
+    this.isChoiceHidden = true;
+  }
+
+  async cancel(){
+    this.translate.stressSignatureCancel();
+    const alert = await this.alertController.create({
+      header: this.translate.alertHeader,
+      message: this.translate.alertMessage,
+      buttons: [
+        {
+          text: this.translate.alertButtonTwo,
+          handler: () => {
+            console.log('...');
+          }
+        },
+        {
+          text: this.translate.alertButtonOne,
+          handler: () => {
+            this.behaviourDomain = false;
+            this.feelingDomain = false;
+            this.thoughtDomain = false;
+            this.record.totalScores = [];
+            this.record.domains = [];
+            this.record.totalScore = 0;
+            this.record.stressSignature.reflection = null;
+            this.nav.navigateBack(['/tabs/home']);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async save() {
+    this.translate.stressSignatureSave();
+    if (this.record.domains.length === 0 && !this.record.stressSignature.reflection){
+      const alert = await this.alertController.create({
+        header: this.translate.alertHeader,
+        message: this.translate.alertMessage,
+        buttons: [
+          {
+            text: this.translate.alertButtonOne,
+            handler: () => {
+              this.nav.navigateBack(['/tabs/home']);
+            }
+          }
+        ]
+      });
+      await alert.present();
+    } else {
+      this.record.savedPressed = true;
+      this.record.saveRecord();
+      this.behaviourDomain = false;
+      this.feelingDomain = false;
+      this.thoughtDomain = false;
+    }
+  }
+
+  resources(){
+    window.location.href = 'https://sstemm.eu';
+  }
+
+  async ionViewWillEnter(){
+    this.record.savedPressed = false;
     this.translate.DomainNames();
-    this.storageService.getLocalData(TOKEN_KEY_TWO).then((res) => {
-      if (res === null) {
-        return;
-      }
-      this.totalScores.push(res);
-      this.totalScore = this.totalScore + res.totalScore;
-      this.domains.push(res.domain);
-      for (const domain of this.totalScores) {
-        switch (domain.domain ) {
+    this.record.domains = [];
+    if (this.record.totalScores.length > 0){
+      for (const domain of this.record.totalScores) {
+        await this.record.domains.push(domain.domain);
+        switch (domain.domain) {
           case this.translate.thoughts: {
             this.thoughtDomain = true;
             break;
@@ -69,108 +130,25 @@ export class StressSignaturePage implements OnInit {
           }
         }
       }
-    });
-  }
-
-  pickDomain(){
-    this.isDomainHidden = true;
-    this.isChoiceHidden = false;
-  }
-
-  thoughts(){
-    this.go.navigate(['/stress-questions/think']);
-    this.isDomainHidden = false;
-    this.isChoiceHidden = true;
-  }
-
-  feelings(){
-    this.go.navigate(['/stress-questions/feel']);
-    this.isDomainHidden = false;
-    this.isChoiceHidden = true;
-  }
-
-  behaviours(){
-    this.go.navigate(['/stress-questions/do']);
-    this.isDomainHidden = false;
-    this.isChoiceHidden = true;
-  }
-
-  async cancel(){
-    this.translate.stressSignatureCancel();
-    const alert = await this.alertController.create({
-      header: this.translate.alertHeader,
-      message: this.translate.alertMessage,
-      buttons: [
-        {
-          text: this.translate.alertButtonTwo,
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: this.translate.alertButtonOne,
-          handler: () => {
-            this.storageService.removeLocalData(TOKEN_KEY_TWO);
-            this.totalScore = 0;
-            this.domains = [];
-            this.go.navigate(['/home']);
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  async save(){
-    this.translate.stressSignatureSave();
-    if (this.domains.length === 0 && !this.stressSignature.reflection){
-      const alert = await this.alertController.create({
-        header: this.translate.alertHeader,
-        message: this.translate.alertMessage,
-        buttons: [
-          {
-            text: this.translate.alertButtonOne,
-            handler: () => {
-              this.storageService.removeLocalData(TOKEN_KEY_TWO);
-              this.totalScore = 0;
-              this.domains = [];
-              this.go.navigate(['/home']);
-            }
-          }
-        ]
-      });
-      await alert.present();
-    } else {
-      const date = (+new Date());
-      this.storageService.getLocalData(TOKEN_KEY_ONE).then((res) => {
-        if (res !== null) {
-          const decoded = jwt_decode<JwtPayload>(res);
-          this.appsync.initializeClient().then(async client => {
-            const data: CreateSSTeMMInput = {
-              cognitoId: decoded.sub,
-              domain: this.domains,
-              timeStamp: date,
-              scoreCard: JSON.stringify(this.totalScores),
-              totalScore: this.totalScore,
-              reflection: this.stressSignature.reflection
-            };
-            const mut = createSsTeMm;
-            const mutation = client.mutate({
-              mutation: mut,
-              variables: {
-                input: data
-              }
-            });
-            this.storageService.removeLocalData(TOKEN_KEY_TWO);
-            this.totalScore = 0;
-            this.domains = [];
-          });
-      }});
-      this.go.navigate(['/home']);
     }
   }
 
-  resources(){
-    window.location.href = 'https://sstemm.eu';
+  ionViewDidLeave(){
+    if (!this.record.savedPressed) {
+      this.behaviourDomain = false;
+      this.feelingDomain = false;
+      this.thoughtDomain = false;
+      this.record.totalScores = [] as TotalScore[];
+      this.record.totalScore = 0;
+      this.record.domains = [] as string[];
+      this.record.stressSignature.reflection = null;
+      this.record.questionOne = [];
+      this.record.questionTwo = [];
+      this.record.questionThree = [];
+      this.record.questionFour = [];
+      this.record.questionFive = [];
+      this.record.scoreCard = [] as ScoreCard[];
+      this.record.totalScoreCard = {} as TotalScore;
+    }
   }
 }

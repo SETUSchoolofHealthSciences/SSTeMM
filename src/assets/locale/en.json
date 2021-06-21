@@ -29,7 +29,8 @@
   },
   "login": {
     "forgotPass": "Forgot Password",
-    "new": "No account yet? Create one"
+    "new": "No account yet? Create one",
+    "verification": "Click here to resend verification email"
   },
   "reg": {
     "title": "Registration"
@@ -54,7 +55,8 @@
   },
   "home": {
     "title": "Most Recent Entries",
-    "none": "There is no recent entries"
+    "none": "There are no recent entries",
+    "create": "Create"
   },
   "stressRecord": {
     "title": "Create Stress Signature Record",
@@ -78,12 +80,48 @@
     "stressLeaveMessage": "Are you sure you want to leave this page? Stress Signature entry will not be saved.",
     "stressSaveHeader": "No data to be saved",
     "stressSaveMessage": "There is no data to be saved to this entry.",
-    "stressQuestionsMessage":"Are you sure you want to leave this page? Your current score will not be saved."
+    "stressQuestionsMessage":"Are you sure you want to leave this page? Your current score will not be saved.",
+    "updateProfileSuccessHeader": "Profile Updated",
+    "updateProfileSuccessMessage": "Your profile details have been updated.",
+    "updateProfileErrorHeader": "Profile Update Error",
+    "updateProfileErrorMessage": "Error encountered while updating profle."
   },
   "toasts": {
     "successLogin": "You are logged in successfully!",
     "verifySuccess": "Your account is now verified!",
     "logoutSuccess": "You are signed out successfully!",
-    "passwordChangeSuccess": "Your password was changed successfully!"
+    "passwordChangeSuccess": "Your password was changed successfully!",
+    "expire": "Token expired"
+  },
+  "tabs": {
+    "home": "Home",
+    "create": "Create",
+    "profile": "Profile",
+    "history": "History"
+  },
+  "history": {
+    "title": "Your Stress Signature Entries",
+    "dropdown": "Filter Results",
+    "all": "All",
+    "wk": "Week",
+    "mm": "Month",
+    "yy": "Year",
+    "cancel": "Cancel",
+    "ok": "Ok"
+  },
+  "update": {
+    "title": "Your Details",
+    "button": "Update Details"
+  },
+  "verification": {
+    "title": "Resend Verification Email"
+  },
+  "details": {
+    "close": "Close",
+    "title": "Details",
+    "domains": "Domain(s)",
+    "reflection": "Personal Reflection",
+    "nodomain": "No domain(s) recorded",
+    "noreflection": "No personal reflection recorded"
   }
 }

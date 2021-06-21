@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from '../services/storage.service';
 import { TranslateService } from '@ngx-translate/core';
 @Component({
@@ -36,8 +36,12 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.storage.getLocalData('lang').then(data => {
-      switch (data) {
+
+  }
+
+  ionViewDidEnter(){
+    const data = this.translate.currentLang;
+    switch (data) {
         case 'en': {
           this.selectedCountryCode = 'ie';
           this.translate.use(data);
@@ -63,7 +67,6 @@ export class LoginPage implements OnInit {
           this.translate.use('en');
         }
       }
-    });
   }
 
   changeSelectedCountryCode(value: string): void {

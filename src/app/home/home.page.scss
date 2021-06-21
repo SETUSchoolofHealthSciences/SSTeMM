@@ -25,7 +25,20 @@ ion-toolbar{
 }
 
 .add-button{
-  color: #08415C !important;
+  margin-left: -50px;
+  width: 150px; 
+  height: 40px;
+  --border-radius: 20px;
+  ion-icon{
+    color: white;
+    padding: 5px;
+  }
+  ion-text{
+    color: white;
+    font-size: x-large;
+    font-family: Roboto-Light;
+    padding-right: 10px;
+  }
 }
 
 .signout-button {

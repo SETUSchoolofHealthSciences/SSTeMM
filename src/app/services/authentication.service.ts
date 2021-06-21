@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController, Platform, ToastController } from '@ionic/angular';
+import { AlertController, NavController, Platform, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
 import { BehaviorSubject } from 'rxjs';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
@@ -14,7 +13,9 @@ const TOKEN_KEY = 'auth-token';
 export class AuthenticationService {
   emailAddress: '';
   authenticationState = new BehaviorSubject(false);
-  constructor(private go: Router,
+  currentToken: JwtPayload;
+  private user: any;
+  constructor(private go: NavController,
               private plt: Platform,
               private storageService: StorageService,
               private toaster: ToastController,
@@ -41,6 +42,7 @@ export class AuthenticationService {
       const user = await Auth.signIn(username.toString(), password.toString());
       const tokens = user.signInUserSession;
       if (tokens != null){
+        this.go.navigateForward(['/tabs/home']);
         this.setLogin(tokens.idToken.jwtToken);
         const toast = this.toaster.create({
           message: this.translate.toastMessage,
@@ -49,7 +51,6 @@ export class AuthenticationService {
         });
         // tslint:disable-next-line: no-shadowed-variable
         toast.then(toast => toast.present());
-        this.go.navigate(['home']);
       }
     } catch (error) {
       const alert = await this.alertController.create({
@@ -59,7 +60,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              console.log('...');
             }
           }
         ]
@@ -92,7 +93,7 @@ export class AuthenticationService {
             {
               text: this.translate.alertButtonOne,
               handler: () => {
-                this.go.navigate(['/login']);
+                this.go.navigateBack(['/login']);
               }
             }
           ]
@@ -107,7 +108,7 @@ export class AuthenticationService {
             {
               text: this.translate.alertButtonOne,
               handler: () => {
-                console.log('pressed');
+                console.log('...');
               }
             }
           ]
@@ -130,7 +131,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              this.go.navigateBack(['/login']);
             }
           }
         ]
@@ -144,7 +145,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              console.log('...');
             }
           }
         ]
@@ -173,7 +174,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              console.log('...');
             }
           }
         ]
@@ -193,7 +194,7 @@ export class AuthenticationService {
         });
         // tslint:disable-next-line: no-shadowed-variable
         toast.then(toast => toast.present());
-        this.go.navigate(['login']);
+        this.go.navigateBack(['login']);
         this.storageService.removeLocalData(TOKEN_KEY);
         this.authenticationState.next(false);
       });
@@ -205,7 +206,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              console.log('pressed');
+              console.log('...');
             }
           }
         ]
@@ -223,6 +224,7 @@ export class AuthenticationService {
     const decoded = jwt_decode<JwtPayload>(token);
     if (Date.now() < decoded.exp * 1000) {
       this.authenticationState.next(true);
+      this.currentToken = decoded;
     } else {
       this.authenticationState.next(false);
     }
@@ -240,5 +242,53 @@ export class AuthenticationService {
 
   submitCode(email: string, code: string, password: string) {
     return Auth.forgotPasswordSubmit(email, code, password);
+  }
+
+  async getCurrentUserAttributes(){
+    this.user = await Auth.currentAuthenticatedUser();
+    return this.user.attributes;
+  }
+
+  async updateUserAttributes(firstName: string, lastName: string, hospital?: string,
+                             college?: string, collegeYear?: number){
+    this.translate.UpdateProfile();
+    Auth.updateUserAttributes(this.user, {
+      given_name: firstName,
+      family_name: lastName,
+      'custom:hospital': hospital,
+      'custom:college': college,
+      'custom:collegeyear': collegeYear.toString()
+    }).then(async response => {
+      if (response === 'SUCCESS'){
+        const alert = await this.alertController.create({
+          header: this.translate.alertHeader,
+          message: this.translate.alertMessage,
+          buttons: [
+            {
+              text: this.translate.alertButtonOne,
+              handler: () => {
+                this.go.navigateBack(['/tabs/home']);
+              }
+            }
+          ]
+        });
+        await alert.present();
+      }
+    }).catch(async error => {
+      console.log(JSON.stringify(error));
+      const alert = await this.alertController.create({
+        header: this.translate.alertErrorHeader,
+        message: this.translate.alertErrorMessage,
+        buttons: [
+          {
+            text: this.translate.alertButtonOne,
+            handler: () => {
+              console.log('...');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    });
   }
 }

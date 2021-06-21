@@ -29,7 +29,8 @@
     },
     "login": {
       "forgotPass": "Pozabljeno geslo",
-      "new": "Še nimate uporabniškega računa? Ustvarite ga"
+      "new": "Še nimate uporabniškega računa? Ustvarite ga",
+      "verification": "Kliknite tukaj, da znova pošljete potrditveno e-sporočilo"
     },
     "reg": {
       "title": "Registracija"
@@ -46,7 +47,7 @@
       "feelings": "Občutki",
       "behaviours": "Vedenja",
       "back": "Pojdite nazaj",
-      "resources": "Virov"
+      "resources": "Viri"
     },
     "forgot": {
       "title": "Pozabljeno geslo",
@@ -54,7 +55,8 @@
     },
     "home": {
       "title": "Nedavni vnosi",
-      "none": "Ni nedavnih vnosov"
+      "none": "Ni nedavnih vnosov",
+      "create": "Ustvari"
     },
     "stressRecord": {
       "title": "Ustvarite poročilo o stresu",
@@ -78,12 +80,48 @@
       "stressLeaveMessage": "Ali ste prepričani, da želite zapustiti to stran? Vnos poročila o stresu ne bo shranjen.",
       "stressSaveHeader": "Ni podatkov za shranjevanje",
       "stressSaveMessage": "Za ta vnos ni podatkov, ki bi jih bilo mogoče shraniti.",
-      "stressQuestionsMessage":"Ali ste prepričani, da želite zapustiti to stran? Vaš trenutni rezultat ne bo shranjen."
+      "stressQuestionsMessage":"Ali ste prepričani, da želite zapustiti to stran? Vaš trenutni rezultat ne bo shranjen.",
+      "updateProfileSuccessHeader": "Profil posodobljen",
+      "updateProfileSuccessMessage": "Podrobnosti o vašem profilu so bile posodobljene.",
+      "updateProfileErrorHeader": "Napaka pri posodobitvi profila",
+      "updateProfileErrorMessage": "Pri posodabljanju profila je prišlo do napake."
     },
     "toasts": {
       "successLogin": "Uspešno ste se prijavili! ",
       "verifySuccess": "Vaš račun je sedaj preverjen!",
       "logoutSuccess": "Uspešno ste se odjavili!",
-      "passwordChangeSuccess": "Vaše geslo je bilo uspešno spremenjeno!"
+      "passwordChangeSuccess": "Vaše geslo je bilo uspešno spremenjeno!",
+      "expire": "Čas za prijavo je potekel"
+    },
+    "tabs": {
+      "home": "Domov",
+      "create": "Ustvari",
+      "profile": "Profil",
+      "history": "Zgodovina"
+    },
+    "history": {
+      "title": "Vaši vnosi o stresu",
+      "dropdown": "Filtriraj rezultate",
+      "all": "Vse",
+      "wk": "Teden",
+      "mm": "Mesec",
+      "yy": "Leto",
+      "cancel": "Prekliči",
+      "ok": "V redu"
+    },
+    "update": {
+      "title": "Vaši podatki",
+      "button": "Posodobite podatke"
+    },
+    "verification": {
+      "title": "Ponovno pošlje potrditveno e-sporočilo"
+    },
+    "details": {
+      "close": "Zapri",
+      "title": "Podrobnosti",
+      "domains": "Domena (-e)",
+      "reflection": "Osebna refleksija",
+      "nodomain": "Domena(-e) ni(-so) zabeležena(-e",
+      "noreflection": "Osebna refleksija ni zabeležena"
     }
   }
