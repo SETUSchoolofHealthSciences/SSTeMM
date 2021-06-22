@@ -43,4 +43,8 @@ export class ResendVerificationPage implements OnInit {
     this.submitted = true;
     this.auth.resendConfirmationCode(this.formGroupEmail.value.emailControl);
   }
+
+  giveCode() {
+    this.router.navigateBack(['/reg-code']);
+  }
 }

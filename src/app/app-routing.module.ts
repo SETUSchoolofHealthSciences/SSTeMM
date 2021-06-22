@@ -45,6 +45,10 @@ const routes: Routes = [
   {
     path: 'details',
     loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+  },
+  {
+    path: 'reg-code',
+    loadChildren: () => import('./reg-code/reg-code.module').then( m => m.RegCodePageModule)
   }
 ];
 

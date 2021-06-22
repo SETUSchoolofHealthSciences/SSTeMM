@@ -84,7 +84,9 @@
     "updateProfileSuccessHeader": "Perfil actualizado",
     "updateProfileSuccessMessage": "Los detalles de su perfil han sido actualizados.",
     "updateProfileErrorHeader": "Error en la actualización del perfil",
-    "updateProfileErrorMessage": "Se ha producido un error al actualizar el perfil."
+    "updateProfileErrorMessage": "Se ha producido un error al actualizar el perfil.",
+    "successHeader": "Success",
+    "successMessage": "Su cuenta ya está verificada!"
   },
   "toasts": {
     "successLogin": "¡Ha iniciado la sesión con éxito!",
@@ -114,7 +116,8 @@
     "button": "Actualizar datos"
   },
   "verification": {
-    "title": "Reenviar correo de verificación"
+    "title": "Reenviar correo de verificación",
+    "header": "Complete Registration"
   },
   "details": {
     "close": "Cerrar",

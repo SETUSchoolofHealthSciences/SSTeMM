@@ -84,7 +84,9 @@
       "updateProfileSuccessHeader": "Profil posodobljen",
       "updateProfileSuccessMessage": "Podrobnosti o vašem profilu so bile posodobljene.",
       "updateProfileErrorHeader": "Napaka pri posodobitvi profila",
-      "updateProfileErrorMessage": "Pri posodabljanju profila je prišlo do napake."
+      "updateProfileErrorMessage": "Pri posodabljanju profila je prišlo do napake.",
+      "successHeader": "Success",
+      "successMessage": "Vaš račun je sedaj preverjen!"
     },
     "toasts": {
       "successLogin": "Uspešno ste se prijavili! ",
@@ -114,7 +116,8 @@
       "button": "Posodobite podatke"
     },
     "verification": {
-      "title": "Ponovno pošlje potrditveno e-sporočilo"
+      "title": "Ponovno pošlje potrditveno e-sporočilo",
+      "header": "Complete Registration"
     },
     "details": {
       "close": "Zapri",

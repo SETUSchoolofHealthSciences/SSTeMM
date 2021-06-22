@@ -30,7 +30,7 @@
   "login": {
     "forgotPass": "Forgot Password",
     "new": "No account yet? Create one",
-    "verification": "Click here to resend verification email"
+    "verification": "Click here for account registration issues"
   },
   "reg": {
     "title": "Registration"
@@ -84,7 +84,9 @@
     "updateProfileSuccessHeader": "Profile Updated",
     "updateProfileSuccessMessage": "Your profile details have been updated.",
     "updateProfileErrorHeader": "Profile Update Error",
-    "updateProfileErrorMessage": "Error encountered while updating profle."
+    "updateProfileErrorMessage": "Error encountered while updating profle.",
+    "successHeader": "Success",
+    "successMessage": "Your account is now verified!"
   },
   "toasts": {
     "successLogin": "You are logged in successfully!",
@@ -114,7 +116,8 @@
     "button": "Update Details"
   },
   "verification": {
-    "title": "Resend Verification Email"
+    "title": "Resend Verification Code",
+    "header": "Complete Registration"
   },
   "details": {
     "close": "Close",

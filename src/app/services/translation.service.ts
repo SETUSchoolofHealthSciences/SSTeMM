@@ -42,9 +42,14 @@ export class TranslationService {
   }
 
   public confirmSignUpWithCodeTranslation() {
-    this.translate.get('toasts.verifySuccess').subscribe(
+    this.translate.get('alerts.successHeader').subscribe(
       value => {
-        this.toastMessage = value;
+        this.alertHeader = value;
+      }
+    );
+    this.translate.get('alerts.successMessage').subscribe(
+      value => {
+        this.alertMessage = value;
       }
     );
     this.translate.get('alerts.errorHeader').subscribe(

@@ -11,7 +11,7 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  emailAddress: '';
+  emailAddress: string;
   authenticationState = new BehaviorSubject(false);
   currentToken: JwtPayload;
   private user: any;
@@ -86,6 +86,7 @@ export class AuthenticationService {
         },
         validationData: []
       }).then(async data => {
+        this.emailAddress = email;
         const alert = await this.alertController.create({
           header: this.translate.alertHeader,
           message: this.translate.alertMessage,
@@ -93,7 +94,7 @@ export class AuthenticationService {
             {
               text: this.translate.alertButtonOne,
               handler: () => {
-                this.go.navigateBack(['/login']);
+                this.go.navigateBack(['/reg-code']);
               }
             }
           ]
@@ -124,6 +125,7 @@ export class AuthenticationService {
     this.translate.resendTranslations();
     try {
       await Auth.resendSignUp(username);
+      this.emailAddress = username;
       const alert = await this.alertController.create({
         header: this.translate.alertHeader,
         message: this.translate.alertMessage,
@@ -131,7 +133,7 @@ export class AuthenticationService {
           {
             text: this.translate.alertButtonOne,
             handler: () => {
-              this.go.navigateBack(['/login']);
+              this.go.navigateBack(['/reg-code']);
             }
           }
         ]
@@ -158,14 +160,21 @@ export class AuthenticationService {
    async confirmSignUpWithCode(username: string, code: string) {
      this.translate.confirmSignUpWithCodeTranslation();
      try {
-      await Auth.confirmSignUp(username, code);
-      const toast = this.toaster.create({
-        message: this.translate.toastMessage,
-        duration: 3000,
-        position: 'bottom'
+      await Auth.confirmSignUp(username, code).then(async response => {
+        const alert = await this.alertController.create({
+          header: this.translate.alertHeader,
+          message: this.translate.alertMessage,
+          buttons: [
+            {
+              text: this.translate.alertButtonOne,
+              handler: () => {
+                this.go.navigateBack(['/login']);
+              }
+            }
+          ]
+        });
+        await alert.present();
       });
-      // tslint:disable-next-line: no-shadowed-variable
-      toast.then(toast => toast.present());
     } catch (error) {
       const alert = await this.alertController.create({
         header: this.translate.alertErrorHeader,

@@ -84,7 +84,9 @@
       "updateProfileSuccessHeader": "Profil aktualisiert",
       "updateProfileSuccessMessage": "Ihre Profildetails wurden aktualisiert.",
       "updateProfileErrorHeader": "Profilaktualisierungsfehler",
-      "updateProfileErrorMessage": "Fehler beim Aktualisieren von profle."
+      "updateProfileErrorMessage": "Fehler beim Aktualisieren von profle.",
+      "successHeader": "Success",
+      "successMessage": "Ihr Konto ist jetzt bestätigt!"
     },
     "toasts": {
       "successLogin": "Sie wurden erfolgreich angemeldet!",
@@ -114,7 +116,8 @@
       "button": "Details aktualisieren"
     },
     "verification": {
-      "title": "Bestätigungsmail erneut senden"
+      "title": "Bestätigungsmail erneut senden",
+      "header": "Complete Registration"
     },
     "details": {
       "close": "Schließen",
