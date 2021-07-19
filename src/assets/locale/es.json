@@ -30,7 +30,7 @@
   "login": {
     "forgotPass": "Olvidé mi contraseña",
     "new": "¿Aún no tiene accesso? Cree una cuenta",
-    "verification": "Haga clic aquí para volver a enviar el correo electrónico de verificación"
+    "verification": "Haga clic aquí para los problemas de registro de la cuenta"
   },
   "reg": {
     "title": "Registro"
@@ -59,7 +59,7 @@
     "create": "Crear"
   },
   "stressRecord": {
-    "title": "Crear historial de estrés",
+    "title": "Crear registro de estrés",
     "reflection": "Reflexión personal",
     "score": "Tu puntuación"
   },
@@ -85,7 +85,7 @@
     "updateProfileSuccessMessage": "Los detalles de su perfil han sido actualizados.",
     "updateProfileErrorHeader": "Error en la actualización del perfil",
     "updateProfileErrorMessage": "Se ha producido un error al actualizar el perfil.",
-    "successHeader": "Success",
+    "successHeader": "Éxito",
     "successMessage": "Su cuenta ya está verificada!"
   },
   "toasts": {
@@ -102,7 +102,7 @@
     "history": "Historia"
   },
   "history": {
-    "title": "Tus entradas de historial de estrés",
+    "title": "Historial de registros de estrés",
     "dropdown": "Filtrar resultados",
     "all": "Todo",
     "wk": "Semana",
@@ -116,8 +116,8 @@
     "button": "Actualizar datos"
   },
   "verification": {
-    "title": "Reenviar correo de verificación",
-    "header": "Complete Registration"
+    "title": "Reenviar el código de verificación",
+    "header": "Completar el registro"
   },
   "details": {
     "close": "Cerrar",

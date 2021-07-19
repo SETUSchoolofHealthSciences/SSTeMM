@@ -30,7 +30,7 @@
     "login": {
       "forgotPass": "Pozabljeno geslo",
       "new": "Še nimate uporabniškega računa? Ustvarite ga",
-      "verification": "Kliknite tukaj, da znova pošljete potrditveno e-sporočilo"
+      "verification": "Kliknite tukaj za vprašanja ali težave pri registraciji"
     },
     "reg": {
       "title": "Registracija"
@@ -85,7 +85,7 @@
       "updateProfileSuccessMessage": "Podrobnosti o vašem profilu so bile posodobljene.",
       "updateProfileErrorHeader": "Napaka pri posodobitvi profila",
       "updateProfileErrorMessage": "Pri posodabljanju profila je prišlo do napake.",
-      "successHeader": "Success",
+      "successHeader": "Registracija uspešna",
       "successMessage": "Vaš račun je sedaj preverjen!"
     },
     "toasts": {
@@ -116,8 +116,8 @@
       "button": "Posodobite podatke"
     },
     "verification": {
-      "title": "Ponovno pošlje potrditveno e-sporočilo",
-      "header": "Complete Registration"
+      "title": "Znova pošljite kodo za preverjanje",
+      "header": "Dokončaj registracijo"
     },
     "details": {
       "close": "Zapri",
