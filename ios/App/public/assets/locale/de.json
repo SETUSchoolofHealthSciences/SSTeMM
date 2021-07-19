@@ -1,0 +1,130 @@
+{
+    "input": {
+      "email": "E-Mail Adresse",
+      "password": "Passwort",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "college": "Hochschule",
+      "collegeYear": "Hochschuljahr",
+      "hospital": "Hospital",
+      "confirmPassword": "Bitte das Passwort bestätigen",
+      "termsStart": "Mit dem Anklicken bestätigen Sie die ",
+      "termsLink": "AGBs",
+      "termsEnd": "für die Nutzung dieses Dienstes",
+      "verify": "Verifizierungscode",
+      "reflection": "Geben Sie hier Ihre persönlichen Gedanken ein...."
+    },
+    "validation": {
+      "emailRequired": "Die E-Mail Adresse ist erforderlich",
+      "emailValid": "Geben Sie eine gültige E-Mail Adresse ein",
+      "passwordRequired": "Das Passwort ist erforderlich",
+      "firstRequired": "Der Vorname ist erforderlich",
+      "lastRequired": "Der Nachname ist erforderlich",
+      "collegeYear": "Das Hochschuljahr muss zwischen 1 und 5 liegen",
+      "passwordRequirements": "Das Passwort sollte mindestens 8 Zeichen haben, davon mindestens 1 Großbuchstabe, 1 Kleinbuchstabe und 1 Zahl",
+      "confirmPassword": "Passwort muss bestätiget werden",
+      "matchPasswords": "Die Passwörter stimmen nicht überein",
+      "terms": "Bitte akzeptieren Sie die AGBs",
+      "verify": "Der Verifizierungscode ist erforderlich"
+    },
+    "login": {
+      "forgotPass": "Passwort vergessen",
+      "new": "Noch kein Konto? Erstellen Sie eines",
+      "verification": "Klicken Sie hier, um die Bestätigungs-E-Mail erneut zu senden"
+    },
+    "reg": {
+      "title": "Registrierung"
+    },
+    "button": {
+      "cancel": "Abbrechen",
+      "register": "Registrieren",
+      "login": "Anmelden",
+      "already": "Code bereits vorhanden",
+      "submit": "Senden",
+      "save": "Speichern",
+      "pickDomain": "Domain auswählen",
+      "thoughts": "Überlegungen",
+      "feelings": "Gefühle",
+      "behaviours": "Verhaltensweisen",
+      "back": "Gehe zurück",
+      "resources": "Ressourcen"
+    },
+    "forgot": {
+      "title": "Passwort vergessen",
+      "code": "Code abschicken"
+    },
+    "home": {
+      "title": "Neueste Einträge",
+      "none": "Es sind keine aktuellen Einträge vorhanden",
+      "create": "Erstellen"
+    },
+    "stressRecord": {
+      "title": "Stress-Signatur Datensatz erstellen",
+      "reflection": "Persönliche Gedanken",
+      "score": "Ihre Punktzahl"
+    },
+    "alerts": {
+      "errorHeader": "Authentifizierungsfehler",
+      "buttonOk": "Ok",
+      "buttonNo": "Nein",
+      "buttonYes": "Ja",
+      "buttonTry": "Erneut versuchen",
+      "leavePageHeader": "Diese Seite verlassen?",
+      "regLeavePageMessage": "Sind Sie sicher, dass Sie diese Seite verlassen wollen? Ihre Registrierung wird dann verworfen.",
+      "emailVerHeader": "E-Mail Bestätigung",
+      "emailVerMessage": "Bitte überprüfen Sie Ihre E-Mails um Ihr Konto zu bestätigen.",
+      "emailCode": "Bitte überprüfen Sie Ihre E-Mails auf neue Codes.",
+      "forgotPasswordHeader": "Verifizierungscode",
+      "forgotPasswordMessage": "Es wurde ein Verifizierungscode gesendet an ",
+      "forgotPassworderrorHeader": "Benutzer ist nicht bekannt",
+      "stressLeaveMessage": "Sind Sie sicher, dass Sie diese Seite verlassen wollen? Der Stress-Signatur-Eintrag wird nicht gespeichert.",
+      "stressSaveHeader": "Keine zu speichernden Daten vorhanden",
+      "stressSaveMessage": "Es sind keine Daten zu diesem Eintrag zu speichern.",
+      "stressQuestionsMessage":"Sind Sie sicher, dass Sie diese Seite verlassen wollen? Ihr aktueller Score wird nicht gespeichert.",
+      "updateProfileSuccessHeader": "Profil aktualisiert",
+      "updateProfileSuccessMessage": "Ihre Profildetails wurden aktualisiert.",
+      "updateProfileErrorHeader": "Profilaktualisierungsfehler",
+      "updateProfileErrorMessage": "Fehler beim Aktualisieren von profle.",
+      "successHeader": "Success",
+      "successMessage": "Ihr Konto ist jetzt bestätigt!"
+    },
+    "toasts": {
+      "successLogin": "Sie wurden erfolgreich angemeldet!",
+      "verifySuccess": "Ihr Konto ist jetzt bestätigt!",
+      "logoutSuccess": "Sie wurden erfolgreich abgemeldet!",
+      "passwordChangeSuccess": "Ihr Passwort wurde erfolgreich geändert!",
+      "expire": "Token abgelaufen"
+    },
+    "tabs": {
+      "home": "Zuhause",
+      "create": "Erstellen",
+      "profile": "Profil",
+      "history": "Geschichte"
+    },
+    "history": {
+      "title": "Ihre Stress-Signatur-Einträge",
+      "dropdown": "Filter Ergebnisse",
+      "all": "Alle",
+      "wk": "Woche",
+      "mm": "Monat",
+      "yy": "Jahr",
+      "cancel": "Abbrechen",
+      "ok": "Ok"
+    },
+    "update": {
+      "title": "Deine Details",
+      "button": "Details aktualisieren"
+    },
+    "verification": {
+      "title": "Bestätigungsmail erneut senden",
+      "header": "Complete Registration"
+    },
+    "details": {
+      "close": "Schließen",
+      "title": "Einzelheiten",
+      "domains": "Domain (s)",
+      "reflection": "Persönliche Gedanken",
+      "nodomain": "Keine Domain (s) aufgezeichnet",
+      "noreflection": "Keine persönliche Reflexion aufgezeichnet"
+    }
+  }

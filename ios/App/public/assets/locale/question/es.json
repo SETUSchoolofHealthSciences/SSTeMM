@@ -1,0 +1,37 @@
+{
+	"domains": [
+		{
+			"domain": "Pensamientos",
+			"id": "think",
+			"questions": [
+				{ "id": 1, "question": "No me siento capaz y confiado en mi trabajo assistencial" },
+				{ "id": 2, "question": "Pienso en cosas desagradables que han sucedido en el trabajo clínico"},
+				{ "id": 3, "question": "Pienso constantemente en los trabajos universitario"},
+				{ "id": 4, "question": "Creo que no soy lo suficientemente bueno para hacer el trabajo clínico correctamente"},
+				{ "id": 5, "question": "Creo que no soy capaz de manejar las exigencias de mis trabajos universitario"}
+			]
+		},
+		{
+			"domain": "Sentimientos",
+			"id": "feel",
+			"questions": [
+				{ "id": 1, "question": "Cada vez que tengo que hacer algo nuevo siempre tengo 'mariposas' en el estómago/siento miedo"},
+				{ "id": 2, "question": "Creo que mis compañeros de clase encuentran el trabajo clínico más fácil que yo"},
+				{ "id": 3, "question": "Me preocupa que pueda cometer errores y que la gente sufra por ello"},
+				{ "id": 4, "question": "Me pone nervioso que el personal cualificado descubra que no soy tan capaz como creen que soy"},
+				{ "id": 5, "question": "Me preocupan las evaluaciones/supervisión y tengo miedo de que otros me evalúen"}
+			]
+		},
+		{
+			"domain": "Comportamientos",
+			"id": "do",
+			"questions": [
+				{ "id": 1, "question": "No expreso mi opinión Tengo miedo de discutir con mis compañeros de trabajo en el área clínica"},
+				{ "id": 2, "question": "Nunca duermo lo suficiente"},
+				{ "id": 3, "question": "A menudo pido consejos a varias personas diferentes antes de estar contento con lo que hago"},
+				{ "id": 4, "question": "Le doy muchas vueltas a las cosas en mi mente para sentirme seguro/a"},
+				{ "id": 5, "question": "Aplazo las tareas/trabajos del curso que me resultan difíciles"}
+			]
+		}
+	]
+}
