@@ -1,0 +1,62 @@
+ion-toolbar {
+  --background: #08415c;
+}
+.logoHeader {
+  background: #08415c;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #5acaf9 !important;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+p {
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap;
+  h2 {
+    color: #08415c;
+    width: 90%;
+    text-align: center;
+  }
+}
+
+.terms {
+  ol {
+    padding-right: 20px;
+    margin-left: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
+
+.termButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    padding-bottom: 20px;
+}
+
+.buttonDetails{
+    font-weight: bold;
+    font-size: large;
+    color: white;
+    width: 250px;
+    text-transform: none;
+}

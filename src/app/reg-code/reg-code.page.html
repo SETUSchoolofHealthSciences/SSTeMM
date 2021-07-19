@@ -1,0 +1,58 @@
+<ion-content class="dark-gb">
+  <div class="logoLogin">
+    <div class="center">
+      <ion-img
+        src="assets/sstemm-login.png"
+        class="ion-align-self-end"
+      ></ion-img>
+    </div>
+  </div>
+  <div class="enterCode">
+    <h1 class="fpcTitle">{{ 'verification.header' | translate }}</h1>
+    <form [formGroup]="formGroupCode" (ngSubmit)="submitCode()">
+    <div>
+      <ion-input
+      class="input"
+      formControlName="emailControl"
+      required="true"
+      type="email"
+      placeholder="{{ 'input.email' | translate }}"
+      [(ngModel)]="auth.emailAddress"
+    >
+    </ion-input>
+    <span
+      class="text-danger"
+      *ngIf="(regCode.emailControl.touched || submitted) && regCode.emailControl.errors?.required"
+    >
+    {{ 'validation.emailRequired' | translate }}
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="regCode.emailControl.touched && regCode.emailControl.errors?.email"
+    >
+    {{ 'validation.emailValid' | translate }}
+    </span>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.verify' | translate }}"
+        formControlName="codeControl"
+        type="number"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(regCode.codeControl.touched || submitted) && regCode.codeControl.errors?.required"
+      >
+      {{ 'validation.verify' | translate }}
+      </span>
+    </div>
+    <div class="fpButton">
+      <ion-button class="buttonDetails" expand="block" type="submit"
+        ><ion-icon class="icon" name="add-circle-outline"></ion-icon>{{ 'button.submit' | translate }}</ion-button>
+    </div>
+    <div class="fpButton">
+      <ion-button class="buttonDetails" expand="block" (click)="cancel()"
+        ><ion-icon class="icon" name="close-outline"></ion-icon>{{ 'button.cancel' | translate }}</ion-button>
+    </div>
+  </form>
+  </div>
+</ion-content>
