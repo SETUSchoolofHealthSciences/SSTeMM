@@ -1,0 +1,82 @@
+<ion-content class="dark-gb" [fullscreen]="true">
+  <div class="flag" align="right">
+  <ngx-flag-picker
+      class="picker"
+      [showLabels]="false"
+      [selectedCountryCode]="selectedCountryCode"
+      [countryCodes]="countryCodes"
+      (changedCountryCode)="changeSelectedCountryCode($event)">
+    </ngx-flag-picker>
+  </div>
+  <div class="logoLogin">
+    <div class="center">
+      <ion-img
+        src="assets/sstemm-login.png"
+        class="ion-align-self-end"
+      ></ion-img>
+    </div>
+  </div>
+  <form [formGroup]="formGroup" (ngSubmit)="login()">
+    <div>
+      <ion-input
+        class="input"
+        formControlName="emailControl"
+        required="true"
+        type="email"
+        placeholder="{{ 'input.email' | translate }}"
+      >
+      </ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(loginFormControl.emailControl.touched || submitted) && loginFormControl.emailControl.errors?.required"
+      >
+      {{ 'validation.emailRequired' | translate }}
+      </span>
+      <span
+        class="text-danger"
+        *ngIf="loginFormControl.emailControl.touched && loginFormControl.emailControl.errors?.email"
+      >
+      {{ 'validation.emailValid' | translate }}
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        formControlName="passwordControl"
+        required="true"
+        type="password"
+        placeholder="{{ 'input.password' | translate }}"
+      >
+      </ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(loginFormControl.passwordControl.touched || submitted) && loginFormControl.passwordControl.errors?.required"
+      >
+      {{ 'validation.passwordRequired' | translate }}
+      </span>
+    </div>
+
+    <div class="forgotPassword">
+      <a class="text" routerLink="/forgot-password">{{ 'login.forgotPass' | translate }}</a>
+    </div>
+
+    <div class="loginButton">
+      <ion-button class="buttonDetails" expand="block" type="submit"
+        ><ion-icon class="icon" name="log-in-outline"></ion-icon>{{ 'button.login' | translate }}</ion-button
+      >
+    </div>
+  </form>
+  <div class="registration">
+    <a class="text" routerLink="/registration">{{ 'login.new' | translate }}</a>
+  </div>
+  <div class="verification">
+    <a class="text" routerLink="/resend-verification">{{ 'login.verification' | translate }}</a>
+  </div>
+  <div class="logoEU">
+    <div class="image">
+      <ion-img
+        src="assets/erasmus.png"
+      ></ion-img>
+    </div>
+  </div>
+</ion-content>

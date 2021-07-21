@@ -1,0 +1,29 @@
+.question-card {
+  margin: 10px
+}
+.question-content {
+  margin: 10px;
+  min-height: 100px;
+  box-shadow: 0 3px 4px rgba(0,0,0,0.6);
+  border-radius: 3px;
+  border: thin solid #ededed;
+  padding: 1em;
+  color: #08415C;
+  text-align: center;
+  ion-badge{
+    padding: 7px !important;
+    color: white;
+    font-size: large;
+  }
+  ion-range{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+}
+
+.questions {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin-top: 0% !important;
+  margin-bottom: 0% !important;
+}

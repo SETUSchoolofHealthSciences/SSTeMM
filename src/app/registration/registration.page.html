@@ -1,0 +1,183 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="logoHeader">
+      <img src="assets/sstemm-header.png" width="150px" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="dark-gb">
+  <h1 class="regTitle">{{ 'reg.title' | translate }}</h1>
+  <form [formGroup]="formGroup" (ngSubmit)="register()">
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.firstName' | translate }}"
+        formControlName="firstNameControl"
+        type="text"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.firstNameControl.touched || submitted) && RegistrationFormControl.firstNameControl.errors?.required"
+      >
+      {{ 'validation.firstRequired' | translate }}
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.lastName' | translate }}"
+        formControlName="lastNameControl"
+        type="text"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.lastNameControl.touched || submitted) && RegistrationFormControl.lastNameControl.errors?.required"
+      >
+      {{ 'validation.lastRequired' | translate }}
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.college' | translate }}"
+        formControlName="collegeControl"
+        type="text"
+      ></ion-input>
+    </div>
+    <div *ngIf="si; else all">
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.collegeYear' | translate }}"
+        formControlName="collegeYearControlSi"
+        type="number"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.collegeYearControlSi.touched || submitted) && (RegistrationFormControl.collegeYearControlSi.errors?.max || RegistrationFormControl.collegeYearControlSi.errors?.min)"
+      >
+      {{ 'validation.collegeYear' | translate }}
+      </span>
+    </div>
+    <ng-template #all>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.collegeYear' | translate }}"
+        formControlName="collegeYearControl"
+        type="number"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.collegeYearControl.touched || submitted) && (RegistrationFormControl.collegeYearControl.errors?.max || RegistrationFormControl.collegeYearControl.errors?.min)"
+      >
+      {{ 'validation.collegeYear' | translate }}
+      </span>
+    </ng-template>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.hospital' | translate }}"
+        formControlName="hospitalControl"
+        type="text"
+      ></ion-input>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.email' | translate }}"
+        formControlName="emailControl"
+        type="email"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.emailControl.touched || submitted) && RegistrationFormControl.emailControl.errors?.required"
+      >
+      {{ 'validation.emailRequired' | translate }}
+      </span>
+      <span
+        class="text-danger"
+        *ngIf="RegistrationFormControl.emailControl.touched && RegistrationFormControl.emailControl.errors?.email"
+      >
+      {{ 'validation.emailValid' | translate }}
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.password' | translate }}"
+        formControlName="passwordControl"
+        type="password"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.passwordControl.touched || submitted) && RegistrationFormControl.passwordControl.errors?.required"
+      >
+      {{ 'validation.passwordRequired' | translate }}
+      </span>
+      <span
+        class="text-danger"
+        *ngIf="RegistrationFormControl.passwordControl.touched && RegistrationFormControl.passwordControl.errors?.invalidPassword"
+      >
+      {{ 'validation.passwordRequirements' | translate }}
+      </span>
+    </div>
+    <div>
+      <ion-input
+        class="input"
+        placeholder="{{ 'input.confirmPassword' | translate }}"
+        formControlName="passwordAgainControl"
+        type="password"
+      ></ion-input>
+      <span
+        class="text-danger"
+        *ngIf="(RegistrationFormControl.passwordAgainControl.touched || submitted)&& RegistrationFormControl.passwordAgainControl.errors?.required"
+      >
+      {{ 'validation.confirmPassword' | translate }}
+      </span>
+      <span
+        class="text-danger"
+        *ngIf="RegistrationFormControl.passwordAgainControl.touched && RegistrationFormControl.passwordAgainControl.errors?.passwordMismatch"
+      >
+      {{ 'validation.matchPasswords' | translate }}
+      </span>
+    </div>
+    <div>
+      <ion-item class="container" lines="none">
+        <ion-checkbox
+          color="primary"
+          formControlName="checkBoxControl"
+        ></ion-checkbox>
+        <ion-label class="ion-text-wrap" for="checkBoxControl"
+          >{{ 'input.termsStart' | translate }}<a routerLink="/terms">{{ 'input.termsLink' | translate }}</a> {{ 'input.termsEnd' | translate }}</ion-label
+        >
+      </ion-item>
+      <span
+        class="text-danger"
+        *ngIf="submitted && RegistrationFormControl.checkBoxControl.errors"
+      >
+      {{ 'validation.terms' | translate }}
+      </span>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" size="6" class="ion-text-center">
+          <ion-button
+            expand="block"
+            class="ion-text-wrap min-max-width bttn"
+            (click)="cancel()"
+            ><ion-icon class="icon" name="close-outline"></ion-icon>{{ 'button.cancel' | translate }}</ion-button
+          >
+        </ion-col>
+
+        <ion-col size-sm="6" size="6" class="ion-text-center">
+          <ion-button
+            expand="block"
+            class="ion-text-wrap min-max-width bttn"
+            type="submit"
+            ><ion-icon class="icon" name="person-add-outline"></ion-icon>{{ 'button.register' | translate }}</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
