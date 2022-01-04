@@ -90,4 +90,15 @@ export class LoginPage implements OnInit {
       this.auth.signIn(this.formGroup.value.emailControl, this.formGroup.value.passwordControl);
     }
   }
+
+  help(){
+    let lang = this.translate.currentLang;
+    if ( lang === 'si' ){
+      lang = 'sl';
+    }
+    if ( lang === 'de' ){
+      lang = 'en';
+    }
+    window.location.href = 'https://sstemm.eu/sstemm-user-guide/?lang=' + lang;
+  }
 }
