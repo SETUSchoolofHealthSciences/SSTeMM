@@ -56,7 +56,9 @@
   "home": {
     "title": "Entradas más recientes",
     "none": "No hay entradas recientes",
-    "create": "Crear"
+    "create": "Crear",
+    "total": "Puntaje total",
+    "wait": "Espere por favor..."
   },
   "stressRecord": {
     "title": "Crear registro de estrés",

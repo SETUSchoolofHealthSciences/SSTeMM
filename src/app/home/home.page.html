@@ -13,6 +13,14 @@
 
 <ion-content [fullscreen]="true">
   <h1 class="header">{{ 'home.title' | translate }}</h1>
+  <ion-card>
+    <ion-card-header>
+      Line Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas style="position: relative; height:15vh; width:40vw"></canvas>
+    </ion-card-content>
+  </ion-card>
   <h3 class="noentries" *ngIf="api.displayNoEntries">{{ 'home.none' | translate }}</h3>
   <div class=records>
   <app-record *ngFor="let entry of api.homeSignatures" overallScore={{entry.totalScore}} timestamp={{entry.timeStamp}}
