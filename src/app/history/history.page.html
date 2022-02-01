@@ -19,7 +19,35 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <h3 class="noentries" *ngIf="api.displayNoEntries">{{ 'home.none' | translate }}</h3>
+  <ion-grid [hidden]="filter !== 'wk'">
+    <ion-row >
+      <ion-col size-sm="6" size="3" class="ion-text-center">
+        <ion-button icon-only clear item-left (click)="down()">
+          <ion-icon class="icon" name="caret-back"></ion-icon></ion-button>
+      </ion-col>
+      <ion-col size-sm="6" size="3" >
+        <p style="font-size: small;">
+          {{endDate | date: 'dd/MM/yyyy'}}
+        </p>
+      </ion-col>
+      <ion-col size-sm="6" size="3">
+        <p style="font-size: small; text-align: right;">
+          {{startDate | date: 'dd/MM/yyyy'}}
+        </p>
+      </ion-col>
+      <ion-col size-sm="6" size="3" class="ion-text-center">
+        <ion-button icon-only clear item-right (click)="up()" [disabled]="startDate >= date">
+          <ion-icon  class="icon" name="caret-forward"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card class="chart" [hidden]="filter !== 'wk'">
+    <!-- <ion-card-header>
+    </ion-card-header> -->
+    <ion-card-content>
+      <canvas #lineCanvas style="position: relative; height:15vh; width:40vw"></canvas>
+    </ion-card-content>
+  </ion-card>
   <div class=records>
   <app-record *ngFor="let entry of filters" overallScore={{entry.totalScore}} timestamp={{entry.timeStamp}}
   [domain]="entry.domain" (click)="openModal(entry)">

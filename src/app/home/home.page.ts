@@ -4,7 +4,7 @@ import { ApiService } from '../services/api.service';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
 import { TranslateService } from '@ngx-translate/core';
-import { Chart, ChartConfiguration, LineController, LineElement, PointElement, LinearScale, Title} from 'chart.js';
+import { Chart} from 'chart.js';
 import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-home',
@@ -36,7 +36,7 @@ export class HomePage implements OnInit {
     const behaviours = [];
     const thoughts = [];
     const feelings = [];
-    for(const item of records) {
+    for (const item of records) {
       if (item.totalScore !== 0) {
         if (!item.domain.includes(this.behavioursTranslation)) {
           behaviours.push(0);
@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
         labels.push(label);
         total.push(item.totalScore);
         const data = JSON.parse(item.scoreCard);
-        for(const i of data) {
+        for (const i of data) {
           if (i.domain === this.behavioursTranslation) {
             behaviours.push(i.totalScore);
           } else if (i.domain === this.thoughtsTranslation) {
@@ -73,18 +73,18 @@ export class HomePage implements OnInit {
             type: 'line',
             fill: false,
             lineTension: 0.1,
-            backgroundColor: 'yellow',
-            borderColor: 'yellow',
+            backgroundColor: '#009989',
+            borderColor: '#009989',
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: 'yellow',
+            pointBorderColor: '#009989',
             pointBackgroundColor: '#fff',
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'yellow',
-            pointHoverBorderColor: 'yellow',
+            pointHoverBackgroundColor: '#009989',
+            pointHoverBorderColor: '#009989',
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
@@ -95,18 +95,18 @@ export class HomePage implements OnInit {
             label: this.behavioursTranslation,
             fill: false,
             lineTension: 0.1,
-            backgroundColor: 'blue',
-            borderColor: 'blue',
+            backgroundColor: '#F85931',
+            borderColor: '#F85931',
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: 'blue',
+            pointBorderColor: '#F85931',
             pointBackgroundColor: '#fff',
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'blue',
-            pointHoverBorderColor: 'blue',
+            pointHoverBackgroundColor: '#F85931',
+            pointHoverBorderColor: '#F85931',
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
@@ -117,18 +117,18 @@ export class HomePage implements OnInit {
             label: this.thoughtsTranslation,
             fill: false,
             lineTension: 0.1,
-            backgroundColor: 'green',
-            borderColor: 'green',
+            backgroundColor: '#EDB92E',
+            borderColor: '#EDB92E',
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: 'green',
+            pointBorderColor: '#EDB92E',
             pointBackgroundColor: '#fff',
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'green',
-            pointHoverBorderColor: 'green',
+            pointHoverBackgroundColor: '#EDB92E',
+            pointHoverBorderColor: '#EDB92E',
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
@@ -139,18 +139,18 @@ export class HomePage implements OnInit {
             label: this.feelingsTranslation,
             fill: false,
             lineTension: 0.1,
-            backgroundColor: 'red',
-            borderColor: 'red',
+            backgroundColor: '#A3A948',
+            borderColor: '#A3A948',
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: 'red',
+            pointBorderColor: '#A3A948',
             pointBackgroundColor: '#fff',
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'red',
-            pointHoverBorderColor: 'red',
+            pointHoverBackgroundColor: '#A3A948',
+            pointHoverBorderColor: '#A3A948',
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,

@@ -13,10 +13,7 @@
 
 <ion-content [fullscreen]="true">
   <h1 class="header">{{ 'home.title' | translate }}</h1>
-  <ion-card>
-    <ion-card-header>
-      Line Chart
-    </ion-card-header>
+  <ion-card *ngIf="!api.displayNoEntries">
     <ion-card-content>
       <canvas #lineCanvas style="position: relative; height:15vh; width:40vw"></canvas>
     </ion-card-content>
