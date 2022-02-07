@@ -56,7 +56,9 @@
   "home": {
     "title": "Most Recent Entries",
     "none": "There are no recent entries",
-    "create": "Create"
+    "create": "Create",
+    "total": "Total Score",
+    "wait": "Please wait..."
   },
   "stressRecord": {
     "title": "Create Stress Signature Record",
