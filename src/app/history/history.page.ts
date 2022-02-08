@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./history.page.scss'],
 })
 export class HistoryPage implements OnInit {
-  @ViewChild('lineCanvas') private lineCanvas: ElementRef;
+  @ViewChild('lineCanvas', {static: false}) lineCanvas;
   lineChart: any;
   thoughtsTranslation: string;
   feelingsTranslation: string;
@@ -64,7 +64,7 @@ export class HistoryPage implements OnInit {
 
   getChartArrayDetails(start: number, end: number) {
     for (const item of this.api.allSignatures) {
-      if(item.timeStamp <= start && item.timeStamp >= end) {
+      if (item.timeStamp <= start && item.timeStamp >= end) {
         this.filters.push(item);
       }
     }
@@ -161,111 +161,118 @@ export class HistoryPage implements OnInit {
         }
       }
     }
-
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-      type: 'bar',
-      data: {
-        labels,
-        datasets: [
-          {
-            label: this.totalTranslation,
-            type: 'line',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: '#009989',
-            borderColor: '#009989',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: '#009989',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#009989',
-            pointHoverBorderColor: '#009989',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: total,
-            spanGaps: false,
+    try {
+      setTimeout(() => {
+        console.log('waiting');
+        this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: [
+              {
+                label: this.totalTranslation,
+                type: 'line',
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: '#009989',
+                borderColor: '#009989',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: '#009989',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: '#009989',
+                pointHoverBorderColor: '#009989',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: total,
+                spanGaps: false,
+              },
+              {
+                label: this.behavioursTranslation,
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: '#F85931',
+                borderColor: '#F85931',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: '#F85931',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: '#F85931',
+                pointHoverBorderColor: '#F85931',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: behaviours,
+                spanGaps: false,
+              },
+              {
+                label: this.thoughtsTranslation,
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: '#EDB92E',
+                borderColor: '#EDB92E',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: '#EDB92E',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: '#EDB92E',
+                pointHoverBorderColor: '#EDB92E',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: thoughts,
+                spanGaps: false,
+              },
+              {
+                label: this.feelingsTranslation,
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: '#A3A948',
+                borderColor: '#A3A948',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: '#A3A948',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: '#A3A948',
+                pointHoverBorderColor: '#A3A948',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: feelings,
+                spanGaps: false,
+              }
+            ]
           },
-          {
-            label: this.behavioursTranslation,
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: '#F85931',
-            borderColor: '#F85931',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: '#F85931',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#F85931',
-            pointHoverBorderColor: '#F85931',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: behaviours,
-            spanGaps: false,
-          },
-          {
-            label: this.thoughtsTranslation,
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: '#EDB92E',
-            borderColor: '#EDB92E',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: '#EDB92E',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#EDB92E',
-            pointHoverBorderColor: '#EDB92E',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: thoughts,
-            spanGaps: false,
-          },
-          {
-            label: this.feelingsTranslation,
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: '#A3A948',
-            borderColor: '#A3A948',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: '#A3A948',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#A3A948',
-            pointHoverBorderColor: '#A3A948',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: feelings,
-            spanGaps: false,
-          }
-        ]
-      },
-      options: {
-        scales: {
-            xAxes: [{
-                offset: true
-            }]
+          options: {
+            scales: {
+                xAxes: [{
+                    offset: true
+                }]
+            }
         }
+        });
+      }, 100);
     }
-    });
+    catch (e){
+      console.log('scanlop ', e.message);
+    }
   }
 
   getTranslations(){
